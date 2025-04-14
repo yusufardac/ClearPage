@@ -1,84 +1,116 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>SimpleSearch</title>
+  <title>Yeni Sekme</title>
   <style>
-    body {
-      background-color: #242424;
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #1e1e1e;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      overflow: hidden;
     }
 
     .logo {
-      font-size: 48px;
-      color: #ffffffef;
       margin-bottom: 30px;
     }
 
-    .search-box {
-      display: flex;
+    .logo img {
+      width: 150px;
+    }
+
+    .search-container {
       width: 100%;
-      max-width: 600px;
+      max-width: 700px;
+      padding: 0 20px;
     }
 
-    input[type="text"] {
-      flex: 1;
-      padding: 14px 20px;
-      font-size: 18px;
-      border: 1px solid #ccc;
-      border-radius: 30px 0 0 30px;
-      outline: none;
-    }
-
-    button {
-      padding: 14px 24px;
+    .search-box {
+      width: 100%;
+      padding: 16px 24px;
       font-size: 18px;
       border: none;
-      background-color: #4285f4;
-      color: white;
-      border-radius: 0 30px 30px 0;
-      cursor: pointer;
+      border-radius: 40px;
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    button:hover {
-      background-color: #357ae8;
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+    text-decoration: none;
+    width: 60px;
+    font-size: 12px;
+  }
+
+  .link img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 6px;
+  }
+
+
+    .link:hover {
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
-    <!-- <button id="theme-toggle" style="position: absolute; top: 20px; right: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Tema Değiştir</button> -->
+  <!-- <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+  </div> -->
 
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
+  <div class="search-container">
+    <form action="https://www.google.com/search" method="get">
+      <input class="search-box" type="text" name="q" placeholder="Web'de ara">
+    </form>
+  </div>
 
-      themeToggle.addEventListener('click', () => {
-        if (body.style.backgroundColor === 'white') {
-          body.style.backgroundColor = '#242424';
-          body.style.color = 'white';
-          themeToggle.textContent = 'Tema Değiştir';
-        } else {
-          body.style.backgroundColor = 'white';
-          body.style.color = 'black';
-          themeToggle.textContent = 'Tema Değiştir';
-        }
-      });
-    </script>
-
-  <div class="logo">Bugün Ne Arayalım?</div>
-
-  <form action="https://www.google.com/search" method="get" class="search-box">
-    <input type="text" name="q" placeholder="Arama yap...">
-    <button type="submit">Ara</button>
-  </form>
+  <div class="links">
+    <a class="link" href="https://drive.google.com">
+      <img src="https://www.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png" alt="Drive">
+      Drive
+    </a>
+    <a class="link" href="https://youtube.com">
+      <img src="https://www.gstatic.com/images/branding/product/1x/youtube_48dp.png" alt="YouTube">
+      YouTube
+    </a>
+    <a class="link" href="https://mail.google.com">
+      <img src="https://www.gstatic.com/images/branding/product/1x/gmail_2020q4_48dp.png" alt="Gmail">
+      E-Mail
+    </a>
+    <a class="link" href="https://calendar.google.com">
+      <img src="https://www.gstatic.com/images/branding/product/1x/calendar_2020q4_48dp.png" alt="Takvim">
+      Takvim
+    </a>
+    <a class="link" href="https://www.speedtest.net/">
+      <img src="https://www.speedtest.net/themes/speedtest/images/favicon.png" alt="Speedtest" style="border-radius: 12px;">
+      Speedtest
+    </a>
+  </div>
 
 </body>
 </html>
