@@ -1,204 +1,243 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yeni Sekme</title>
-  <style>
-    html, body {
-      height: 100vh;
-      overflow: hidden;
-      margin: 0;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Sekme</title>
+    
+    <style>
+      /* Sayfa yüksekliği ve taşma kontrolü */
+      html, body {
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+      }
 
-    body {
-      background-color: #242424;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .settings-button {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #444;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
-      cursor: pointer;
-      line-height: 40px; /* Eklendi */
-    }
-
-    .settings-panel {
-      position: absolute;
-      top: 70px;
-      right: 20px;
-      background-color: #333;
-      color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00000066;
-      display: none;
-      z-index: 999;
-      min-width: 200px;
-    }
-
-    .settings-panel label {
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .logo {
-      font-size: 36px;
-      color: #ffffffef;
-      margin-bottom: 30px;
-      text-align: center;
-      padding: 0 10px;
-    }
-
-    .search-box {
-      display: flex;
-      width: 100%;
-      max-width: 600px;
-    }
-
-    input[type="text"] {
-      flex: 1;
-      padding: 14px 16px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 30px 0 0 30px;
-      outline: none;
-      transition: border 0.3s;
-    }
-
-    button[type="submit"] {
-      padding: 14px 20px;
-      font-size: 16px;
-      border: none;
-      background-color: #4285f4;
-      color: white;
-      border-radius: 0 30px 30px 0;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #357ae8;
-    }
-
-    .shake {
-      animation: shake 0.4s;
-    }
-
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-6px); }
-      50% { transform: translateX(6px); }
-      75% { transform: translateX(-6px); }
-      100% { transform: translateX(0); }
-    }
-
-    @media (max-width: 480px) {
-      .search-box {
+      /* Sayfa arka planı ve genel düzen */
+      body {
+        background-color: #242424;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
       }
 
-      input[type="text"],
-      button[type="submit"] {
-        border-radius: 30px;
+      /* Ayarlar düğmesi stili */
+      .settings-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #444;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex; /* Düğme içeriğini yatay ve dikey ortalamak için */
+        align-items: center; /* Dikey ortalama */
+        justify-content: center; /* Yatay ortalama */
+      }
+
+      /* Ayarlar paneli stili */
+      .settings-panel {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: #333;
+        color: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00000066;
+        display: none; /* Varsayılan olarak gizli */
+        z-index: 999;
+        min-width: 200px;
+      }
+
+      /* Ayarlar panelindeki etiketler */
+      .settings-panel label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      /* Logo stili */
+      .logo {
+        font-size: 36px;
+        color: #ffffffef;
+        margin-bottom: 30px;
+        text-align: center;
+        padding: 0 10px;
+      }
+
+      /* Arama kutusu düzeni */
+      .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+      }
+
+      /* Arama kutusu için giriş alanı */
+      input[type="text"] {
+        flex: 1;
+        padding: 14px 16px;
         font-size: 16px;
-        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 30px 0 0 30px;
+        outline: none;
+        transition: border 0.3s;
       }
 
+      /* Arama butonu stili */
       button[type="submit"] {
-        border-radius: 30px;
+        padding: 14px 20px;
+        font-size: 16px;
+        border: none;
+        background-color: #4285f4;
+        color: white;
+        border-radius: 0 30px 30px 0;
+        cursor: pointer;
+        white-space: nowrap;
       }
-    }
-  </style>
-</head>
-<body>
 
-  <button class="settings-button" id="settingsToggle">⚙</button>
-
-  <div class="settings-panel" id="settingsPanel">
-    <label>
-      Tema:
-      <select id="themeSelect">
-        <option value="dark">Karanlık</option>
-        <option value="light">Aydınlık</option>
-      </select>
-    </label>
-    <label>
-      Arama motoru:
-      <select id="searchEngine">
-        <option value="https://www.google.com/search?q=">Google</option>
-        <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
-        <option value="https://www.bing.com/search?q=">Bing</option>
-      </select>
-    </label>
-  </div>
-
-  <div class="logo">Bugün Ne Arayalım?</div>
-
-  <form id="searchForm" action="https://www.google.com/search" method="get" class="search-box">
-    <input id="searchInput" type="text" name="q" placeholder="Arama yap...">
-    <button type="submit">Ara</button>
-  </form>
-
-  <script>
-    const settingsButton = document.getElementById('settingsToggle');
-    const settingsPanel = document.getElementById('settingsPanel');
-    const searchForm = document.getElementById('searchForm');
-    const searchEngine = document.getElementById('searchEngine');
-    const themeSelect = document.getElementById('themeSelect');
-
-    // Ayar panelini aç/kapat
-    settingsButton.addEventListener('click', () => {
-      settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // Arama motorunu değiştir
-    searchEngine.addEventListener('change', (e) => {
-      const selectedEngine = e.target.value;
-      searchForm.setAttribute('action', selectedEngine);
-    });
-
-    // Tema değiştir
-    themeSelect.addEventListener('change', (e) => {
-      const theme = e.target.value;
-      if (theme === 'light') {
-        document.body.style.backgroundColor = '#f0f0f0';
-        document.querySelector('.logo').style.color = '#222';
-      } else {
-        document.body.style.backgroundColor = '#242424';
-        document.querySelector('.logo').style.color = '#ffffffef';
+      /* Arama butonu üzerine gelindiğinde renk değişimi */
+      button[type="submit"]:hover {
+        background-color: #357ae8;
       }
-    });
 
-    // Arama boşsa uyarı ver
-    searchForm.addEventListener('submit', function (event) {
-      const input = document.getElementById('searchInput');
-      if (input.value.trim() === '') {
-        event.preventDefault();
-        input.placeholder = 'Arama yapmak için bir şey yazın';
-        searchForm.classList.add('shake');
-        setTimeout(() => {
-          searchForm.classList.remove('shake');
-        }, 400);
+      /* Hata durumunda arama kutusunu sallama animasyonu */
+      .shake {
+        animation: shake 0.4s;
       }
-    });
-    document.getElementById('searchInput').focus();
 
-  </script>
+      /* Sallama animasyonu tanımı */
+      @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-6px); }
+        50% { transform: translateX(6px); }
+        75% { transform: translateX(-6px); }
+        100% { transform: translateX(0); }
+      }
 
-</body>
+      /* Mobil cihazlar için düzenlemeler */
+      @media (max-width: 480px) {
+        .search-box {
+          flex-direction: column;
+        }
+
+        input[type="text"],
+        button[type="submit"] {
+          border-radius: 30px;
+          font-size: 16px;
+          margin: 5px 0;
+        }
+
+        button[type="submit"] {
+          border-radius: 30px;
+        }
+      }
+    </style>
+
+  <!-- Sayfa simgesi için SVG formatında favicon -->
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,
+  %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"%3E
+  %3Crect x="3" y="4" width="18" height="16" rx="2.5" ry="2.5" stroke="white" fill="none" stroke-width="2"/%3E
+  %3Crect x="9.08762" y="4.10025" width="12.18306" height="4.30075" fill="white" rx="1"/%3E
+  %3Ccircle cx="9" cy="14" r="1.2" fill="white"/%3E
+  %3Ccircle cx="12" cy="14" r="1.2" fill="white"/%3E
+  %3Ccircle cx="15" cy="14" r="1.2" fill="white"/%3E
+  %3C/svg%3E' />
+
+  </head>
+
+  <body>
+
+    <!-- Ayarlar düğmesi -->
+    <button class="settings-button" id="settingsToggle" aria-label="Ayarlar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+        <path d="M19.14,12.94a7.49,7.49,0,0,0,0-1.88l2.11-1.65a.5.5,0,0,0,.12-.65l-2-3.46a.5.5,0,0,0-.61-.22l-2.49,1a7.28,7.28,0,0,0-1.62-.94l-.38-2.65A.5.5,0,0,0,14.7,3H9.3a.5.5,0,0,0-.49.42L8.43,6.07a7.28,7.28,0,0,0-1.62.94l-2.49-1a.5.5,0,0,0-.61.22l-2,3.46a.5.5,0,0,0,.12.65L4.86,11.06a7.49,7.49,0,0,0,0,1.88L2.75,14.59a.5.5,0,0,0-.12.65l2,3.46a.5.5,0,0,0,.61.22l2.49-1a7.28,7.28,0,0,0,1.62.94l.38,2.65A.5.5,0,0,0,9.3,21h5.4a.5.5,0,0,0,.49-.42l.38-2.65a7.28,7.28,0,0,0,1.62-.94l2.49,1a.5.5,0,0,0,.61-.22l2-3.46a.5.5,0,0,0-.12-.65ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/>
+      </svg>
+    </button>
+    
+
+    <!-- Ayarlar paneli -->
+    <div class="settings-panel" id="settingsPanel">
+      <label>
+        Tema:
+        <select id="themeSelect">
+          <option value="dark">Karanlık</option>
+          <option value="light">Aydınlık</option>
+        </select>
+      </label>
+      <label>
+        Arama motoru:
+        <select id="searchEngine">
+          <option value="https://www.google.com/search?q=">Google</option>
+          <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+          <option value="https://www.bing.com/search?q=">Bing</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Sayfa logosu -->
+    <div class="logo">Bugün Ne Arayalım?</div>
+
+    <!-- Arama formu -->
+    <form id="searchForm" action="https://www.google.com/search" method="get" class="search-box">
+      <input id="searchInput" type="text" name="q" placeholder="Arama yap...">
+      <button type="submit">Ara</button>
+    </form>
+
+    <script>
+      // Ayarlar düğmesine tıklanınca paneli aç/kapat
+      const settingsButton = document.getElementById('settingsToggle');
+      const settingsPanel = document.getElementById('settingsPanel');
+      const searchForm = document.getElementById('searchForm');
+      const searchEngine = document.getElementById('searchEngine');
+      const themeSelect = document.getElementById('themeSelect');
+
+      settingsButton.addEventListener('click', () => {
+        settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
+      });
+
+      // Arama motorunu değiştir
+      searchEngine.addEventListener('change', (e) => {
+        const selectedEngine = e.target.value;
+        searchForm.setAttribute('action', selectedEngine);
+      });
+
+      // Tema değiştirme
+      themeSelect.addEventListener('change', (e) => {
+        const theme = e.target.value;
+        if (theme === 'light') {
+          document.body.style.backgroundColor = '#f0f0f0';
+          document.querySelector('.logo').style.color = '#222';
+        } else {
+          document.body.style.backgroundColor = '#242424';
+          document.querySelector('.logo').style.color = '#ffffffef';
+        }
+      });
+
+      // Arama boşsa uyarı ver
+      searchForm.addEventListener('submit', function (event) {
+        const input = document.getElementById('searchInput');
+        if (input.value.trim() === '') {
+          event.preventDefault();
+          input.placeholder = 'Arama yapmak için bir şey yazın';
+          searchForm.classList.add('shake');
+          setTimeout(() => {
+            searchForm.classList.remove('shake');
+          }, 400);
+        }
+      });
+
+      // Sayfa yüklendiğinde arama kutusuna odaklanma
+      document.getElementById('searchInput').focus();
+
+    </script>
+
+  </body>
 </html>
