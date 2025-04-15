@@ -1,3 +1,3 @@
 # webpage
 
-bu sayfa kişisel kullanım içindir
+Sade ve minimalist bir yeni sekme sayfası.
