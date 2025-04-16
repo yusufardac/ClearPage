@@ -8,5 +8,5 @@ Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan 
 https://yusufardac.github.io/ClearPage/newTab
 
 <br>
-![screenshot](https://github.com/user-attachments/assets/f316e216-1397-4d37-899d-cc46306eeb11)
 
+![screenshot](https://github.com/user-attachments/assets/43f9ddf7-3421-4c34-b920-f13e2f01c991)
