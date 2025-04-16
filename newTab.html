@@ -157,11 +157,15 @@
 
     <!-- Ayarlar düğmesi -->
     <button class="settings-button" id="settingsToggle" aria-label="Ayarlar">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
-        <path d="M19.14,12.94a7.49,7.49,0,0,0,0-1.88l2.11-1.65a.5.5,0,0,0,.12-.65l-2-3.46a.5.5,0,0,0-.61-.22l-2.49,1a7.28,7.28,0,0,0-1.62-.94l-.38-2.65A.5.5,0,0,0,14.7,3H9.3a.5.5,0,0,0-.49.42L8.43,6.07a7.28,7.28,0,0,0-1.62.94l-2.49-1a.5.5,0,0,0-.61.22l-2,3.46a.5.5,0,0,0,.12.65L4.86,11.06a7.49,7.49,0,0,0,0,1.88L2.75,14.59a.5.5,0,0,0-.12.65l2,3.46a.5.5,0,0,0,.61.22l2.49-1a7.28,7.28,0,0,0,1.62.94l.38,2.65A.5.5,0,0,0,9.3,21h5.4a.5.5,0,0,0,.49-.42l.38-2.65a7.28,7.28,0,0,0,1.62-.94l2.49,1a.5.5,0,0,0,.61-.22l2-3.46a.5.5,0,0,0-.12-.65ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/>
-      </svg>
+      <svg width="23" height="23" xmlns="http://www.w3.org/2000/svg" fill="white">
+        <g>
+         <title>Layer 1</title>
+         <circle id="svg_3" fill="white" r="3" cy="11" cx="4"/>
+         <circle id="svg_4" fill="white" r="3" cy="11" cx="12"/>
+         <circle id="svg_5" fill="white" r="3" cy="11" cx="20"/>
+        </g>       
+       </svg>
     </button>
-    
 
     <!-- Ayarlar paneli -->
     <div class="settings-panel" id="settingsPanel">
@@ -178,6 +182,7 @@
           <option value="https://www.google.com/search?q=">Google</option>
           <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
           <option value="https://www.bing.com/search?q=">Bing</option>
+          <!-- <option value="https://www.yahoo.com/search?p=">Yahoo</option> -->
         </select>
       </label>
     </div>
@@ -191,53 +196,85 @@
       <button type="submit">Ara</button>
     </form>
 
-    <script>
-      // Ayarlar düğmesine tıklanınca paneli aç/kapat
-      const settingsButton = document.getElementById('settingsToggle');
-      const settingsPanel = document.getElementById('settingsPanel');
-      const searchForm = document.getElementById('searchForm');
-      const searchEngine = document.getElementById('searchEngine');
-      const themeSelect = document.getElementById('themeSelect');
+<script>
+  const settingsButton = document.getElementById('settingsToggle');
+  const settingsPanel = document.getElementById('settingsPanel');
+  const searchForm = document.getElementById('searchForm');
+  const searchEngine = document.getElementById('searchEngine');
+  const themeSelect = document.getElementById('themeSelect');
+  const searchInput = document.getElementById('searchInput');
 
-      settingsButton.addEventListener('click', () => {
-        settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
-      });
+  // Çerez oluştur
+  function setCookie(name, value, days = 365) {
+    const expires = `max-age=${days * 24 * 60 * 60}`;
+    document.cookie = `${name}=${encodeURIComponent(value)}; path=/; ${expires}`;
+  }
 
-      // Arama motorunu değiştir
-      searchEngine.addEventListener('change', (e) => {
-        const selectedEngine = e.target.value;
-        searchForm.setAttribute('action', selectedEngine);
-      });
+  // Çerez oku
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return decodeURIComponent(parts.pop().split(';').shift());
+  }
 
-      // Tema değiştirme
-      themeSelect.addEventListener('change', (e) => {
-        const theme = e.target.value;
-        if (theme === 'light') {
-          document.body.style.backgroundColor = '#f0f0f0';
-          document.querySelector('.logo').style.color = '#222';
-        } else {
-          document.body.style.backgroundColor = '#242424';
-          document.querySelector('.logo').style.color = '#ffffffef';
-        }
-      });
+  // Ayar panelini aç/kapat
+  settingsButton.addEventListener('click', () => {
+    settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
+  });
 
-      // Arama boşsa uyarı ver
-      searchForm.addEventListener('submit', function (event) {
-        const input = document.getElementById('searchInput');
-        if (input.value.trim() === '') {
-          event.preventDefault();
-          input.placeholder = 'Arama yapmak için bir şey yazın';
-          searchForm.classList.add('shake');
-          setTimeout(() => {
-            searchForm.classList.remove('shake');
-          }, 400);
-        }
-      });
+  // Arama motorunu değiştir
+  searchEngine.addEventListener('change', (e) => {
+    const selectedEngine = e.target.value;
+    searchForm.setAttribute('action', selectedEngine);
+    setCookie('searchEngine', selectedEngine);
+  });
 
-      // Sayfa yüklendiğinde arama kutusuna odaklanma
-      document.getElementById('searchInput').focus();
+  // Tema değiştir
+  themeSelect.addEventListener('change', (e) => {
+    const theme = e.target.value;
+    applyTheme(theme);
+    setCookie('theme', theme);
+  });
 
-    </script>
+  // Tema uygula
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      document.body.style.backgroundColor = '#f0f0f0';
+      document.querySelector('.settings-button').style.backgroundColor = '#bdbdbd';
+      document.querySelector('.logo').style.color = '#222';
+    } else {
+      document.body.style.backgroundColor = '#242424';
+      document.querySelector('.settings-button').style.backgroundColor = '#444444';
+      document.querySelector('.logo').style.color = '#ffffffef';
+    }
+    themeSelect.value = theme;
+  }
+
+  // Sayfa yüklendiğinde önceki çerezleri uygula
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = getCookie('theme') || 'dark';
+    applyTheme(savedTheme);
+
+    const savedEngine = getCookie('searchEngine') || 'https://www.google.com/search?q=';
+    searchForm.setAttribute('action', savedEngine);
+    searchEngine.value = savedEngine;
+
+    searchInput.focus();
+  });
+
+  // Arama boşsa uyarı ver
+  searchForm.addEventListener('submit', function (event) {
+    if (searchInput.value.trim() === '') {
+      event.preventDefault();
+      searchInput.placeholder = 'Arama yapmak için bir şey yazın';
+      searchForm.classList.add('shake');
+      setTimeout(() => {
+        searchForm.classList.remove('shake');
+      }, 400);
+    }
+  });
+</script>
+
 
   </body>
 </html>
