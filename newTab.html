@@ -50,18 +50,48 @@
         right: 20px;
         background-color: #333;
         color: #fff;
-        padding: 15px;
+        padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px #00000066;
-        display: none; /* Varsayılan olarak gizli */
+        display: none;
         z-index: 999;
-        min-width: 200px;
+        min-width: 250px;
+        font-size: 14px;
       }
 
-      /* Ayarlar panelindeki etiketler */
-      .settings-panel label {
+      .settings-panel h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 16px;
+        text-align: center;
+        border-bottom: 1px solid #444;
+        padding-bottom: 10px;
+      }
+
+      .settings-group {
+        margin-bottom: 15px;
+      }
+
+      .settings-group label {
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      .settings-group select,
+      .settings-group input[type="checkbox"] {
+        width: 100%;
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #555;
+        border-radius: 5px;
+        background-color: #444;
+        color: #fff;
+      }
+
+      .settings-group input[type="checkbox"] {
+        width: auto;
+        margin-left: 5px;
       }
 
       /* Logo stili */
@@ -169,22 +199,49 @@
 
     <!-- Ayarlar paneli -->
     <div class="settings-panel" id="settingsPanel">
-      <label>
-        Tema:
+      <h3>Sayfa Ayarları</h3>
+      
+      <div class="settings-group">
+
+        <label for="themeSelect">Tema:</label><!-- tema seçimi -->
+
         <select id="themeSelect">
           <option value="dark">Karanlık</option>
           <option value="light">Aydınlık</option>
         </select>
-      </label>
-      <label>
-        Arama motoru:
+      </div>
+
+      <!-- <div class="settings-group">
+        <label for="quickLinks">Hızlı Bağlantılar:</label>
+        <select id="quickLinks">
+          <option value="1">1 sıra</option>
+          <option value="2">2 sıra</option>
+          <option value="3">3 sıra</option>
+        </select>
+      </div> -->
+      <!-- <div class="settings-group">
+        <label>Öne Çıkan Bağlantıları Göster:</label>
+        <input type="checkbox" id="featuredLinks">
+      </div> -->
+      
+      <div class="settings-group"> <!-- arama motoru seçimi -->
+
+        <label for="searchEngine">Arama Motoru:</label>
         <select id="searchEngine">
           <option value="https://www.google.com/search?q=">Google</option>
           <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
           <option value="https://www.bing.com/search?q=">Bing</option>
-          <!-- <option value="https://www.yahoo.com/search?p=">Yahoo</option> -->
         </select>
-      </label>
+      </div>
+
+      <table>
+        <tr>
+          <td colspan="2" style="text-align: center;">Sürüm: 1.4.0</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center;">Created By: github.com/yusufardac</td>
+        </tr>
+      </table>
     </div>
 
     <!-- Sayfa logosu -->
@@ -222,6 +279,14 @@
     settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
   });
 
+  // Close settings panel when clicking outside of it
+  document.addEventListener('click', (event) => {
+    const isClickInside = settingsPanel.contains(event.target) || settingsButton.contains(event.target);
+    if (!isClickInside) {
+        settingsPanel.style.display = 'none';
+    }
+  });
+
   // Arama motorunu değiştir
   searchEngine.addEventListener('change', (e) => {
     const selectedEngine = e.target.value;
@@ -238,14 +303,57 @@
 
   // Tema uygula
   function applyTheme(theme) {
-    if (theme === 'light') {
+    if (theme === 'light') {// aydınlık tema
+      // Set light background for the body
       document.body.style.backgroundColor = '#f0f0f0';
-      document.querySelector('.settings-button').style.backgroundColor = '#bdbdbd';
+
+      // Set dark text for the logo
       document.querySelector('.logo').style.color = '#222';
-    } else {
+
+      // Set light background and dark text for the settings panel
+      document.querySelector('.settings-panel').style.backgroundColor = '#e0e0e0';
+      document.querySelector('.settings-panel').style.color = '#000';
+
+      // tema ayarlarının seçicisi
+      document.querySelector('.settings-button').style.backgroundColor = '#bdbdbd';
+      document.querySelector('.settings-button').style.color = '#222';
+      
+      // arama motorunun seçicisi 
+      document.querySelector('.settings-group select').style.backgroundColor = 'yellow';
+      document.querySelector('.settings-group select').style.color = '#000';
+
+      // Update all select elements in settings-group for light theme
+      document.querySelectorAll('.settings-group select').forEach(select => {
+        select.style.backgroundColor = '#e0e0e0';
+        select.style.color = '#000';
+      });
+    
+    } else {// karanlık tema
+      // Set dark background for the body
       document.body.style.backgroundColor = '#242424';
-      document.querySelector('.settings-button').style.backgroundColor = '#444444';
+
+
+
+      // Set light text for the logo
       document.querySelector('.logo').style.color = '#ffffffef';
+
+      // Set dark background and light text for the settings panel
+      document.querySelector('.settings-panel').style.backgroundColor = '#323232';
+      document.querySelector('.settings-panel').style.color = '#ffffff';
+
+      // tema ayarlarının seçicisi
+      document.querySelector('.settings-button').style.backgroundColor = '#444444';
+      document.querySelector('.settings-button').style.color = '#ffffff';
+
+      // arama motorunun seçicisi
+      document.querySelector('.settings-group select').style.backgroundColor = '#444444';
+      document.querySelector('.settings-group select').style.color = '#ffffff';
+
+      // Update all select elements in settings-group for dark theme
+      document.querySelectorAll('.settings-group select').forEach(select => {
+        select.style.backgroundColor = '#1f1f1f';
+        select.style.color = '#fff';
+      });
     }
     themeSelect.value = theme;
   }
@@ -274,7 +382,11 @@
     }
   });
 </script>
-
-
   </body>
+
+  <!-- <footer>
+    <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; text-align: center; padding: 10px; font-size: 14px;">
+    
+    </div>
+  </footer> -->
 </html>
