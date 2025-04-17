@@ -385,17 +385,17 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-  // Arama kutusuna odaklanıldığında placeholder'ı temizle
-  searchInput.addEventListener('focus', () => {
-    searchInput.placeholder = '';
-  });
+  // // Arama kutusuna odaklanıldığında placeholder'ı temizle
+  // searchInput.addEventListener('focus', () => {
+  //   searchInput.placeholder = '';
+  // });
 
-  // Arama kutusundan çıkıldığında placeholder'ı geri yükle
-  searchInput.addEventListener('blur', () => {
-    if (searchInput.value.trim() === '') {
-      searchInput.placeholder = 'Arama yap...';
-    }
-  });
+  // // Arama kutusundan çıkıldığında placeholder'ı geri yükle
+  // searchInput.addEventListener('blur', () => {
+  //   if (searchInput.value.trim() === '') {
+  //     searchInput.placeholder = 'Arama yap...';
+  //   }
+  // });
   
 </script>
   </body>
