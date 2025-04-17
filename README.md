@@ -5,7 +5,7 @@ Sade ve minimalist yeni sekme sayfası.<br>
 
 Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan sayfası yapmanız yeterlidir<br><br>
 
-https://yusufardac.github.io/ClearPage/newTab
+https://yusufardac.github.io/ClearPage/clearPage
 
 <br>
 
