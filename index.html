@@ -4,225 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeni Sekme</title>
-    
-    <style>
-      /* Genel CSS düzenlemeleri */
-      html, body {
-        height: 100vh;
-        overflow: hidden;
-        margin: 0;
-        font-family: Arial, sans-serif;
-      }
+  
+  <!-- Sayfa simgesi görseli -->
+  <link rel="icon" type="image/svg+xml" href="/Assets/tabIcon.svg" />
 
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        padding: 20px;
-      }
-
-      /* Tema renkleri */
-      body.light {
-        background-color: #f0f0f0;
-      }
-
-      body.dark {
-        background-color: #242424;
-      }
-
-      /* Logo */
-      .logo {
-        font-size: 36px;
-        margin-bottom: 30px;
-        text-align: center;
-        padding: 0 10px;
-      }
-
-      body.light .logo {
-        color: #222;
-      }
-
-      body.dark .logo {
-        color: #ffffffef;
-      }
-
-      /* Ayarlar düğmesi */
-      .settings-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        border: none;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      body.light .settings-button {
-        background-color: #bdbdbd;
-        color: #222;
-      }
-
-      body.dark .settings-button {
-        background-color: #444444;
-        color: #ffffff;
-      }
-
-      /* Ayarlar paneli */
-      .settings-panel {
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px #00000066;
-        display: none;
-        z-index: 999;
-        min-width: 250px;
-        font-size: 14px;
-      }
-
-      body.light .settings-panel {
-        background-color: #e0e0e0;
-        color: #000;
-      }
-
-      body.dark .settings-panel {
-        background-color: #323232;
-        color: #ffffff;
-      }
-
-      .settings-panel h3 {
-        margin-top: 0;
-        margin-bottom: 15px;
-        font-size: 16px;
-        text-align: center;
-        border-bottom: 1px solid #444;
-        padding-bottom: 10px;
-      }
-
-      .settings-group {
-        margin-bottom: 15px;
-      }
-
-      .settings-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
-      }
-
-      .settings-group select {
-        width: 100%;
-        padding: 5px;
-        font-size: 14px;
-        border: 1px solid #555;
-        border-radius: 5px;
-      }
-
-      body.light .settings-group select {
-        background-color: #e0e0e0;
-        color: #000;
-      }
-
-      body.dark .settings-group select {
-        background-color: #1f1f1f;
-        color: #fff;
-      }
-
-      /* Arama kutusu */
-      .search-box {
-        display: flex;
-        width: 100%;
-        max-width: 600px;
-      }
-
-      input[type="text"] {
-        flex: 1;
-        padding: 14px 16px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 30px 0 0 30px;
-        outline: none;
-        transition: border 0.3s;
-      }
-
-      button[type="submit"] {
-        padding: 14px 20px;
-        font-size: 16px;
-        border: none;
-        background-color: #4285f4;
-        color: white;
-        border-radius: 0 30px 30px 0;
-        cursor: pointer;
-        white-space: nowrap;
-      }
-
-      button[type="submit"]:hover {
-        background-color: #357ae8;
-      }
-
-      /* Sallama animasyonu */
-      .shake {
-        animation: shake 0.4s;
-      }
-
-      @keyframes shake {
-        0% { transform: translateX(0); }
-        25% { transform: translateX(-6px); }
-        50% { transform: translateX(6px); }
-        75% { transform: translateX(-6px); }
-        100% { transform: translateX(0); }
-      }
-
-      /* Mobil cihazlar için düzenlemeler */
-      @media (max-width: 480px) {
-        .search-box {
-          flex-direction: column;
-        }
-
-        input[type="text"],
-        button[type="submit"] {
-          border-radius: 30px;
-          font-size: 16px;
-          margin: 5px 0;
-        }
-
-        button[type="submit"] {
-          border-radius: 30px;
-        }
-      }
-    </style>
-
-  <!-- Sayfa simgesi için SVG formatında favicon -->
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,
-  %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"%3E
-  %3Crect x="3" y="4" width="18" height="16" rx="2.5" ry="2.5" stroke="white" fill="none" stroke-width="2"/%3E
-  %3Crect x="9.08762" y="4.10025" width="12.18306" height="4.30075" fill="white" rx="1"/%3E
-  %3Ccircle cx="9" cy="14" r="1.2" fill="white"/%3E
-  %3Ccircle cx="12" cy="14" r="1.2" fill="white"/%3E
-  %3Ccircle cx="15" cy="14" r="1.2" fill="white"/%3E
-  %3C/svg%3E' />
-
+  <link rel='stylesheet' type='text/css' href=main.css>
+  <!-- css dosyasını çağırma -->
   </head>
 
   <body>
 
     <!-- Ayarlar düğmesi -->
-    <button class="settings-button" id="settingsToggle" aria-label="Ayarlar">
-      <svg width="23" height="23" xmlns="http://www.w3.org/2000/svg" fill="white">
-        <g>
-         <title>Layer 1</title>
-         <circle id="svg_3" fill="white" r="3" cy="11" cx="4"/>
-         <circle id="svg_4" fill="white" r="3" cy="11" cx="12"/>
-         <circle id="svg_5" fill="white" r="3" cy="11" cx="20"/>
-        </g>       
-       </svg>
+    <button type="button" class="settings-button" id="settingsToggle" aria-label="Ayarlar">
+        <!-- ayarların görseli -->
+      <object type="image/svg+xml" data="Assets/settings.svg">
+      </object>
     </button>
 
     <!-- Ayarlar paneli -->
@@ -247,20 +43,39 @@
           <option value="3">3 sıra</option>
         </select>
       </div> -->
-      <!-- <div class="settings-group">
-        <label>Öne Çıkan Bağlantıları Göster:</label>
-        <input type="checkbox" id="featuredLinks">
-      </div> -->
       
       <div class="settings-group"> <!-- arama motoru seçimi -->
 
-        <label for="searchEngine">Arama Motoru:</label>
+        <label for="searchEngine">Arama motoru:</label>
         <select id="searchEngine">
           <option value="https://www.google.com/search?q=">Google</option>
           <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
           <option value="https://www.bing.com/search?q=">Bing</option>
         </select>
       </div>
+
+      <h3>Deneysel Özellikler</h3>
+
+      <table class="custom-line">
+        <tr>
+          <td>
+            <div class="settings-group">
+              <label>Web bağlantısı yapıştır</label>
+            </div>
+          </td>
+          <!-- <td >
+            <input type="checkbox" id="webLinkPaste" checked class="checkbox">         
+          </td> -->
+            <td >
+              <label class="custom-checkbox">
+                <input type="checkbox" id="webLinkPaste" checked>
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                  <path d="..." fill="#ffffff"/>
+                </svg>
+              </label>         
+            </td>
+        </tr>
+      </table>
 
       <table>
         <tr>
@@ -288,6 +103,7 @@
   const searchEngine = document.getElementById('searchEngine');
   const themeSelect = document.getElementById('themeSelect');
   const searchInput = document.getElementById('searchInput');
+  const webLinkPaste = document.getElementById('webLinkPaste');
 
   // Çerez oluştur
   function setCookie(name, value, days = 365) {
@@ -360,12 +176,14 @@
         searchForm.classList.remove('shake');
       }, 400);
     } 
-    
-    // else if (isValidHttpsURL(inputValue)) {
-    //   event.preventDefault();
-    //   window.location.href = inputValue; // Linke yönlendir
-    // }
 
+    else if (isValidHttpsURL(inputValue)) {
+
+      if (webLinkPaste.checked) {
+        event.preventDefault();
+        window.location.href = inputValue; // Linke yönlendir
+      }
+    }
   });
 
   // Sadece https ile başlayan URL'leri doğrulayan fonksiyon
@@ -384,6 +202,8 @@ document.addEventListener('visibilitychange', () => {
     searchInput.focus();
   }
 });
+
+
 
   // // Arama kutusuna odaklanıldığında placeholder'ı temizle
   // searchInput.addEventListener('focus', () => {

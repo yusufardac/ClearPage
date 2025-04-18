@@ -1,0 +1,253 @@
+/* Genel CSS düzenlemeleri */
+
+:root {
+  --color-light-bg: #f0f0f0;
+  --color-dark-bg: #242424;
+  --color-light-logo: #222;
+  --color-dark-logo: #ffffffef;
+  --color-light-settings-btn-bg: #bdbdbd;
+  --color-light-settings-btn-text: #222;
+  --color-dark-settings-btn-bg: #444444;
+  --color-dark-settings-btn-text: #ffffff;
+  --color-light-settings-panel-bg: #e0e0e0;
+  --color-light-settings-panel-text: #000;
+  --color-dark-settings-panel-bg: #323232;
+  --color-dark-settings-panel-text: #ffffff;
+  --color-light-select-bg: #e0e0e0;
+  --color-light-select-text: #000;
+  --color-dark-select-bg: #1f1f1f;
+  --color-dark-select-text: #fff;
+  --color-submit-btn-bg: #4285f4;
+  --color-submit-btn-hover-bg: #357ae8;
+  --color-input-border: #ccc;
+}
+
+html, body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .checkbox{
+    visibility: hidden;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+  }
+
+  /* Tema renkleri */
+  body.light {
+    background-color: var(--color-light-bg);
+  }
+
+  body.dark {
+    background-color: var(--color-dark-bg);
+  }
+
+  /* Logo */
+  .logo {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  body.light .logo {
+    color: var(--color-light-logo);
+  }
+
+  body.dark .logo {
+    color: var(--color-dark-logo);
+  }
+
+  /* Ayarlar düğmesi */
+  .settings-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .settings-button * {
+    pointer-events: none;
+  }
+
+  body.light .settings-button {
+    background-color: var(--color-light-settings-btn-bg);
+    color: var(--color-light-settings-btn-text);
+  }
+
+  body.dark .settings-button {
+    background-color: var(--color-dark-settings-btn-bg);
+    color: var(--color-dark-settings-btn-text);
+  }
+
+  /* Ayarlar paneli */
+  .settings-panel {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000066;
+    display: none;
+    z-index: 999;
+    min-width: 250px;
+    font-size: 14px;
+  }
+
+  body.light .settings-panel {
+    background-color: var(--color-light-settings-panel-bg);
+    color: var(--color-light-settings-panel-text);
+  }
+
+  body.dark .settings-panel {
+    background-color: var(--color-dark-settings-panel-bg);
+    color: var(--color-dark-settings-panel-text);
+  }
+
+  .settings-panel h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+  }
+
+  .settings-group {
+    margin-bottom: 15px;
+  }
+
+  .settings-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .settings-group select {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #555;
+    border-radius: 5px;
+  }
+
+  body.light .settings-group select {
+    background-color: var(--color-light-select-bg);
+    color: var(--color-light-select-text);
+  }
+
+  body.dark .settings-group select {
+    background-color: var(--color-dark-select-bg);
+    color: var(--color-dark-select-text);
+  }
+
+  /* Arama kutusu */
+  .search-box {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid var(--color-input-border);
+    border-radius: 30px 0 0 30px;
+    outline: none;
+    transition: border 0.3s;
+  }
+
+  button[type="submit"] {
+    padding: 14px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: var(--color-submit-btn-bg);
+    color: white;
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  button[type="submit"]:hover {
+    background-color: var(--color-submit-btn-hover-bg);
+  }
+
+  /* Sallama animasyonu */
+  .shake {
+    animation: shake 0.4s;
+  }
+
+  .custom-line {
+    width: 100%;
+    border-bottom: 1px solid #444; /* İnce çizgi */
+    padding-bottom: 10px; /* Çizgi ile metin arasındaki boşluk */
+    margin-bottom: 15px; /* Altındaki içerikle boşluk */
+    font-size: 16px; /* Yazı boyutu */
+    text-align: center; /* Ortalamak için */
+  }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-6px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* Varsayılan checkbox'ı gizle */
+  .custom-checkbox input[type="checkbox"] {
+    display: none;
+  }
+
+  /* Checkmark için stil */
+  .custom-checkbox .svg {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url('Assets/checkboxUnchecked.svg') no-repeat center center;
+    color: white ;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  /* Checkbox işaretliyken görseli değiştir */
+  .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background: url('Assets/checkboxChecked.svg') no-repeat center center;
+    background-size: contain;
+  }
+
+  /* Mobil cihazlar için düzenlemeler */
+  @media (max-width: 480px) {
+    .search-box {
+      flex-direction: column;
+    }
+
+    input[type="text"],
+    button[type="submit"] {
+      border-radius: 30px;
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    button[type="submit"] {
+      border-radius: 30px;
+    }
+  }
