@@ -17,8 +17,9 @@
   --color-light-select-text: #000;
   --color-dark-select-bg: #1f1f1f;
   --color-dark-select-text: #fff;
-  --color-submit-btn-bg: #4285f4;
-  --color-submit-btn-hover-bg: #357ae8;
+  --color-submit-btn-bg: #295fb4;
+  --color-submit-btn-hover-bg: #295fb4;
+  --color-submit-btn-text-bg: #b1c6e8;
   --color-input-border: #ccc;
 }
 
@@ -165,7 +166,7 @@ html, body {
     max-width: 600px;
   }
 
-  input[type="text"] {
+  input[type="sear"] {
     flex: 1;
     padding: 14px 16px;
     font-size: 16px;
@@ -180,7 +181,7 @@ html, body {
     font-size: 16px;
     border: none;
     background-color: var(--color-submit-btn-bg);
-    color: white;
+    color: var(--color-submit-btn-text-bg);
     border-radius: 0 30px 30px 0;
     cursor: pointer;
     white-space: nowrap;
@@ -222,7 +223,7 @@ html, body {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: url('Assets/checkboxUnchecked.svg') no-repeat center center;
+    background: url('Assets/checkboxUncheckedBlack.svg') no-repeat center center;
     color: white ;
     background-size: contain;
     cursor: pointer;
@@ -230,8 +231,10 @@ html, body {
 
   /* Checkbox işaretliyken görseli değiştir */
   .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-    background: url('Assets/checkboxChecked.svg') no-repeat center center;
+    background: url('Assets/checkboxCheckedBlack.svg') no-repeat center center;
     background-size: contain;
+    background-color: white ;
+    color-scheme: dark;
   }
 
   /* Mobil cihazlar için düzenlemeler */
