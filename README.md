@@ -4,6 +4,7 @@ Asla kullanılmayan gereksiz özellikler, göz yoran tasarım ve reklam saçan a
 Sade ve minimalist yeni sekme sayfası.<br>
 
 Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan sayfası yapmanız yeterlidir<br><br>
+İlerleyen zamanda link değişebilir
 
 https://yusufardac.github.io/ClearPage/index
 
