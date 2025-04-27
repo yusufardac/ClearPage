@@ -3,8 +3,8 @@
 Asla kullanılmayan gereksiz özellikler, göz yoran tasarım ve reklam saçan arayüz yok.
 Sade ve minimalist yeni sekme sayfası.<br>
 
-Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan sayfası yapmanız yeterlidir<br><br>
-İlerleyen zamanda link değişebilir
+Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan sayfası yapmanız yeterlidir<br>
+İlerleyen zamanda link değişebilir<br><br>
 
 https://yusufardac.github.io/ClearPage/index
 
