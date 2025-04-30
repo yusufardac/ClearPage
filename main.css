@@ -196,6 +196,20 @@ html, body {
     animation: shake 0.4s;
   }
 
+    /* Güçlü Sallama animasyonu */
+    .shake-strong {
+      animation: shake-strong 0.4s;
+    }
+
+    @keyframes shake-strong {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-50px, -12px); }
+      40% { transform: translate(12px, 12px); }
+      60% { transform: translate(-12px, 12px); }
+      80% { transform: translate(12px, -12px); }
+      100% { transform: translate(0, 0); }
+    }
+
   .custom-line {
     width: 100%;
     border-bottom: 1px solid #444; /* İnce çizgi */
@@ -219,7 +233,7 @@ html, body {
   }
 
   /* Checkmark için stil */
-  .custom-checkbox .svg {
+  /* .custom-checkbox .svg {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -227,14 +241,33 @@ html, body {
     color: white ;
     background-size: contain;
     cursor: pointer;
-  }
+  } */
 
   /* Checkbox işaretliyken görseli değiştir */
-  .custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  /* .custom-checkbox input[type="checkbox"]:checked + .checkmark {
     background: url('Assets/checkboxCheckedBlack.svg') no-repeat center center;
     background-size: contain;
     background-color: white ;
     color-scheme: dark;
+  } */
+
+  .UserSettings .NotChecked {
+    opacity: 1;
+    background: url('Assets/checkboxUncheckedWhite.svg') no-repeat center;
+  }
+  
+  
+  .UserSettings .Checked {
+    opacity: 0;
+    background: url('Assets/checkboxCheckedWhite.svg') no-repeat center;
+  }
+
+  .UserSettings input[type="checkbox"]:checked ~ .NotChecked {
+    opacity: 0; /* İşaretliyken gizle */
+  }
+
+  .UserSettings input[type="checkbox"]:checked ~ .Checked {
+    opacity: 1; /* İşaretliyken göster */
   }
 
   /* Mobil cihazlar için düzenlemeler */
