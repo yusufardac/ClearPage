@@ -65,6 +65,7 @@ let finalMessageShown = false;
 searchForm.addEventListener('submit', (e) => {
   const query = searchInput.value.trim();
   const messages = [
+    // 0–9: Nazik ve açıklayıcı
     `Arama yapmak için bir şey yazın`,
     `Arama yapmak için bir şey yazın`,
     `Arama yapmak için bir şey yazın`,
@@ -74,22 +75,25 @@ searchForm.addEventListener('submit', (e) => {
     `Ne aradığını ben de bilmiyorum, lütfen yaz`,
     `Gerçekten hiçbir şey mi aramıyorsun?`,
     `Arama kutusu da bir şey bekliyor...`,
-    `Bu 10. boş arama, bir rekor olabilir!`,
-    `Boş aramayla bir yere varamayız 😅`,
-    `İlginç Bilgi: İnsanlar konuşak, arama kutuları yazışak anlaşır :)`,
-    `Bir kelime yazarsan mucizeler olabilir!`,
-    `Aranacak bir şey yoksa neden buradayız?`,
-    `Bu boşluk bizi bir yere götürmez.`,
-    `En azından 'merhaba' yaz, o da olur!`,
-    `Boş arama... belki de en gizemli arama türü.`,
-    `Bir şeyler yazmazsan nasıl yardımcı olayım?`,
-    `Yapay zekaya sabır testi mi bu?`,
-    `Arama kutusu seni anlamadı, yazıyla anlat :)`,
-    `Lütfen artık bir şey yaz... ne olursa.`,
-    `Pekala ben gidiyorum`,
-    `Gidiyorum ben one göre`,
-    `Peki sen bilirsin`,
-    `Tamam, ben de boş kalırım o zaman`,
+
+  // 10–19: Hafif sinirli
+  `Yavaş yavaş sabrım tükeniyor...`,
+  `Tamam, eğlenceli ama yeter :)`,
+  `Bu artık kişisel bir meseleye dönüştü.`,
+  `Cidden, ne bekliyorsun?`,
+  `Beni zorluyorsun, biliyorsun değil mi?`,
+  `Boş arama: yeni hobin galiba.`,
+  `Bu kadar boşlukta ben bile kayboldum.`,
+  `Arama kutusu da depresyona girdi...`,
+  `Yeter artık, gerçekten yaz bir şey.`,
+  `Hadi ama, bu kaçıncı oldu?`,
+
+  // 20–24: Sinirli/pes etmiş
+  `Harbiden kızıyorum artık!`,
+  `Tamam... çok komik, güldük :)`,
+  `Bak vallahi gidiyorum.`,
+  `Yok, bu kullanıcı yazmayacak...`,
+  `TAMAM! BEN YOKUM!`
   ];
 
   const finalMessage = "...";
@@ -104,6 +108,14 @@ searchForm.addEventListener('submit', (e) => {
       return;
     }
 
+    if (messageIndex >= 20) {
+      searchForm.classList.add('shake-strong');
+      setTimeout(() => searchForm.classList.remove('shake-strong'), 400); // Daha uzun süreli titreşim
+    }else{
+    searchForm.classList.add('shake');
+    setTimeout(() => searchForm.classList.remove('shake'), 400);
+    }
+
     // Sıradaki mesajı göster
     searchInput.placeholder = messages[messageIndex];
     messageIndex = (messageIndex + 1) % messages.length; // Mesajları döngüsel olarak değiştir
@@ -113,9 +125,6 @@ searchForm.addEventListener('submit', (e) => {
       finalMessageShown = true;
     }
 
-    // Titreşim efekti ekle
-    searchForm.classList.add('shake');
-    setTimeout(() => searchForm.classList.remove('shake'), 400); // Titreşim efektini kaldır
   } else if (isValidHttpsURL(query) && webLinkPaste.checked) {
     e.preventDefault();
     window.location.href = query; // Geçerli bir URL ise yönlendir
