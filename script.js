@@ -46,18 +46,55 @@ searchEngine.addEventListener('change', (e) => {
   setCookie('searchEngine', engine);
 });
 
+// Checkbox durumunu çerezlere yaz
+webLinkPaste.addEventListener('change', (e) => {
+  setCookie('webLinkPaste', e.target.checked);
+});
+
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = getCookie('theme') || 'dark';
-  document.body.className = savedTheme;
-  themeSelect.value = savedTheme;
+  let savedTheme = getCookie('theme');
+
+  // İlk kez geliyorsa ya da 'auto' seçilmişse cihaz temasını kullan
+  if (!savedTheme || savedTheme === 'auto') {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.body.className = prefersDark ? 'dark' : 'light';
+    themeSelect.value = 'auto';
+
+    // Eğer hiç çerez yoksa, yani ilk ziyaretse 'auto' olarak ayarla
+    if (!savedTheme) setCookie('theme', 'auto');
+  } else {
+    // Kullanıcı manuel olarak dark veya light seçmişse onu uygula
+    document.body.className = savedTheme;
+    themeSelect.value = savedTheme;
+  }
 
   const savedEngine = getCookie('searchEngine') || 'https://www.google.com/search?q=';
   searchForm.action = savedEngine;
   searchEngine.value = savedEngine;
 
+  const webLinkPasteState = getCookie('webLinkPaste') === 'true';
+  webLinkPaste.checked = webLinkPasteState;
+
   searchInput.focus();
 });
+
+
+themeSelect.addEventListener('change', (e) => {
+  const theme = e.target.value;
+
+  if (theme === 'auto') {
+    setCookie('theme', 'auto'); // Sadece 'auto' bilgisini çereze yaz
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.body.className = prefersDark ? 'dark' : 'light';
+  } else {
+    document.body.className = theme;
+    setCookie('theme', theme); // dark veya light olarak kaydet
+  }
+});
+
+
+
 
 let messageIndex = 0; // Mesaj dizisi için global bir indeks
 let finalMessageShown = false; 
@@ -69,30 +106,23 @@ searchForm.addEventListener('submit', (e) => {
     `Arama yapmak için bir şey yazın`,
     `Arama yapmak için bir şey yazın`,
     `Arama yapmak için bir şey yazın`,
-    `Arama yapmak için bir şey yazın`,
     `Israrla neden boş arama yapıyorsun?`,
-    `Boş arama yapılmaz, ${searchEngine.options[searchEngine.selectedIndex].text} için sinir olurdu.`,
     `Ne aradığını ben de bilmiyorum, lütfen yaz`,
     `Gerçekten hiçbir şey mi aramıyorsun?`,
     `Arama kutusu da bir şey bekliyor...`,
 
   // 10–19: Hafif sinirli
   `Yavaş yavaş sabrım tükeniyor...`,
-  `Tamam, eğlenceli ama yeter :)`,
   `Bu artık kişisel bir meseleye dönüştü.`,
-  `Cidden, ne bekliyorsun?`,
   `Beni zorluyorsun, biliyorsun değil mi?`,
   `Boş arama: yeni hobin galiba.`,
   `Bu kadar boşlukta ben bile kayboldum.`,
-  `Arama kutusu da depresyona girdi...`,
-  `Yeter artık, gerçekten yaz bir şey.`,
   `Hadi ama, bu kaçıncı oldu?`,
 
-  // 20–24: Sinirli/pes etmiş
+  // 20–24: Sinirli
   `Harbiden kızıyorum artık!`,
-  `Tamam... çok komik, güldük :)`,
-  `Bak vallahi gidiyorum.`,
-  `Yok, bu kullanıcı yazmayacak...`,
+  `Bak gidiyorum gidiyorum ben`,
+  `Yok, yazmayacak...`,
   `TAMAM! BEN YOKUM!`
   ];
 
