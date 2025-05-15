@@ -93,12 +93,8 @@ themeSelect.addEventListener('change', (e) => {
   }
 });
 
-
-
-
 let messageIndex = 0; // Mesaj dizisi için global bir indeks
 let finalMessageShown = false; 
-// Arama gönderimi kontrolü
 searchForm.addEventListener('submit', (e) => {
   const query = searchInput.value.trim();
   const messages = [
@@ -107,30 +103,33 @@ searchForm.addEventListener('submit', (e) => {
     `Arama yapmak için bir şey yazın`,
     `Arama yapmak için bir şey yazın`,
     `Israrla neden boş arama yapıyorsun?`,
-    `Ne aradığını ben de bilmiyorum, lütfen yaz`,
     `Gerçekten hiçbir şey mi aramıyorsun?`,
-    `Arama kutusu da bir şey bekliyor...`,
 
   // 10–19: Hafif sinirli
   `Yavaş yavaş sabrım tükeniyor...`,
   `Bu artık kişisel bir meseleye dönüştü.`,
-  `Beni zorluyorsun, biliyorsun değil mi?`,
   `Boş arama: yeni hobin galiba.`,
-  `Bu kadar boşlukta ben bile kayboldum.`,
   `Hadi ama, bu kaçıncı oldu?`,
 
   // 20–24: Sinirli
   `Harbiden kızıyorum artık!`,
-  `Bak gidiyorum gidiyorum ben`,
   `Yok, yazmayacak...`,
   `TAMAM! BEN YOKUM!`
   ];
 
   const finalMessage = "...";
+  // liste bittiğinde devam l gösterilcek mesaj
 
   if (!query) {
     e.preventDefault(); // Formun gönderilmesini engelle
-    
+
+    // 1 saniye boyunca tekrar boş arama yapılamasın
+    if (searchForm.dataset.disabled === "true") return;
+    searchForm.dataset.disabled = "true";
+    setTimeout(() => {
+      searchForm.dataset.disabled = "false";
+    }, 1000);
+
     if (finalMessageShown) {
       searchInput.placeholder = finalMessage;
       searchForm.classList.add('shake-strong');
@@ -141,9 +140,9 @@ searchForm.addEventListener('submit', (e) => {
     if (messageIndex >= 20) {
       searchForm.classList.add('shake-strong');
       setTimeout(() => searchForm.classList.remove('shake-strong'), 400); // Daha uzun süreli titreşim
-    }else{
-    searchForm.classList.add('shake');
-    setTimeout(() => searchForm.classList.remove('shake'), 400);
+    } else {
+      searchForm.classList.add('shake');
+      setTimeout(() => searchForm.classList.remove('shake'), 400);
     }
 
     // Sıradaki mesajı göster
