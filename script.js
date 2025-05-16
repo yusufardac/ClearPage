@@ -136,6 +136,7 @@ themeSelect.addEventListener('change', (e) => {
 let messages = [];
 let messageIndex = 0; // Mesaj dizisi için global bir indeks
 let finalMessageShown = false; 
+let finalMessage = ""; // finalMessage'ı global olarak tanımla
 
 // Mesajları dışarıdan JSON dosyasından yükle
 async function loadMessages(lang = null) {
@@ -148,12 +149,20 @@ async function loadMessages(lang = null) {
   for (let i = 1; i <= 17; i++) {
     if (data[`title${i}`]) messages.push(data[`title${i}`]);
   }
+  finalMessage = data[`finalMessage`]; // finalMessage'ı global değişkene ata
 }
 
 // Arama gönderimi kontrolü
 searchForm.addEventListener('submit', (e) => {
   const query = searchInput.value.trim();
-  const finalMessage = "...";
+
+  // arama butonununa basıldıktan sonra
+  //süre boyunca işlem yapılamamasını sağlıyor
+  const submitButton = document.getElementById('searchButton');
+  submitButton.disabled = true;
+  setTimeout(() => {
+    submitButton.disabled = false;
+  }, 500);
 
   if (!query) {
     e.preventDefault(); // Formun gönderilmesini engelle

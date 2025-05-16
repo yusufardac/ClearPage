@@ -20,7 +20,6 @@
     "title6":"Gerçekten hiçbir şey mi aramıyorsun",
     "title7":"Arama kutusu da bir şey bekliyor...",
 
-
     "title8":"Yavaş yavaş sabrım tükeniyor...",
     "title9":"Bu artık kişisel bir meseleye dönüştü.",
     "title10":"Beni zorluyorsun, biliyorsun değil mi?",
@@ -33,6 +32,8 @@
     "title16":"Yok, yazmayacak...",
     "title17":"TAMAM! BEN YOKUM!",
     
+    "finalMessage": "...",
+
     "searchInput": "Arama yap...",
 
     "searchButton": "Ara",
