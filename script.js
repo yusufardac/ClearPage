@@ -20,6 +20,27 @@ const getCookie = (name) => {
   return cookies[name];
 };
 
+// dil ayarları
+
+    async function loadLanguage(lang) {
+      const response = await fetch(`Localization/${lang}.json`);
+      const data = await response.json();
+
+      for (const key in data) {
+        const element = document.getElementById(key);
+        if (element) {
+          if (element.tagName === "INPUT" && key === "searchInput") {
+            element.placeholder = data[key];
+          } else {
+            element.textContent = data[key];
+          }
+        }
+      }
+    }
+
+    // Sayfa açıldığında varsayılan dil Türkçe
+    loadLanguage('tr');
+
 // Ayar panelini aç/kapat
 settingsButton.addEventListener('click', () => {
   settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
@@ -77,6 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
   webLinkPaste.checked = webLinkPasteState;
 
   searchInput.focus();
+  loadMessages();
 });
 
 
@@ -93,39 +115,25 @@ themeSelect.addEventListener('change', (e) => {
   }
 });
 
-
-
-
+let messages = [];
 let messageIndex = 0; // Mesaj dizisi için global bir indeks
 let finalMessageShown = false; 
+
+// Mesajları dışarıdan JSON dosyasından yükle
+async function loadMessages() {
+  const response = await fetch('Localization/tr.json');
+  if (!response.ok) throw new Error('Mesajlar yüklenemedi');
+  const data = await response.json();
+  // Sadece title1-title17 anahtarlarını al
+  messages = [];
+  for (let i = 1; i <= 17; i++) {
+    if (data[`title${i}`]) messages.push(data[`title${i}`]);
+  }
+}
+
 // Arama gönderimi kontrolü
 searchForm.addEventListener('submit', (e) => {
   const query = searchInput.value.trim();
-  const messages = [
-    // 0–9: Nazik ve açıklayıcı
-    `Arama yapmak için bir şey yazın`,
-    `Arama yapmak için bir şey yazın`,
-    `Arama yapmak için bir şey yazın`,
-    `Israrla neden boş arama yapıyorsun?`,
-    `Ne aradığını ben de bilmiyorum, lütfen yaz`,
-    `Gerçekten hiçbir şey mi aramıyorsun?`,
-    `Arama kutusu da bir şey bekliyor...`,
-
-  // 10–19: Hafif sinirli
-  `Yavaş yavaş sabrım tükeniyor...`,
-  `Bu artık kişisel bir meseleye dönüştü.`,
-  `Beni zorluyorsun, biliyorsun değil mi?`,
-  `Boş arama: yeni hobin galiba.`,
-  `Bu kadar boşlukta ben bile kayboldum.`,
-  `Hadi ama, bu kaçıncı oldu?`,
-
-  // 20–24: Sinirli
-  `Harbiden kızıyorum artık!`,
-  `Bak gidiyorum gidiyorum ben`,
-  `Yok, yazmayacak...`,
-  `TAMAM! BEN YOKUM!`
-  ];
-
   const finalMessage = "...";
 
   if (!query) {
@@ -147,12 +155,14 @@ searchForm.addEventListener('submit', (e) => {
     }
 
     // Sıradaki mesajı göster
-    searchInput.placeholder = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length; // Mesajları döngüsel olarak değiştir
+    if (messages.length > 0) {
+      searchInput.placeholder = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length; // Mesajları döngüsel olarak değiştir
 
-    // Eğer son mesaja ulaşıldıysa, finalMessageShown'u true yap
-    if (messageIndex === 0) {
-      finalMessageShown = true;
+      // Eğer son mesaja ulaşıldıysa, finalMessageShown'u true yap
+      if (messageIndex === 0) {
+        finalMessageShown = true;
+      }
     }
 
   } else if (isValidHttpsURL(query) && webLinkPaste.checked) {
@@ -179,20 +189,3 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('focus', () => {
   searchInput.focus();
 });
-
-// dil ayarları
-
-    async function loadLanguage(lang) {
-      const response = await fetch(`Localization/${lang}.json`);
-      const data = await response.json();
-
-      for (const key in data) {
-        const element = document.getElementById(key);
-        if (element) {
-          element.textContent = data[key];
-        }
-      }
-    }
-
-    // Sayfa açıldığında varsayılan dil Türkçe
-    loadLanguage('tr');

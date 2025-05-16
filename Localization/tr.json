@@ -1,10 +1,42 @@
 {
     "pageSettings": "Sayfa Ayarları",
-    "theme": "Tema",
-    "searchEngine": "Arama motoru",
+    "themeSelect":"Tema",
+    "themeAuto": "Cihazı Takip Et",
+    "themelight": "Aydınlık",
+    "themeDark": "Karanlık",
+
+    "experimentalFutures":"Deneysel Özellikler",
     "webLinkPaste": "Web bağlantısı yapıştır",
-    "searchPlaceholder": "Arama yap...",
+
+    "searchEngine": "Arama motoru:",
+    "title":"Bugün Ne Arayalım?",
+    
+    "title1":"Arama yapmak için bir şey yazın",
+    "title2":"Arama yapmak için bir şey yazın",
+    "title3":"Arama yapmak için bir şey yazın",
+    "title4":"Israrla neden boş arama yapıyorsun?",
+    "title5":"Ne aradığını ben de bilmiyorum, lütfen yaz",
+    "title6":"Gerçekten hiçbir şey mi aramıyorsun",
+    "title7":"Arama kutusu da bir şey bekliyor...",
+
+
+    "title8":"Yavaş yavaş sabrım tükeniyor...",
+    "title9":"Bu artık kişisel bir meseleye dönüştü.",
+    "title10":"Beni zorluyorsun, biliyorsun değil mi?",
+    "title11":"Boş arama: yeni hobin galiba.",
+    "title12":"Bu kadar boşlukta ben bile kayboldum.",
+    "title13":"Hadi ama, bu kaçıncı oldu?",
+    
+    "title14":"Harbiden kızıyorum artık!",
+    "title15":"Bak gidiyorum gidiyorum ben",
+    "title16":"Yok, yazmayacak...",
+    "title17":"TAMAM! BEN YOKUM!",
+
+    
+    "searchInput": "Arama yap...",
+
     "searchButton": "Ara",
-    "experimentalFeatures": "Deneysel Özellikler",
-    "version": "Sürüm :"
+    "developer": "Oluşturan: ",
+
+    "version": "Sürüm: "
   }

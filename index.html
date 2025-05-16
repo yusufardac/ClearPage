@@ -15,7 +15,7 @@
   <body>
 
     <!-- Ayarlar düğmesi -->
-    <button type="button" class="settings-button" id="settingsToggle" aria-label="Ayarlar">
+    <button type="button" class="settings-button" id="settingsToggle">
         <!-- ayarların görseli -->
       <object type="image/svg+xml" data="Assets/settings.svg">
       </object>
@@ -23,16 +23,16 @@
 
     <!-- Ayarlar paneli -->
     <div class="settings-panel" id="settingsPanel">
-      <h3 id="pageSettings">Sayfa Ayarları</h3>
+      <h3 id="pageSettings"></h3>
       
       <div class="settings-group">
 
-        <label for="themeSelect">Tema:</label><!-- tema seçimi -->
+        <label for="themeSelect" id="themeSelect"></label><!-- tema seçimi -->
 
         <select id="themeSelect">
-          <option value="auto">Cihazı Takip Et</option>
-          <option value="dark">Karanlık</option>
-          <option value="light">Aydınlık</option>
+          <option value="auto" id="themeAuto"></option>
+          <option value="dark" id="themeDark"></option>
+          <option value="light" id="thmemeLight"></option>
         </select>
       </div>
 
@@ -47,7 +47,7 @@
       
       <div class="settings-group"> <!-- arama motoru seçimi -->
 
-        <label for="searchEngine">Arama motoru:</label>
+        <label for="searchEngine" id="searchEngine"></label>
         <select id="searchEngine">
           <option value="https://www.google.com/search?q=">Google</option>
           <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
@@ -55,18 +55,18 @@
         </select>
       </div>
 
-      <h3>Deneysel Özellikler</h3>
+      <h3 id="experimentalFutures"></h3>
 
       <table class="custom-line">
         <tr>
           <td>
             <div class="settings-group">
-              <label>Web bağlantısı yapıştır</label>
+              <label id="webLinkPaste"></label>
             </div>
           </td>
           <td >
             <label class="UserSettings">
-              <input type="checkbox" id="webLinkPaste" aria-label="Web bağlantısı yapıştır">
+              <input type="checkbox" id="webLinkPaste">
               <span class="NotChecked"></span>
               <span class="Checked"></span>
             </label>     
@@ -75,11 +75,13 @@
 
       <table>
         <tr>
-          <td colspan="2" style="text-align: center;">Sürüm: 1.4.2</td>
+          <td colspan="2" style="text-align: center;">
+            <span id="version"></span><span>1.4.2</span>
+          </td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;">
-            Created By: 
+            <label id="developer"> </label>
             <a href="https://github.com/yusufardac" target="_blank" rel="noopener noreferrer" class="github-link"></a>
               github.com/yusufardac
             </a>
@@ -89,12 +91,12 @@
     </div><!-- ayarlar paneli sonu -->
 
     <!-- Sayfa logosu -->
-    <div class="logo">Bugün Ne Arayalım?</div>
+    <div class="logo" id="title"></div>
 
     <!-- Arama formu -->
     <form id="searchForm" action="https://www.google.com/search" method="get" class="search-box">
-      <input id="searchInput" type="search" name="q" autocomplete="off" inputmode="search" placeholder="Arama yap...">
-      <button type="submit">Ara</button>
+      <input id="searchInput" type="search" name="q" autocomplete="off" inputmode="search" placeholder="">
+      <button type="submit" id="searchButton"></button>
     </form>
 
 <script  src="./script.js"></script>
