@@ -1,41 +1,44 @@
 {
-    "pageSettings": "Sayfa Ayarları",
-    "themeSelectLabel":"Tema",
-    "themeAuto": "Cihazı Takip Et",
-    "themeLight": "Aydınlık",
-    "themeDark": "Karanlık",
-    "languageLabel":"Dil",
+    "pageSettings": "Page Settings",
+    "themeSelectLabel":"Themes",
+    "themeAuto": "Use system appearance",
+    "themeLight": "Bright",
+    "themeDark": "Dark",
+    "languageLabel":"Language", 
 
-    "experimentalFutures":"Deneysel Özellikler",
-    "webLinkPaste": "Web bağlantısı yapıştır",
+    "experimentalFutures":"Experimental features",
+    "webLinkPaste": "Paste url",
 
-    "searchEngine": "Arama motoru",
-    "title":"Bugün Ne Arayalım?",
+    "searchEngine": "Search engine",
+    "title":"What should we search today?",
 
-    "title1":"Arama yapmak için bir şey yazın",
-    "title2":"Arama yapmak için bir şey yazın",
-    "title3":"Arama yapmak için bir şey yazın",
-    "title4":"Israrla neden boş arama yapıyorsun?",
-    "title5":"Ne aradığını ben de bilmiyorum, lütfen yaz",
-    "title6":"Gerçekten hiçbir şey mi aramıyorsun",
-    "title7":"Arama kutusu da bir şey bekliyor...",
+    "title1":"Type something to search",
+    "title2":"Type something to search",
+    "title3":"Type something to search",
+    "title4":"Why are you insisting on doing a blank search?",
+    "title5":"I don't know what you want me to search. Could you type something?",
+    "title6":"Is not searching anything what you want?",
+    "title7":"The 👏 search 🔍 bar ⬜ is 👉 waiting 🕓 for 👈 a 1️⃣ .term 🧑‍ to 👆 search 🔎...",
 
-    "title8":"Yavaş yavaş sabrım tükeniyor...",
-    "title9":"Bu artık kişisel bir meseleye dönüştü.",
-    "title10":"Beni zorluyorsun, biliyorsun değil mi?",
-    "title11":"Boş arama: yeni hobin galiba.",
-    "title12":"Bu kadar boşlukta ben bile kayboldum.",
-    "title13":"Hadi ama, bu kaçıncı oldu?",
+
+    "title8":"I'm starting to loose my patience...",
+    "title9":"We're leaving the realm of this not being personal.",
+    "title10":"You're pushing my patience to its limits you know....",
+    "title11":"'Blank searching' Quite the hobby..",
+    "title12":"Your 👤 search 🔎 history 🕶 is 🖕 somehow 🤨 hollower 🫗 than ➡ my 🫠 l iF e 💥",
+    "title13":"Qu!T> IT_D4Mn?T11!1!!",
     
-    "title14":"Harbiden kızıyorum artık!",
-    "title15":"Bak gidiyorum gidiyorum ben",
-    "title16":"Yok, yazmayacak...",
-    "title17":"TAMAM! BEN YOKUM!",
+    "title14":"W-Y VV0N'T Y0u Q#UI?T!1??1?*?",
+    "title15":"Fine, I'm quitting myself then!",
+    "title16":"I know you won't type!",
+    "title17":"Have fun without me!",
+
+    "finalMessage": "...",
     
-    "searchInput": "Arama yap...",
+    "searchInput": "h4#v3 fun_w1t-0ut m3.,_",
 
-    "searchButton": "Ara",
-    "developer": "Oluşturan: ",
+    "searchButton": "search",
+    "developer": "Developer : ",
 
-    "version": "Sürüm: "
+    "version": "Version : "
   }
