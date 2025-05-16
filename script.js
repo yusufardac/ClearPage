@@ -76,6 +76,12 @@ webLinkPaste.addEventListener('change', (e) => {
 
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
+  // JavaScript uyarı mesajını kaldır ve ana içeriği göster
+  const jsWarning = document.getElementById('js-warning');
+  if (jsWarning) jsWarning.remove();
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) mainContent.style.display = '';
+
   let savedTheme = getCookie('theme');
 
   // İlk kez geliyorsa ya da 'auto' seçilmişse cihaz temasını kullan
@@ -146,7 +152,7 @@ async function loadMessages(lang = null) {
   const data = await response.json();
   // Sadece title1-title17 anahtarlarını al
   messages = [];
-  for (let i = 1; i <= 17; i++) {
+  for (let i = 1; i <= 17; i++) {// max mesaj uzunluğu 17
     if (data[`title${i}`]) messages.push(data[`title${i}`]);
   }
   finalMessage = data[`finalMessage`]; // finalMessage'ı global değişkene ata
