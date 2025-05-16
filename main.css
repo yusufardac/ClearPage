@@ -176,6 +176,16 @@ html, body {
     transition: border 0.3s;
   }
 
+  body.light input[type="search"] {    
+    color: #fff;
+    /* background-color: #fff; */
+  }
+
+  body.dark input[type="search"] {
+    color: #222;
+    /* background-color: #222; */
+  }
+
   button[type="submit"] {
     padding: 14px 20px;
     font-size: 16px;
@@ -270,10 +280,19 @@ html, body {
     opacity: 1; /* İşaretliyken göster */
   }
 
+  body.light select {
+    background-color: var(--color-light-select-bg);
+    color: var(--color-light-select-text);
+  }
+
+  body.dark select {
+    background-color: var(--color-dark-select-bg);
+    color: var(--color-dark-select-text);
+  }
+
   /* Mobil cihazlar için düzenlemeler */
   @media (max-width: 480px) {
 
-    /* ne olduğunu biliyosun */
     .logo {
       font-size: 24px;
       margin-bottom: 20px;
@@ -309,18 +328,18 @@ html, body {
     } */
     
     /* arama kutusu için iyileştirme */
-    /* .search-box {
+    .search-box {
       flex-direction: column;
-    } */
+    } 
 
-    /* input[type="search"],
+    input[type="search"],
     button[type="submit"] {
       border-radius: 30px;
       font-size: 16px;
       margin: 5px 0;
-    } */
+    }
 
-    /* button[type="submit"] {
+     button[type="submit"] {
       border-radius: 30px;
-    } */
+    }
   }

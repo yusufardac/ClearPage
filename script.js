@@ -3,8 +3,10 @@ const settingsPanel = document.getElementById('settingsPanel');
 const searchForm = document.getElementById('searchForm');
 const searchEngine = document.getElementById('searchEngine');
 const themeSelect = document.getElementById('themeSelect');
+const themeSelectLabel = document.getElementById('themeSelectLabel');
 const searchInput = document.getElementById('searchInput');
 const webLinkPaste = document.getElementById('webLinkPaste');
+const languageSelect = document.getElementById('languageSelect');
 
 // Çerez işlemleri
 const setCookie = (name, value, days = 365) => {
@@ -19,6 +21,27 @@ const getCookie = (name) => {
   }, {});
   return cookies[name];
 };
+
+// dil ayarları
+
+async function loadLanguage(lang) {
+  const response = await fetch(`Localization/${lang}.json`);
+  const data = await response.json();
+
+  for (const key in data) {
+    const element = document.getElementById(key);
+    if (element) {
+      if (element.tagName === "INPUT" && key === "searchInput") {
+        element.placeholder = data[key];
+      } else {
+        element.textContent = data[key];
+      }
+    }
+  }
+}
+
+// Sayfa açıldığında varsayılan dil Türkçe
+loadLanguage('tr');
 
 // Ayar panelini aç/kapat
 settingsButton.addEventListener('click', () => {
@@ -53,6 +76,12 @@ webLinkPaste.addEventListener('change', (e) => {
 
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
+  // JavaScript uyarı mesajını kaldır ve ana içeriği göster
+  const jsWarning = document.getElementById('js-warning');
+  if (jsWarning) jsWarning.remove();
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) mainContent.style.display = '';
+
   let savedTheme = getCookie('theme');
 
   // İlk kez geliyorsa ya da 'auto' seçilmişse cihaz temasını kullan
@@ -76,7 +105,24 @@ window.addEventListener('DOMContentLoaded', () => {
   const webLinkPasteState = getCookie('webLinkPaste') === 'true';
   webLinkPaste.checked = webLinkPasteState;
 
+  // Dil ile ilgili yerler
+  let savedLang = getCookie('language');
+  if (!savedLang) {
+    // Cihaz dilini kontrol et
+    const browserLang = (navigator.language || navigator.userLanguage || '').slice(0,2).toLowerCase();
+    if (browserLang === 'tr' || browserLang === 'en') {
+      savedLang = browserLang;
+    } else {
+      savedLang = 'tr';
+    }
+    setCookie('language', savedLang);
+  }
+  languageSelect.value = savedLang;
+  loadLanguage(savedLang);
+  loadMessages(savedLang);
+
   searchInput.focus();
+  loadMessages();
 });
 
 
@@ -93,32 +139,36 @@ themeSelect.addEventListener('change', (e) => {
   }
 });
 
+let messages = [];
 let messageIndex = 0; // Mesaj dizisi için global bir indeks
 let finalMessageShown = false; 
+let finalMessage = ""; // finalMessage'ı global olarak tanımla
+
+// Mesajları dışarıdan JSON dosyasından yükle
+async function loadMessages(lang = null) {
+  lang = lang || (getCookie('language') || 'tr');
+  const response = await fetch(`Localization/${lang}.json`);
+  if (!response.ok) throw new Error('Mesajlar yüklenemedi');
+  const data = await response.json();
+  // Sadece title1-title17 anahtarlarını al
+  messages = [];
+  for (let i = 1; i <= 17; i++) {// max mesaj uzunluğu 17
+    if (data[`title${i}`]) messages.push(data[`title${i}`]);
+  }
+  finalMessage = data[`finalMessage`]; // finalMessage'ı global değişkene ata
+}
+
+// Arama gönderimi kontrolü
 searchForm.addEventListener('submit', (e) => {
   const query = searchInput.value.trim();
-  const messages = [
-    // 0–9: Nazik ve açıklayıcı
-    `Arama yapmak için bir şey yazın`,
-    `Arama yapmak için bir şey yazın`,
-    `Arama yapmak için bir şey yazın`,
-    `Israrla neden boş arama yapıyorsun?`,
-    `Gerçekten hiçbir şey mi aramıyorsun?`,
 
-  // 10–19: Hafif sinirli
-  `Yavaş yavaş sabrım tükeniyor...`,
-  `Bu artık kişisel bir meseleye dönüştü.`,
-  `Boş arama: yeni hobin galiba.`,
-  `Hadi ama, bu kaçıncı oldu?`,
-
-  // 20–24: Sinirli
-  `Harbiden kızıyorum artık!`,
-  `Yok, yazmayacak...`,
-  `TAMAM! BEN YOKUM!`
-  ];
-
-  const finalMessage = "...";
-  // liste bittiğinde devam l gösterilcek mesaj
+  // arama butonununa basıldıktan sonra
+  //süre boyunca işlem yapılamamasını sağlıyor
+  const submitButton = document.getElementById('searchButton');
+  submitButton.disabled = true;
+  setTimeout(() => {
+    submitButton.disabled = false;
+  }, 500);
 
   if (!query) {
     e.preventDefault(); // Formun gönderilmesini engelle
@@ -146,12 +196,14 @@ searchForm.addEventListener('submit', (e) => {
     }
 
     // Sıradaki mesajı göster
-    searchInput.placeholder = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length; // Mesajları döngüsel olarak değiştir
+    if (messages.length > 0) {
+      searchInput.placeholder = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length; // Mesajları döngüsel olarak değiştir
 
-    // Eğer son mesaja ulaşıldıysa, finalMessageShown'u true yap
-    if (messageIndex === 0) {
-      finalMessageShown = true;
+      // Eğer son mesaja ulaşıldıysa, finalMessageShown'u true yap
+      if (messageIndex === 0) {
+        finalMessageShown = true;
+      }
     }
 
   } else if (isValidHttpsURL(query) && webLinkPaste.checked) {
@@ -179,3 +231,10 @@ window.addEventListener('focus', () => {
   searchInput.focus();
 });
 
+// Dil değiştirildiğinde uygula ve kaydet
+languageSelect.addEventListener('change', (e) => {
+  const lang = e.target.value;
+  setCookie('language', lang);
+  loadLanguage(lang);
+  loadMessages(lang);
+});

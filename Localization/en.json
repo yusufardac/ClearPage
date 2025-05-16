@@ -1,0 +1,44 @@
+{
+    "pageSettings": "Page Settings",
+    "themeSelectLabel":"Themes",
+    "themeAuto": "Use system appearance",
+    "themeLight": "Bright",
+    "themeDark": "Dark",
+    "languageLabel":"Language", 
+
+    "experimentalFutures":"Experimental features",
+    "webLinkPaste": "Paste url",
+
+    "searchEngine": "Search engine",
+    "title":"What should we search today?",
+
+    "title1":"Type something to search",
+    "title2":"Type something to search",
+    "title3":"Type something to search",
+    "title4":"Why are you insisting on doing a blank search?",
+    "title5":"I don't know what you want me to search. Could you type something?",
+    "title6":"Is not searching anything what you want?",
+    "title7":"The 👏 search 🔍 bar ⬜ is 👉 waiting 🕓 for 👈 a 1️⃣ .term 🧑‍ to 👆 search 🔎...",
+
+
+    "title8":"I'm starting to loose my patience...",
+    "title9":"We're leaving the realm of this not being personal.",
+    "title10":"You're pushing my patience to its limits you know....",
+    "title11":"'Blank searching' Quite the hobby..",
+    "title12":"Your 👤 search 🔎 history 🕶 is 🖕 somehow 🤨 hollower 🫗 than ➡ my 🫠 l iF e 💥",
+    "title13":"Qu!T> IT_D4Mn?T11!1!!",
+    
+    "title14":"W-Y VV0N'T Y0u Q#UI?T!1??1?*?",
+    "title15":"Fine, I'm quitting myself then!",
+    "title16":"I know you won't type!",
+    "title17":"Have fun without me!",
+
+    "finalMessage": "...",
+    
+    "searchInput": "h4#v3 fun_w1t-0ut m3.,_",
+
+    "searchButton": "search",
+    "developer": "Developer : ",
+
+    "version": "Version : "
+  }

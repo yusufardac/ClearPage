@@ -10,12 +10,14 @@
 
   <link rel='stylesheet' type='text/css' href=main.css>
   <!-- css dosyasını çağırma -->
+  <script src="./script.js" defer></script>
   </head>
 
   <body>
+    <div id="js-warning" style="background: #ffdddd; color: #a00; text-align: center; padding: 10px; font-size: 16px;">Enable JavaScript to use this site</div>
 
     <!-- Ayarlar düğmesi -->
-    <button type="button" class="settings-button" id="settingsToggle" aria-label="Ayarlar">
+    <button type="button" class="settings-button" id="settingsToggle">
         <!-- ayarların görseli -->
       <object type="image/svg+xml" data="Assets/settings.svg">
       </object>
@@ -23,16 +25,25 @@
 
     <!-- Ayarlar paneli -->
     <div class="settings-panel" id="settingsPanel">
-      <h3>Sayfa Ayarları</h3>
+      <h3 id="pageSettings"></h3>
+
+            <!-- Dil seçimi eklendi -->
+      <div class="settings-group">
+        <label for="languageSelect" id="languageLabel"></label>
+        <select id="languageSelect">
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+        </select>
+      </div>
       
       <div class="settings-group">
-
-        <label for="themeSelect">Tema:</label><!-- tema seçimi -->
+        <!-- tema seçimi -->
+        <label for="themeSelect" id="themeSelectLabel"></label>
 
         <select id="themeSelect">
-          <option value="auto">Cihazı Takip Et</option>
-          <option value="dark">Karanlık</option>
-          <option value="light">Aydınlık</option>
+          <option value="auto" id="themeAuto"></option>
+          <option value="dark" id="themeDark"></option>
+          <option value="light" id="themeLight"></option>
         </select>
       </div>
 
@@ -47,7 +58,7 @@
       
       <div class="settings-group"> <!-- arama motoru seçimi -->
 
-        <label for="searchEngine">Arama motoru:</label>
+        <label for="searchEngine" id="searchEngine"></label>
         <select id="searchEngine">
           <option value="https://www.google.com/search?q=">Google</option>
           <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
@@ -55,18 +66,18 @@
         </select>
       </div>
 
-      <h3>Deneysel Özellikler</h3>
+      <h3 id="experimentalFutures"></h3>
 
       <table class="custom-line">
         <tr>
           <td>
             <div class="settings-group">
-              <label>Web bağlantısı yapıştır</label>
+              <label id="webLinkPaste"></label>
             </div>
           </td>
           <td >
             <label class="UserSettings">
-              <input type="checkbox" id="webLinkPaste" aria-label="Web bağlantısı yapıştır">
+              <input type="checkbox" id="webLinkPaste">
               <span class="NotChecked"></span>
               <span class="Checked"></span>
             </label>     
@@ -75,21 +86,28 @@
 
       <table>
         <tr>
-          <td colspan="2" style="text-align: center;">Sürüm: 1.4.0</td>
+          <td colspan="2" style="text-align: center;">
+            <span id="version"></span><span>4.5.0</span>
+          </td>
         </tr>
         <tr>
-<!--           <td colspan="2" style="text-align: center;">Created By: github.com/yusufardac</td> -->
+            <td colspan="2" style="text-align: center;">
+            <label id="developer"> </label>
+            <a href="https://github.com/yusufardac" target="_blank" rel="noopener noreferrer" class="github-link"></a>
+              github.com/yusufardac
+            </a>
+            </td></a>
         </tr>
       </table>
-    </div>
+    </div><!-- ayarlar paneli sonu -->
 
     <!-- Sayfa logosu -->
-    <div class="logo">Bugün Ne Arayalım?</div>
+    <div class="logo" id="title"></div>
 
     <!-- Arama formu -->
     <form id="searchForm" action="https://www.google.com/search" method="get" class="search-box">
-      <input id="searchInput" type="search" name="q" autocomplete="off" inputmode="search" placeholder="Arama yap...">
-      <button type="submit">Ara</button>
+      <input id="searchInput" type="search" name="q" autocomplete="off" inputmode="search" placeholder="">
+      <button type="submit" id="searchButton"></button>
     </form>
 
 <script  src="./script.js"></script>
