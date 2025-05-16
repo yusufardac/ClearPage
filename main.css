@@ -176,12 +176,14 @@ html, body {
     transition: border 0.3s;
   }
 
-  body.light input[type="search"] {
-    color: #222;
+  body.light input[type="search"] {    
+    color: #fff;
+    /* background-color: #fff; */
   }
 
   body.dark input[type="search"] {
-    color: #fff;
+    color: #222;
+    /* background-color: #222; */
   }
 
   button[type="submit"] {
@@ -276,6 +278,16 @@ html, body {
 
   .UserSettings input[type="checkbox"]:checked ~ .Checked {
     opacity: 1; /* İşaretliyken göster */
+  }
+
+  body.light select {
+    background-color: var(--color-light-select-bg);
+    color: var(--color-light-select-text);
+  }
+
+  body.dark select {
+    background-color: var(--color-dark-select-bg);
+    color: var(--color-dark-select-text);
   }
 
   /* Mobil cihazlar için düzenlemeler */

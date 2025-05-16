@@ -3,8 +3,10 @@ const settingsPanel = document.getElementById('settingsPanel');
 const searchForm = document.getElementById('searchForm');
 const searchEngine = document.getElementById('searchEngine');
 const themeSelect = document.getElementById('themeSelect');
+const themeSelectLabel = document.getElementById('themeSelectLabel');
 const searchInput = document.getElementById('searchInput');
 const webLinkPaste = document.getElementById('webLinkPaste');
+const languageSelect = document.getElementById('languageSelect');
 
 // Çerez işlemleri
 const setCookie = (name, value, days = 365) => {
@@ -22,24 +24,24 @@ const getCookie = (name) => {
 
 // dil ayarları
 
-    async function loadLanguage(lang) {
-      const response = await fetch(`Localization/${lang}.json`);
-      const data = await response.json();
+async function loadLanguage(lang) {
+  const response = await fetch(`Localization/${lang}.json`);
+  const data = await response.json();
 
-      for (const key in data) {
-        const element = document.getElementById(key);
-        if (element) {
-          if (element.tagName === "INPUT" && key === "searchInput") {
-            element.placeholder = data[key];
-          } else {
-            element.textContent = data[key];
-          }
-        }
+  for (const key in data) {
+    const element = document.getElementById(key);
+    if (element) {
+      if (element.tagName === "INPUT" && key === "searchInput") {
+        element.placeholder = data[key];
+      } else {
+        element.textContent = data[key];
       }
     }
+  }
+}
 
-    // Sayfa açıldığında varsayılan dil Türkçe
-    loadLanguage('tr');
+// Sayfa açıldığında varsayılan dil Türkçe
+loadLanguage('tr');
 
 // Ayar panelini aç/kapat
 settingsButton.addEventListener('click', () => {
@@ -97,6 +99,22 @@ window.addEventListener('DOMContentLoaded', () => {
   const webLinkPasteState = getCookie('webLinkPaste') === 'true';
   webLinkPaste.checked = webLinkPasteState;
 
+  // Dil ile ilgili yerler
+  let savedLang = getCookie('language');
+  if (!savedLang) {
+    // Cihaz dilini kontrol et
+    const browserLang = (navigator.language || navigator.userLanguage || '').slice(0,2).toLowerCase();
+    if (browserLang === 'tr' || browserLang === 'en') {
+      savedLang = browserLang;
+    } else {
+      savedLang = 'tr';
+    }
+    setCookie('language', savedLang);
+  }
+  languageSelect.value = savedLang;
+  loadLanguage(savedLang);
+  loadMessages(savedLang);
+
   searchInput.focus();
   loadMessages();
 });
@@ -120,8 +138,9 @@ let messageIndex = 0; // Mesaj dizisi için global bir indeks
 let finalMessageShown = false; 
 
 // Mesajları dışarıdan JSON dosyasından yükle
-async function loadMessages() {
-  const response = await fetch('Localization/tr.json');
+async function loadMessages(lang = null) {
+  lang = lang || (getCookie('language') || 'tr');
+  const response = await fetch(`Localization/${lang}.json`);
   if (!response.ok) throw new Error('Mesajlar yüklenemedi');
   const data = await response.json();
   // Sadece title1-title17 anahtarlarını al
@@ -188,4 +207,12 @@ document.addEventListener('visibilitychange', () => {
 // Tarayıcı sekmesine geri dönüldüğünde arama kutusuna odaklan
 window.addEventListener('focus', () => {
   searchInput.focus();
+});
+
+// Dil değiştirildiğinde uygula ve kaydet
+languageSelect.addEventListener('change', (e) => {
+  const lang = e.target.value;
+  setCookie('language', lang);
+  loadLanguage(lang);
+  loadMessages(lang);
 });

@@ -1,16 +1,17 @@
 {
     "pageSettings": "Sayfa Ayarları",
-    "themeSelect":"Tema",
+    "themeSelectLabel":"Tema",
     "themeAuto": "Cihazı Takip Et",
-    "themelight": "Aydınlık",
+    "themeLight": "Aydınlık",
     "themeDark": "Karanlık",
+    "languageLabel":"Dil",
 
     "experimentalFutures":"Deneysel Özellikler",
     "webLinkPaste": "Web bağlantısı yapıştır",
 
     "searchEngine": "Arama motoru:",
     "title":"Bugün Ne Arayalım?",
-    
+
     "title1":"Arama yapmak için bir şey yazın",
     "title2":"Arama yapmak için bir şey yazın",
     "title3":"Arama yapmak için bir şey yazın",
@@ -31,7 +32,6 @@
     "title15":"Bak gidiyorum gidiyorum ben",
     "title16":"Yok, yazmayacak...",
     "title17":"TAMAM! BEN YOKUM!",
-
     
     "searchInput": "Arama yap...",
 
