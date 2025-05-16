@@ -1,7 +1,7 @@
 const settingsButton = document.getElementById('settingsToggle');
 const settingsPanel = document.getElementById('settingsPanel');
 const searchForm = document.getElementById('searchForm');
-const searchEngine = document.getElementById('searchEngine');
+const selectSearchEngine = document.getElementById('selectSearchEngine');
 const themeSelect = document.getElementById('themeSelect');
 const themeSelectLabel = document.getElementById('themeSelectLabel');
 const searchInput = document.getElementById('searchInput');
@@ -63,10 +63,10 @@ themeSelect.addEventListener('change', (e) => {
 });
 
 // Arama motorunu değiştir
-searchEngine.addEventListener('change', (e) => {
+selectSearchEngine.addEventListener('change', (e) => {
   const engine = e.target.value;
   searchForm.action = engine;
-  setCookie('searchEngine', engine);
+  setCookie('selectSearchEngine', engine);
 });
 
 // Checkbox durumunu çerezlere yaz
@@ -98,12 +98,18 @@ window.addEventListener('DOMContentLoaded', () => {
     themeSelect.value = savedTheme;
   }
 
-  const savedEngine = getCookie('searchEngine') || 'https://www.google.com/search?q=';
+  // Arama motoru çerezden çek ve uygula
+  const savedEngine = getCookie('selectSearchEngine') || 'https://www.google.com/search?q=';
   searchForm.action = savedEngine;
-  searchEngine.value = savedEngine;
+  selectSearchEngine.value = savedEngine;
 
-  const webLinkPasteState = getCookie('webLinkPaste') === 'true';
-  webLinkPaste.checked = webLinkPasteState;
+  // webLinkPaste çerezden çek ve uygula
+  const webLinkPasteState = getCookie('webLinkPaste');
+  if (typeof webLinkPasteState !== 'undefined') {
+    webLinkPaste.checked = (webLinkPasteState === 'true');
+  } else {
+    webLinkPaste.checked = false;
+  }
 
   // Dil ile ilgili yerler
   let savedLang = getCookie('language');
