@@ -172,7 +172,14 @@ searchForm.addEventListener('submit', (e) => {
 
   if (!query) {
     e.preventDefault(); // Formun gönderilmesini engelle
-    
+
+    // 1 saniye boyunca tekrar boş arama yapılamasın
+    if (searchForm.dataset.disabled === "true") return;
+    searchForm.dataset.disabled = "true";
+    setTimeout(() => {
+      searchForm.dataset.disabled = "false";
+    }, 1000);
+
     if (finalMessageShown) {
       searchInput.placeholder = finalMessage;
       searchForm.classList.add('shake-strong');
@@ -183,9 +190,9 @@ searchForm.addEventListener('submit', (e) => {
     if (messageIndex >= 20) {
       searchForm.classList.add('shake-strong');
       setTimeout(() => searchForm.classList.remove('shake-strong'), 400); // Daha uzun süreli titreşim
-    }else{
-    searchForm.classList.add('shake');
-    setTimeout(() => searchForm.classList.remove('shake'), 400);
+    } else {
+      searchForm.classList.add('shake');
+      setTimeout(() => searchForm.classList.remove('shake'), 400);
     }
 
     // Sıradaki mesajı göster
