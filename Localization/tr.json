@@ -1,10 +1,10 @@
 {
-    "settings": "Sayfa Ayarları",
+    "pageSettings": "Sayfa Ayarları",
     "theme": "Tema",
     "searchEngine": "Arama motoru",
     "webLinkPaste": "Web bağlantısı yapıştır",
     "searchPlaceholder": "Arama yap...",
     "searchButton": "Ara",
     "experimentalFeatures": "Deneysel Özellikler",
-    "version": "Sürüm"
+    "version": "Sürüm :"
   }

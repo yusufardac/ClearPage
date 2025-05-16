@@ -180,3 +180,19 @@ window.addEventListener('focus', () => {
   searchInput.focus();
 });
 
+// dil ayarları
+
+    async function loadLanguage(lang) {
+      const response = await fetch(`Localization/${lang}.json`);
+      const data = await response.json();
+
+      for (const key in data) {
+        const element = document.getElementById(key);
+        if (element) {
+          element.textContent = data[key];
+        }
+      }
+    }
+
+    // Sayfa açıldığında varsayılan dil Türkçe
+    loadLanguage('tr');

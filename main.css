@@ -176,6 +176,14 @@ html, body {
     transition: border 0.3s;
   }
 
+  body.light input[type="search"] {
+    color: #222;
+  }
+
+  body.dark input[type="search"] {
+    color: #fff;
+  }
+
   button[type="submit"] {
     padding: 14px 20px;
     font-size: 16px;
@@ -273,7 +281,6 @@ html, body {
   /* Mobil cihazlar için düzenlemeler */
   @media (max-width: 480px) {
 
-    /* ne olduğunu biliyosun */
     .logo {
       font-size: 24px;
       margin-bottom: 20px;
@@ -309,18 +316,18 @@ html, body {
     } */
     
     /* arama kutusu için iyileştirme */
-    /* .search-box {
+    .search-box {
       flex-direction: column;
-    } */
+    } 
 
-    /* input[type="search"],
+    input[type="search"],
     button[type="submit"] {
       border-radius: 30px;
       font-size: 16px;
       margin: 5px 0;
-    } */
+    }
 
-    /* button[type="submit"] {
+     button[type="submit"] {
       border-radius: 30px;
-    } */
+    }
   }
