@@ -76,9 +76,9 @@ webLinkPaste.addEventListener('change', (e) => {
 
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
-  // JavaScript uyarı mesajını kaldır ve ana içeriği göster
+  // JavaScript uyarı mesajını kaldır (mobil/masaüstü farketmez)
   const jsWarning = document.getElementById('js-warning');
-  if (jsWarning) jsWarning.remove();
+  if (jsWarning) jsWarning.style.display = 'none';
   const mainContent = document.getElementById('main-content');
   if (mainContent) mainContent.style.display = '';
 
