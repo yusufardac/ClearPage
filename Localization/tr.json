@@ -7,7 +7,7 @@
     "languageLabel":"Dil",
 
     "experimentalFutures":"Deneysel Özellikler",
-    "webLinkPaste": "Web bağlantısı yapıştır",
+    "webLinkPasteLabel": "Web bağlantısı yapıştır",
 
     "searchEngine": "Arama motoru",
     "title":"Bugün Ne Arayalım?",

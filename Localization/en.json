@@ -7,7 +7,7 @@
     "languageLabel":"Language", 
 
     "experimentalFutures":"Experimental features",
-    "webLinkPaste": "Paste url",
+    "webLinkPasteLabel": "Paste url",
 
     "searchEngine": "Search engine",
     "title":"What should we search today?",
@@ -19,7 +19,6 @@
     "title5":"I don't know what you want me to search. Could you type something?",
     "title6":"Is not searching anything what you want?",
     "title7":"The 👏 search 🔍 bar ⬜ is 👉 waiting 🕓 for 👈 a 1️⃣ .term 🧑‍ to 👆 search 🔎...",
-
 
     "title8":"I'm starting to loose my patience...",
     "title9":"We're leaving the realm of this not being personal.",
