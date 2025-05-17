@@ -1,16 +1,16 @@
 {
     "pageSettings": "Page Settings",
     "themeSelectLabel":"Themes",
-    "themeAuto": "Use system appearance",
+    "themeAuto": "Use system preference",
     "themeLight": "Bright",
     "themeDark": "Dark",
     "languageLabel":"Language", 
 
-    "experimentalFutures":"Experimental features",
+    "experimentalFutures":"Experimental Features",
     "webLinkPasteLabel": "Paste url",
 
-    "searchEngine": "Search engine",
-    "title":"What should we search today?",
+    "searchEngine": "Search Engine",
+    "title":"What Should We Search Today?",
 
     "title1":"Type something to search",
     "title2":"Type something to search",
@@ -34,9 +34,9 @@
 
     "finalMessage": "...",
     
-    "searchInput": "h4#v3 fun_w1t-0ut m3.,_",
+    "searchInput": "Type to search",
 
-    "searchButton": "search",
+    "searchButton": "Go",
     "developer": "Developer : ",
 
     "version": "Version : "
