@@ -11,3 +11,9 @@ https://yusufardac.github.io/ClearPage/index
 <br>
 
 ![screenshot](https://github.com/user-attachments/assets/43f9ddf7-3421-4c34-b920-f13e2f01c991)
+
+<br>
+
+<p align='center'>
+    <img src="https://komarev.com/ghpvc/?username=yusufardac&color=blue" alt="views"/>
+</p>
