@@ -129,8 +129,68 @@ window.addEventListener('DOMContentLoaded', () => {
 
   searchInput.focus();
   loadMessages();
+  showAlertFooter();
+  showSettingsAlert();
+  showFooterAlert();
 });
 
+// Uyarı mesajını footer'da göster
+async function showAlertFooter() {
+  try {
+    const response = await fetch('alerts.json', {cache: 'no-store'});
+    if (!response.ok) return;
+    const data = await response.json();
+    const alertDiv = document.getElementById('footerAlert');
+    if (data.footerAlert && data.footerAlert.trim() !== "") {
+      alertDiv.textContent = data.footerAlert;
+      alertDiv.style.display = 'block';
+    } else {
+      alertDiv.style.display = 'none';
+    }
+  } catch (e) {
+    // Hata olursa uyarı gösterme
+    const alertDiv = document.getElementById('footerAlert');
+    if (alertDiv) alertDiv.style.display = 'none';
+  }
+}
+
+// Ayarlar paneli için önemli uyarı göster fonksiyonu güncel
+async function showSettingsAlert() {
+  try {
+    const response = await fetch('alerts.json', {cache: 'no-store'});
+    if (!response.ok) return;
+    const data = await response.json();
+    const alertDiv = document.getElementById('settingsAlert');
+    if (data.important && data.important.trim() !== "") {
+      alertDiv.innerHTML = data.important; // HTML olarak ekle
+      alertDiv.style.display = 'block';
+    } else {
+      alertDiv.style.display = 'none';
+    }
+  } catch (e) {
+    const alertDiv = document.getElementById('settingsAlert');
+    if (alertDiv) alertDiv.style.display = 'none';
+  }
+}
+
+// Uyarı mesajını footer'da göster
+async function showFooterAlert() {
+  try {
+    const response = await fetch('alerts.json', {cache: 'no-store'});
+    if (!response.ok) return;
+    const data = await response.json();
+    const alertDiv = document.getElementById('footerAlert');
+    if (data.footerAlert && data.footerAlert.trim() !== "") {
+      alertDiv.textContent = data.footerAlert;
+      alertDiv.style.display = 'block';
+    } else {
+      alertDiv.style.display = 'none';
+    }
+  } catch (e) {
+    const alertDiv = document.getElementById('footerAlert');
+    if (alertDiv) alertDiv.style.display = 'none';
+  }
+}
 
 themeSelect.addEventListener('change', (e) => {
   const theme = e.target.value;
