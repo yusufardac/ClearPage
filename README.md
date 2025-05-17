@@ -7,13 +7,14 @@ Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan 
 İlerleyen zamanda link değişebilir<br><br>
 
 https://yusufardac.github.io/ClearPage/index
-
 <br>
+<p align="center">
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=yusufardac.ClearPage" alt="repo views"/>
+</p>
+
 
 ![screenshot](https://github.com/user-attachments/assets/43f9ddf7-3421-4c34-b920-f13e2f01c991)
 
-<br>
 
-<p align='center'>
-    <img src="https://komarev.com/ghpvc/?username=yusufardac&color=blue" alt="views"/>
-</p>
+
+
