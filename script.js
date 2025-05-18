@@ -132,6 +132,7 @@ window.addEventListener('DOMContentLoaded', () => {
   showAlertFooter();
   showSettingsAlert();
   showFooterAlert();
+  showNotificationBox();
 });
 
 // Uyarı mesajını footer'da göster
@@ -161,8 +162,8 @@ async function showSettingsAlert() {
     if (!response.ok) return;
     const data = await response.json();
     const alertDiv = document.getElementById('settingsAlert');
-    if (data.important && data.important.trim() !== "") {
-      alertDiv.innerHTML = data.important; // HTML olarak ekle
+    if (data.notification && data.notification.trim() !== "") {
+      alertDiv.innerHTML = data.notification; // HTML olarak ekle
       alertDiv.style.display = 'block';
     } else {
       alertDiv.style.display = 'none';
@@ -304,3 +305,35 @@ languageSelect.addEventListener('change', (e) => {
   loadLanguage(lang);
   loadMessages(lang);
 });
+
+// Bildirim kutusunu göster ve çerez kontrolü
+async function showNotificationBox() {
+  try {
+    const response = await fetch('alerts.json', {cache: 'no-store'});
+    if (!response.ok) return;
+    const data = await response.json();
+    const notification = (data.notification || '').trim();
+    const notificationBox = document.getElementById('notificationBox');
+    const notificationText = document.getElementById('notificationText');
+    const notificationClose = document.getElementById('notificationClose');
+    if (!notification) {
+      notificationBox.style.display = 'none';
+      return;
+    }
+    // Çerezden son kapatılan bildirimi al
+    const lastClosed = getCookie('notificationClosed') || '';
+    if (notification !== lastClosed) {
+      notificationText.innerHTML = notification;
+      notificationBox.style.display = 'block';
+      notificationClose.onclick = function() {
+        notificationBox.style.display = 'none';
+        setCookie('notificationClosed', notification, 365);
+      };
+    } else {
+      notificationBox.style.display = 'none';
+    }
+  } catch (e) {
+    const notificationBox = document.getElementById('notificationBox');
+    if (notificationBox) notificationBox.style.display = 'none';
+  }
+}
