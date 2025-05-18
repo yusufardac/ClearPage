@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeni Sekme</title>
+    <title id="newTab"></title>
   
   <!-- Sayfa simgesi görseli -->
   <link rel="icon" type="image/svg+xml" href="/Assets/tabIcon.svg" />
@@ -17,7 +17,7 @@
     <div id="js-warning" style="background: #ffdddd; color: #a00; text-align: center; padding: 10px; font-size: 16px;">Enable JavaScript to use this site</div>
 
     <!-- Ayarlar düğmesi altında sağ üstte önemli uyarı sekmesi -->
-    <div id="settingsAlert" style="display:none; position: absolute; top: 24px; right: 24px; min-width: 180px; max-width: 260px; background-color: #333; color: #fff; text-align: left; padding: 12px 18px; font-size: 15px; border-radius: 10px; box-shadow: 0 2px 16px #0005; z-index: 900;"></div>
+    <!-- <div id="settingsAlert" style="display:none; position: absolute; top: 24px; right: 24px; min-width: 180px; max-width: 260px; background-color: #333; color: #fff; text-align: left; padding: 12px 18px; font-size: 15px; border-radius: 10px; box-shadow: 0 2px 16px #0005; z-index: 900;"></div> -->
 
     <!-- Ayarlar düğmesi -->
     <button type="button" class="settings-button" id="settingsToggle" style="z-index: 1001; position: absolute; top: 20px; right: 20px;">
@@ -27,7 +27,23 @@
     </button>
 
     <!-- Ayarlar düğmesi altında önemli uyarı -->
-    <div id="settingsAlert" style="display:none; background-color: #333; color: #fff; text-align: center; padding: 10px; font-size: 14px; border-radius: 6px; margin: 16px 0 12px 0;"></div>
+    <!-- <div id="settingsAlert" style="display:none; background-color: #333; color: #fff; text-align: center; padding: 10px; font-size: 14px; border-radius: 6px; margin: 16px 0 12px 0;"></div> -->
+
+    <!-- Bildirim kutusu (notification) -->
+    <div id="notificationBox" style="display:none; position: absolute; top: 24px; right: 24px; min-width: 180px; max-width: 260px; background-color: #333; color: #fff; text-align: left; padding: 12px 18px; font-size: 15px; border-radius: 10px; box-shadow: 0 2px 16px #0005; z-index: 900;">
+      <table style="width:100%;">
+      <tr>
+        <td >
+        <span id="notificationClose" style="cursor: pointer; font-size: 20px; color: #fff; opacity: 0.7;">&times;</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <span id="notificationText" style="display: block;"></span>
+        </td>
+      </tr>
+      </table>
+    </div>
 
     <!-- Ayarlar paneli -->
     <div class="settings-panel" id="settingsPanel">
