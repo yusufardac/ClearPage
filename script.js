@@ -133,6 +133,7 @@ window.addEventListener('DOMContentLoaded', () => {
   showSettingsAlert();
   showFooterAlert();
   showNotificationBox();
+  showInformation();
 });
 
 // Uyarı mesajını footer'da göster
@@ -153,6 +154,24 @@ async function showAlertFooter() {
     const alertDiv = document.getElementById('footerAlert');
     if (alertDiv) alertDiv.style.display = 'none';
   }
+}
+
+async function showInformation() {
+  const response = await fetch('information.json', {cache: 'no-store'});
+  if (!response.ok) return;
+  const data = await response.json();
+  // Her bir anahtar için, eğer id ile eşleşen bir element varsa içeriğini güncelle
+  Object.keys(data).forEach(key => {
+    const elem = document.getElementById(key);
+    if (elem) {
+      // HTML içeriği varsa HTML olarak, yoksa text olarak ekle
+      if (key === 'creator') {
+        elem.innerHTML = data[key];
+      } else {
+        elem.textContent = data[key];
+      }
+    }
+  });
 }
 
 // Ayarlar paneli için önemli uyarı göster fonksiyonu güncel
