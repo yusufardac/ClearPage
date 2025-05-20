@@ -7,6 +7,7 @@ const themeSelectLabel = document.getElementById('themeSelectLabel');
 const searchInput = document.getElementById('searchInput');
 const webLinkPaste = document.getElementById('webLinkPaste');
 const languageSelect = document.getElementById('languageSelect');
+const newVersionNotify = document.getElementById('newVersionNotify');
 
 // Çerez işlemleri
 const setCookie = (name, value, days = 365) => {
@@ -33,6 +34,8 @@ async function loadLanguage(lang) {
     if (element) {
       if (element.tagName === "INPUT" && key === "searchInput") {
         element.placeholder = data[key];
+      } else if (element.tagName === "LABEL" && key === "newVersionNotifyLabel") {
+        element.textContent = data[key];
       } else {
         element.textContent = data[key];
       }
@@ -74,6 +77,11 @@ webLinkPaste.addEventListener('change', (e) => {
   setCookie('webLinkPaste', e.target.checked);
 });
 
+// Yeni sürüm bildirimi checkbox'ı çerezlere yaz
+newVersionNotify.addEventListener('change', (e) => {
+  setCookie('newVersionNotify', e.target.checked);
+});
+
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
   // JavaScript uyarı mesajını kaldır (mobil/masaüstü farketmez)
@@ -111,6 +119,14 @@ window.addEventListener('DOMContentLoaded', () => {
     webLinkPaste.checked = false;
   }
 
+  // newVersionNotify çerezden çek ve uygula
+  const newVersionNotifyState = getCookie('newVersionNotify');
+  if (typeof newVersionNotifyState !== 'undefined') {
+    newVersionNotify.checked = (newVersionNotifyState === 'true');
+  } else {
+    newVersionNotify.checked = true; // Varsayılan olarak açık
+  }
+
   // Dil ile ilgili yerler
   let savedLang = getCookie('language');
   if (!savedLang) {
@@ -133,6 +149,9 @@ window.addEventListener('DOMContentLoaded', () => {
   showSettingsAlert();
   showFooterAlert();
   showNotificationBox();
+  showInformation();
+  populateLanguageOptions();
+  showNewVersionNotification();
 });
 
 // Uyarı mesajını footer'da göster
@@ -153,6 +172,24 @@ async function showAlertFooter() {
     const alertDiv = document.getElementById('footerAlert');
     if (alertDiv) alertDiv.style.display = 'none';
   }
+}
+
+async function showInformation() {
+  const response = await fetch('information.json', {cache: 'no-store'});
+  if (!response.ok) return;
+  const data = await response.json();
+  // Her bir anahtar için, eğer id ile eşleşen bir element varsa içeriğini güncelle
+  Object.keys(data).forEach(key => {
+    const elem = document.getElementById(key);
+    if (elem) {
+      // HTML içeriği varsa HTML olarak, yoksa text olarak ekle
+      if (key === 'creator') {
+        elem.innerHTML = data[key];
+      } else {
+        elem.textContent = data[key];
+      }
+    }
+  });
 }
 
 // Ayarlar paneli için önemli uyarı göster fonksiyonu güncel
@@ -299,10 +336,10 @@ window.addEventListener('focus', () => {
 });
 
 // Dil değiştirildiğinde uygula ve kaydet
-languageSelect.addEventListener('change', (e) => {
+languageSelect.addEventListener('change', async (e) => {
   const lang = e.target.value;
   setCookie('language', lang);
-  loadLanguage(lang);
+  await loadLanguage(lang);
   loadMessages(lang);
 });
 
@@ -337,3 +374,76 @@ async function showNotificationBox() {
     if (notificationBox) notificationBox.style.display = 'none';
   }
 }
+
+// Sayfa yüklendiğinde dil seçeneklerini otomatik olarak doldur
+async function populateLanguageOptions() {
+  const languageSelect = document.getElementById('languageSelect');
+  if (!languageSelect) return;
+
+  try {
+    // PHP ile otomatik dosya listesi al
+    const response = await fetch('languages.php');
+    if (!response.ok) return;
+    const languageFiles = await response.json();
+    languageSelect.innerHTML = '';
+    let savedLang = getCookie('language') || 'tr';
+    let found = false;
+    for (const file of languageFiles) {
+      const code = file.replace('.json', '');
+      try {
+        const res = await fetch(`Localization/${file}`);
+        if (!res.ok) continue;
+        const langData = await res.json();
+        const option = document.createElement('option');
+        option.value = langData.lagCode || code;
+        option.textContent = langData.lagName || code.toUpperCase();
+        if ((langData.lagCode || code) === savedLang) {
+          option.selected = true;
+          found = true;
+        }
+        languageSelect.appendChild(option);
+      } catch {}
+    }
+    // Eğer çerezdeki dil bulunamadıysa ilk dili seçili yap
+    if (!found && languageSelect.options.length > 0) {
+      languageSelect.options[0].selected = true;
+    }
+  } catch (e) {
+    // Hata olursa varsayılanı kullan
+  }
+}
+
+// Yeni sürüm bildirimi kutusu fonksiyonu
+async function showNewVersionNotification() {
+  try {
+    const response = await fetch('alerts.json', {cache: 'no-store'});
+    if (!response.ok) return;
+    const data = await response.json();
+    const newVersion = (data.newVersion || '').trim();
+    if (!newVersion) return;
+    // Çerezden son kapatılan veya devre dışı bırakılan bildirimi al
+    const notifyAllowed = getCookie('newVersionNotify');
+    if (notifyAllowed === 'false') return;
+    const lastClosed = getCookie('newVersionClosed') || '';
+    if (newVersion !== lastClosed) {
+      // Bildirim kutusunu göster
+      showNotificationLikeBox(newVersion, 'newVersionClosed');
+    }
+  } catch (e) {}
+}
+
+// Bildirim kutusu gibi yeni sürüm kutusu göster
+function showNotificationLikeBox(html, closeCookieName) {
+  const notificationBox = document.getElementById('notificationBox');
+  const notificationText = document.getElementById('notificationText');
+  const notificationClose = document.getElementById('notificationClose');
+  notificationText.innerHTML = html;
+  notificationBox.style.display = 'block';
+  notificationClose.onclick = function() {
+    notificationBox.style.display = 'none';
+    setCookie(closeCookieName, html, 365);
+  };
+}
+
+// window.languageFiles dizisini otomatik güncellemek için build script veya sunucu tarafı gerekir.
+// Şimdilik mevcut dosyaları elle ekleyin. Yeni dil dosyası eklediğinizde buraya eklemeniz yeterli.

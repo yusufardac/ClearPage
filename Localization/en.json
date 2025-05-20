@@ -1,4 +1,9 @@
 {
+
+  "lagName": "English",
+  "lagCode": "en",
+
+
     "newTab": "New Tab",
     "pageSettings": "Page Settings",
     "themeSelectLabel":"Themes",
@@ -40,5 +45,6 @@
     "searchButton": "Go",
     "developer": "Developer : ",
 
-    "version": "Version : "
-  }
+    "version": "Version : ",
+    "newVersionNotifyLabel": "Show New Version Notification"
+}

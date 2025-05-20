@@ -53,8 +53,7 @@
       <div class="settings-group">
         <label for="languageSelect" id="languageLabel"></label>
         <select id="languageSelect">
-          <option value="tr">Türkçe</option>
-          <option value="en">English</option>
+          <!-- Otomatik olarak doldurulacak -->
         </select>
       </div>
       
@@ -106,18 +105,40 @@
         </tr>
       </table>
 
+      <!-- Yeni Sürüm Bildirimi Checkbox -->
+      <table class="custom-line">
+        <tr>
+          <td>
+            <div class="settings-group">
+              <label id="newVersionNotifyLabel"></label>
+            </div>
+          </td>
+          <td>
+            <label class="UserSettings">
+              <input type="checkbox" id="newVersionNotify">
+              <span class="NotChecked"></span>
+              <span class="Checked"></span>
+            </label>
+          </td>
+        </tr>
+      </table>
+      
       <table>
         <tr>
           <td colspan="2" style="text-align: center;">
-            <span id="version"></span><span>4.6.0</span>
+            <span id="version"></span><span id="versionNo"></span>
           </td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;">
-            <label id="developer"> </label>
-            <a href="https://github.com/yusufardac" target="_blank" rel="noopener noreferrer" class="github-link"></a>
-              github.com/yusufardac
+            <label id="developer"> </label><!-- Github YÖnlendirme -->
+            <a href="https://github.com/yusufardac" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="github-link">
+             <span id="creator"></span>
             </a>
+
             </td></a>
         </tr>
       </table>

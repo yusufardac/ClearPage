@@ -1,4 +1,8 @@
 {
+
+   "lagName": "Türkçe",
+   "lagCode": "tr",
+
     "newTab": "Yeni Sekme",
     "pageSettings": "Sayfa Ayarları",
     "themeSelectLabel":"Tema",
@@ -39,6 +43,9 @@
 
     "searchButton": "Ara",
     "developer": "Oluşturan: ",
+    "newVersionNotifyLabel": "Yeni Sürüm Bildirimlerini Göster",
 
     "version": "Sürüm: "
+
+    
   }
