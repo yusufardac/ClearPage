@@ -386,6 +386,8 @@ async function populateLanguageOptions() {
     if (!response.ok) return;
     const languageFiles = await response.json();
     languageSelect.innerHTML = '';
+    let savedLang = getCookie('language') || 'tr';
+    let found = false;
     for (const file of languageFiles) {
       const code = file.replace('.json', '');
       try {
@@ -395,8 +397,16 @@ async function populateLanguageOptions() {
         const option = document.createElement('option');
         option.value = langData.lagCode || code;
         option.textContent = langData.lagName || code.toUpperCase();
+        if ((langData.lagCode || code) === savedLang) {
+          option.selected = true;
+          found = true;
+        }
         languageSelect.appendChild(option);
       } catch {}
+    }
+    // Eğer çerezdeki dil bulunamadıysa ilk dili seçili yap
+    if (!found && languageSelect.options.length > 0) {
+      languageSelect.options[0].selected = true;
     }
   } catch (e) {
     // Hata olursa varsayılanı kullan
