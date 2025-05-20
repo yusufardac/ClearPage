@@ -381,8 +381,12 @@ async function populateLanguageOptions() {
   if (!languageSelect) return;
 
   try {
-    // PHP ile otomatik dosya listesi al
-    const response = await fetch('languages.php');
+    //     // PHP ile otomatik dosya listesi al
+    // const response = await fetch('languages.php');
+    //php çalışmadığı için bu kısım yok
+
+    // PHP ile otomatik dosya listesi alma kodu kaldırıldı, yerine statik JSON dosyası kullanılıyor
+    const response = await fetch('languages.json');
     if (!response.ok) return;
     const languageFiles = await response.json();
     languageSelect.innerHTML = '';
