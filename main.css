@@ -98,6 +98,11 @@ html, body {
     color: var(--color-dark-settings-btn-text);
   }
 
+  .github-link {
+    color: #888888; /* Gri ton */
+     /* text-decoration: none; // alt çizgiyi kaldırır */
+  }
+
   /* Ayarlar paneli */
   .settings-panel {
     position: absolute;
