@@ -1,4 +1,9 @@
 {
+
+  "lagName": "English",
+  "lagCode": "en",
+
+
     "newTab": "New Tab",
     "pageSettings": "Page Settings",
     "themeSelectLabel":"Themes",

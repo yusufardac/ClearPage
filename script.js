@@ -134,6 +134,7 @@ window.addEventListener('DOMContentLoaded', () => {
   showFooterAlert();
   showNotificationBox();
   showInformation();
+  populateLanguageOptions();
 });
 
 // Uyarı mesajını footer'da göster
@@ -318,10 +319,10 @@ window.addEventListener('focus', () => {
 });
 
 // Dil değiştirildiğinde uygula ve kaydet
-languageSelect.addEventListener('change', (e) => {
+languageSelect.addEventListener('change', async (e) => {
   const lang = e.target.value;
   setCookie('language', lang);
-  loadLanguage(lang);
+  await loadLanguage(lang);
   loadMessages(lang);
 });
 
@@ -356,3 +357,34 @@ async function showNotificationBox() {
     if (notificationBox) notificationBox.style.display = 'none';
   }
 }
+
+// Sayfa yüklendiğinde dil seçeneklerini otomatik olarak doldur
+async function populateLanguageOptions() {
+  const languageSelect = document.getElementById('languageSelect');
+  if (!languageSelect) return;
+
+  try {
+    // PHP ile otomatik dosya listesi al
+    const response = await fetch('languages.php');
+    if (!response.ok) return;
+    const languageFiles = await response.json();
+    languageSelect.innerHTML = '';
+    for (const file of languageFiles) {
+      const code = file.replace('.json', '');
+      try {
+        const res = await fetch(`Localization/${file}`);
+        if (!res.ok) continue;
+        const langData = await res.json();
+        const option = document.createElement('option');
+        option.value = langData.lagCode || code;
+        option.textContent = langData.lagName || code.toUpperCase();
+        languageSelect.appendChild(option);
+      } catch {}
+    }
+  } catch (e) {
+    // Hata olursa varsayılanı kullan
+  }
+}
+
+// window.languageFiles dizisini otomatik güncellemek için build script veya sunucu tarafı gerekir.
+// Şimdilik mevcut dosyaları elle ekleyin. Yeni dil dosyası eklediğinizde buraya eklemeniz yeterli.
