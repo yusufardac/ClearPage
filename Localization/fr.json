@@ -1,0 +1,50 @@
+{
+
+   "lagName": "Français",
+   "lagCode": "fr",
+
+    "newTab": "Nouvel onglet",
+    "pageSettings": "Parametre de la page ",
+    "themeSelectLabel":"Thème",
+    "themeAuto": "Dispositif de suivi",
+    "themeLight": "Brillant",
+    "themeDark": "Obscure",
+    "languageLabel":"Langue",
+
+    "experimentalFutures":"Fonctionnalités expérimentales",
+    "webLinkPasteLabel": "Coller le lien Web",
+
+    "searchEngine": "Moteur de recherche",
+    "title":"Que devrions-nous rechercher aujourd’hui ?",
+
+    "title1":"Tapez quelque chose pour rechercher",
+    "title2":"Tapez quelque chose pour rechercher",
+    "title3":"Tapez quelque chose pour rechercher",
+    "title4":"Pourquoi persistez-vous à chercher en vain ?",
+    "title5":"Je ne sais pas ce que vous cherchez, écrivez-moi s'il vous plaît",
+    "title6":"Vous ne cherchez vraiment rien ?",
+    "title7":"Le champ de recherche attend également quelque chose...",
+
+    "title8":"Ma patience s'épuise petit à petit...",
+    "title9":"C'est désormais devenu une affaire personnelle.",
+    "title10":"Tu me pousses, tu le sais, n'est-ce pas ?",
+    "title11":"Recherche vide : Je suppose que c'est ton nouveau passe-temps.",
+    "title12":"Même moi, je me suis perdu dans ce vide.",
+    "title13":"Allez, combien de fois cela arrive-t-il ?",
+    
+    "title14":"Je suis vraiment en colère maintenant !",
+    "title15":"Si tu fais ça, je partirai",
+    "title16":"Non, il n'écrira pas...",
+    "title17":"D'ACCORD! JE NE SUIS PAS LÀ!",
+    
+    "finalMessage": "...",
+
+    "searchInput": "Recherche...",
+
+    "searchButton": "Recherche",
+    "developer": "Créé par: ",
+
+    "version": "Version: ",
+    "newVersionNotifyLabel": "Afficher la notification de nouvelle version"
+
+  }

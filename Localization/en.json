@@ -45,5 +45,6 @@
     "searchButton": "Go",
     "developer": "Developer : ",
 
-    "version": "Version : "
-  }
+    "version": "Version : ",
+    "newVersionNotifyLabel": "Show New Version Notification"
+}

@@ -7,6 +7,7 @@ const themeSelectLabel = document.getElementById('themeSelectLabel');
 const searchInput = document.getElementById('searchInput');
 const webLinkPaste = document.getElementById('webLinkPaste');
 const languageSelect = document.getElementById('languageSelect');
+const newVersionNotify = document.getElementById('newVersionNotify');
 
 // Çerez işlemleri
 const setCookie = (name, value, days = 365) => {
@@ -33,6 +34,8 @@ async function loadLanguage(lang) {
     if (element) {
       if (element.tagName === "INPUT" && key === "searchInput") {
         element.placeholder = data[key];
+      } else if (element.tagName === "LABEL" && key === "newVersionNotifyLabel") {
+        element.textContent = data[key];
       } else {
         element.textContent = data[key];
       }
@@ -74,6 +77,11 @@ webLinkPaste.addEventListener('change', (e) => {
   setCookie('webLinkPaste', e.target.checked);
 });
 
+// Yeni sürüm bildirimi checkbox'ı çerezlere yaz
+newVersionNotify.addEventListener('change', (e) => {
+  setCookie('newVersionNotify', e.target.checked);
+});
+
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
   // JavaScript uyarı mesajını kaldır (mobil/masaüstü farketmez)
@@ -111,6 +119,14 @@ window.addEventListener('DOMContentLoaded', () => {
     webLinkPaste.checked = false;
   }
 
+  // newVersionNotify çerezden çek ve uygula
+  const newVersionNotifyState = getCookie('newVersionNotify');
+  if (typeof newVersionNotifyState !== 'undefined') {
+    newVersionNotify.checked = (newVersionNotifyState === 'true');
+  } else {
+    newVersionNotify.checked = true; // Varsayılan olarak açık
+  }
+
   // Dil ile ilgili yerler
   let savedLang = getCookie('language');
   if (!savedLang) {
@@ -135,6 +151,7 @@ window.addEventListener('DOMContentLoaded', () => {
   showNotificationBox();
   showInformation();
   populateLanguageOptions();
+  showNewVersionNotification();
 });
 
 // Uyarı mesajını footer'da göster
@@ -384,6 +401,38 @@ async function populateLanguageOptions() {
   } catch (e) {
     // Hata olursa varsayılanı kullan
   }
+}
+
+// Yeni sürüm bildirimi kutusu fonksiyonu
+async function showNewVersionNotification() {
+  try {
+    const response = await fetch('alerts.json', {cache: 'no-store'});
+    if (!response.ok) return;
+    const data = await response.json();
+    const newVersion = (data.newVersion || '').trim();
+    if (!newVersion) return;
+    // Çerezden son kapatılan veya devre dışı bırakılan bildirimi al
+    const notifyAllowed = getCookie('newVersionNotify');
+    if (notifyAllowed === 'false') return;
+    const lastClosed = getCookie('newVersionClosed') || '';
+    if (newVersion !== lastClosed) {
+      // Bildirim kutusunu göster
+      showNotificationLikeBox(newVersion, 'newVersionClosed');
+    }
+  } catch (e) {}
+}
+
+// Bildirim kutusu gibi yeni sürüm kutusu göster
+function showNotificationLikeBox(html, closeCookieName) {
+  const notificationBox = document.getElementById('notificationBox');
+  const notificationText = document.getElementById('notificationText');
+  const notificationClose = document.getElementById('notificationClose');
+  notificationText.innerHTML = html;
+  notificationBox.style.display = 'block';
+  notificationClose.onclick = function() {
+    notificationBox.style.display = 'none';
+    setCookie(closeCookieName, html, 365);
+  };
 }
 
 // window.languageFiles dizisini otomatik güncellemek için build script veya sunucu tarafı gerekir.
