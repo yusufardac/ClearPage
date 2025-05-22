@@ -381,12 +381,14 @@ async function populateLanguageOptions() {
   if (!languageSelect) return;
 
   try {
-    //     // PHP ile otomatik dosya listesi al
+    // PHP ile otomatik dosya listesi al
     // const response = await fetch('languages.php');
     //php çalışmadığı için bu kısım yok
 
     // PHP ile otomatik dosya listesi alma kodu kaldırıldı, yerine statik JSON dosyası kullanılıyor
     const response = await fetch('languages.json');
+
+    
     if (!response.ok) return;
     const languageFiles = await response.json();
     languageSelect.innerHTML = '';
@@ -448,6 +450,3 @@ function showNotificationLikeBox(html, closeCookieName) {
     setCookie(closeCookieName, html, 365);
   };
 }
-
-// window.languageFiles dizisini otomatik güncellemek için build script veya sunucu tarafı gerekir.
-// Şimdilik mevcut dosyaları elle ekleyin. Yeni dil dosyası eklediğinizde buraya eklemeniz yeterli.
