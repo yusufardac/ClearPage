@@ -1,7 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-  <rect x="3" y="4" width="18" height="16" rx="2.5" ry="2.5" stroke="white" fill="none" stroke-width="2"/>
-  <rect x="9.08762" y="4.10025" width="12.18306" height="4.30075" fill="white" rx="1"/>
-  <circle cx="9" cy="14" r="1.2" fill="white"/>
-  <circle cx="12" cy="14" r="1.2" fill="white"/>
-  <circle cx="15" cy="14" r="1.2" fill="white"/>
+<svg width="23.999999999999996" height="23.999999999999996" xmlns="http://www.w3.org/2000/svg" fill="white">
+ <g>
+  <title>Layer 1</title>
+  <rect filter="url(#svg_14_blur)" x="3" y="4" width="18" height="16" rx="2.5" ry="2.5" fill="#3b3b3b" id="svg_14" stroke="#333232" stroke-width="4"/>
+  <rect x="2.5" y="3.5" width="19" height="17" rx="2.5" ry="2.5" fill="#3b3b3b" id="svg_6" stroke-width="4"/>
+  <rect x="2.95105" y="4" width="18" height="16" rx="2.5" ry="2.5" stroke="white" fill="none" stroke-width="2" id="svg_1"/>
+  <rect x="9.08762" y="4.10025" width="12.18306" height="4.30075" fill="white" rx="1" id="svg_2" stroke="null"/>
+  <circle cx="9" cy="14" r="1.2" fill="white" id="svg_3"/>
+  <circle cx="12" cy="14" r="1.2" fill="white" id="svg_4"/>
+  <circle cx="15" cy="14" r="1.2" fill="white" id="svg_5"/>
+  <rect fill="none" stroke="white" stroke-width="2" x="-11.15149" y="-0.55641" width="0.09789" height="0" id="svg_10"/>
+ </g>
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_14_blur">
+   <feGaussianBlur stdDeviation="1" in="SourceGraphic"/>
+  </filter>
+ </defs>
 </svg>
