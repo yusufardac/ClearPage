@@ -21,6 +21,9 @@
   --color-submit-btn-hover-bg: #295fb4;
   --color-submit-btn-text-bg: #b1c6e8;
   --color-input-border: #ccc;
+  --color-light-submit-btn-bg: #4285f4;
+  --color-dark-submit-btn-bg: #295fb4;
+  --color-submit-btn-bg: var(--color-dark-submit-btn-bg); /* Varsayılanı karanlık tema için bırakıyoruz */
 }
 
 html, body {
@@ -46,10 +49,12 @@ html, body {
   /* Tema renkleri */
   body.light {
     background-color: var(--color-light-bg);
+    --color-submit-btn-bg: var(--color-light-submit-btn-bg);
   }
 
   body.dark {
     background-color: var(--color-dark-bg);
+    --color-submit-btn-bg: var(--color-dark-submit-btn-bg);
   }
 
   /* Logo */
