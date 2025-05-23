@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (typeof newVersionNotifyState !== 'undefined') {
     newVersionNotify.checked = (newVersionNotifyState === 'true');
   } else {
-    newVersionNotify.checked = true; // Varsayılan olarak açık
+    newVersionNotify.checked = false; // Varsayılan olarak kapalı
   }
 
   // Dil ile ilgili yerler
@@ -147,7 +147,6 @@ window.addEventListener('DOMContentLoaded', () => {
   loadMessages();
   showAlertFooter();
   showSettingsAlert();
-  showFooterAlert();
   showNotificationBox();
   showInformation();
   populateLanguageOptions();
@@ -207,25 +206,6 @@ async function showSettingsAlert() {
     }
   } catch (e) {
     const alertDiv = document.getElementById('settingsAlert');
-    if (alertDiv) alertDiv.style.display = 'none';
-  }
-}
-
-// Uyarı mesajını footer'da göster
-async function showFooterAlert() {
-  try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
-    if (!response.ok) return;
-    const data = await response.json();
-    const alertDiv = document.getElementById('footerAlert');
-    if (data.footerAlert && data.footerAlert.trim() !== "") {
-      alertDiv.textContent = data.footerAlert;
-      alertDiv.style.display = 'block';
-    } else {
-      alertDiv.style.display = 'none';
-    }
-  } catch (e) {
-    const alertDiv = document.getElementById('footerAlert');
     if (alertDiv) alertDiv.style.display = 'none';
   }
 }
@@ -429,7 +409,7 @@ async function showNewVersionNotification() {
     if (!newVersion) return;
     // Çerezden son kapatılan veya devre dışı bırakılan bildirimi al
     const notifyAllowed = getCookie('newVersionNotify');
-    if (notifyAllowed === 'false') return;
+    if (notifyAllowed !== 'true') return;
     const lastClosed = getCookie('newVersionClosed') || '';
     if (newVersion !== lastClosed) {
       // Bildirim kutusunu göster
