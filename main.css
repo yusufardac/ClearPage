@@ -362,6 +362,10 @@ html, body {
     box-shadow: 0 2px 16px #0005;
   }
 
+  #notificationBox * {
+    color: inherit !important;
+  }
+
   /* newVersion bildirimi de notificationBox ile aynı kutuda gösteriliyor, ek bir stil gerekmez */
 
   #notificationClose {
