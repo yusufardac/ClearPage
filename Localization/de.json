@@ -1,0 +1,48 @@
+{
+  "lagName": "Deutsch",
+  "lagCode": "de",
+
+  "newTab": "Neuer Tab",
+  "pageSettings": "Seiteneinstellungen",
+  "themeSelectLabel": "Thema",
+  "themeAuto": "Systemeinstellung folgen",
+  "themeLight": "Hell",
+  "themeDark": "Dunkel",
+  "languageLabel": "Sprache",
+
+  "experimentalFutures": "Experimentelle Funktionen",
+  "webLinkPasteLabel": "Weblink einfügen",
+
+  "searchEngine": "Suchmaschine",
+  "title": "Was wollen wir heute suchen?",
+
+  "title1": "Gib etwas ein, um zu suchen",
+  "title2": "Gib etwas ein, um zu suchen",
+  "title3": "Gib etwas ein, um zu suchen",
+  "title4": "Warum suchst du ständig ohne etwas einzugeben?",
+  "title5": "Ich weiß auch nicht, wonach du suchst - bitte schreib etwas",
+  "title6": "Suchst du wirklich gar nichts?",
+  "title7": "Auch das Suchfeld wartet auf etwas...",
+
+  "title8": "Langsam verliere ich die Geduld...",
+  "title9": "Das ist jetzt eine persönliche Angelegenheit geworden.",
+  "title10": "Du machst es mir schwer, weißt du das?",
+  "title11": "Leere Suche – ist das dein neues Hobby?",
+  "title12": "Bei so viel Leere habe selbst ich mich verirrt.",
+  "title13": "Komm schon, wie oft denn noch?",
+
+  "title14": "Jetzt werde ich wirklich wütend!",
+  "title15": "Wenn du so weitermachst, gehe ich",
+  "title16": "Nein, er/sie wird nichts schreiben...",
+  "title17": "OKAY! ICH BIN WEG!",
+
+  "finalMessage": "...",
+
+  "searchInput": "Suchen...",
+  
+  "searchButton": "Suche",
+  "developer": "Erstellt von: ",
+  "newVersionNotifyLabel": "Neue Version anzeigen",
+
+  "version": "Version: "
+}

@@ -1,29 +1,55 @@
 /* Genel CSS düzenlemeleri */
 
+/* Tema renk değişkenleri */
 :root {
-  --color-light-bg: #f0f0f0;
-  --color-dark-bg: #242424;
-  --color-light-logo: #222;
-  --color-dark-logo: #ffffffef;
-  --color-light-settings-btn-bg: #bdbdbd;
-  --color-light-settings-btn-text: #222;
-  --color-dark-settings-btn-bg: #444444;
-  --color-dark-settings-btn-text: #ffffff;
-  --color-light-settings-panel-bg: #e0e0e0;
-  --color-light-settings-panel-text: #000;
-  --color-dark-settings-panel-bg: #323232;
-  --color-dark-settings-panel-text: #ffffff;
-  --color-light-select-bg: #e0e0e0;
-  --color-light-select-text: #000;
-  --color-dark-select-bg: #1f1f1f;
-  --color-dark-select-text: #fff;
-  --color-submit-btn-bg: #295fb4;
-  --color-submit-btn-hover-bg: #295fb4;
-  --color-submit-btn-text-bg: #b1c6e8;
+  /* Genel arka plan renkleri */
+  --color-light-bg: #f7f7f7; /* Aydınlık tema ana arka plan */
+  --color-dark-bg: #242424;  /* Karanlık tema ana arka plan */
+
+  /* Logo renkleri */
+  --color-light-logo: #222;  /* Aydınlık tema logo rengi */
+  --color-dark-logo: #ffffffef; /* Karanlık tema logo rengi */
+
+  /* Ayarlar butonu renkleri */
+  --color-light-settings-btn-bg: #cdcdcd; /* Aydınlık tema ayarlar butonu arka plan */
+  --color-light-settings-btn-text: #222;   /* Aydınlık tema ayarlar butonu yazı */
+  --color-dark-settings-btn-bg: #444444;   /* Karanlık tema ayarlar butonu arka plan */
+  --color-dark-settings-btn-text: #ffffff; /* Karanlık tema ayarlar butonu yazı */
+
+  /* Ayarlar paneli renkleri */
+  --color-light-settings-panel-bg: #e8e6e6; /* Aydınlık tema panel arka plan */
+  --color-light-settings-panel-text: #000;  /* Aydınlık tema panel yazı */
+  --color-dark-settings-panel-bg: #323232;  /* Karanlık tema panel arka plan */
+  --color-dark-settings-panel-text: #ffffff;/* Karanlık tema panel yazı */
+
+  /* Select kutusu renkleri */
+  --color-light-select-bg: #e0e0e0; /* Aydınlık tema select arka plan */
+  --color-light-select-text: #000;   /* Aydınlık tema select yazı */
+  --color-dark-select-bg: #1f1f1f;   /* Karanlık tema select arka plan */
+  --color-dark-select-text: #fff;    /* Karanlık tema select yazı */
+
+  /* Arama butonu renkleri */
+  --color-light-submit-btn-bg: #4285f4; /* Aydınlık tema arama butonu arka plan */
+  --color-light-submit-btn-hover-bg: #357ae8; /* Aydınlık tema arama butonu hover arka plan */
+  --color-light-submit-btn-text-bg: #fff;     /* Aydınlık tema arama butonu yazı rengi */
+  --color-dark-submit-btn-bg: #295fb4;  /* Karanlık tema arama butonu arka plan */
+  --color-dark-submit-btn-hover-bg: #1a3d7c;  /* Karanlık tema arama butonu hover arka plan */
+  --color-dark-submit-btn-text-bg: #f1f3f7;   /* Karanlık tema arama butonu yazı rengi */
+
+  /* Arama kutusu kenarlık rengi */
   --color-input-border: #ccc;
-  --color-light-submit-btn-bg: #4285f4;
-  --color-dark-submit-btn-bg: #295fb4;
-  --color-submit-btn-bg: var(--color-dark-submit-btn-bg); /* Varsayılanı karanlık tema için bırakıyoruz */
+
+  /* Footer (alt bilgi) renkleri */
+  --color-light-footer-bg: #d9d9d9; /* Aydınlık tema footer arka plan */
+  --color-light-footer-text: #222;   /* Aydınlık tema footer yazı */
+  --color-dark-footer-bg: #333333;   /* Karanlık tema footer arka plan */
+  --color-dark-footer-text: #fff;    /* Karanlık tema footer yazı */
+
+  /* Bildirim kutusu (notificationBox ve newVersion) renkleri */
+  --color-light-notification-bg: #eeeeee; /* Aydınlık tema bildirim kutusu arka plan */
+  --color-light-notification-text: #222;  /* Aydınlık tema bildirim kutusu yazı */
+  --color-dark-notification-bg: #333333;  /* Karanlık tema bildirim kutusu arka plan */
+  --color-dark-notification-text: #fff;   /* Karanlık tema bildirim kutusu yazı */
 }
 
 html, body {
@@ -196,19 +222,35 @@ html, body {
     /* background-color: #222; */
   }
 
-  button[type="submit"] {
+  /* arama butonu  */
+  body.dark button[type="submit"] {
     padding: 14px 20px;
     font-size: 16px;
     border: none;
-    background-color: var(--color-submit-btn-bg);
-    color: var(--color-submit-btn-text-bg);
+    background-color: var(--color-dark-submit-btn-bg);
+    color: var(--color-dark-submit-btn-text-bg);
     border-radius: 0 30px 30px 0;
     cursor: pointer;
     white-space: nowrap;
   }
 
-  button[type="submit"]:hover {
-    background-color: var(--color-submit-btn-hover-bg);
+  body.dark button[type="submit"]:hover {
+    background-color: var(--color-dark-submit-btn-hover-bg);
+  }
+
+  body.light button[type="submit"] {
+    padding: 14px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: var(--color-light-submit-btn-bg);
+    color: var(--color-light-submit-btn-text-bg);
+    border-radius: 0 30px 30px 0;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  body.light button[type="submit"]:hover {
+    background-color: var(--color-light-submit-btn-hover-bg);
   }
 
   /* Sallama animasyonu */
@@ -216,19 +258,19 @@ html, body {
     animation: shake 0.4s;
   }
 
-    /* Güçlü Sallama animasyonu */
-    .shake-strong {
-      animation: shake-strong 0.4s;
-    }
+  /* Güçlü Sallama animasyonu */
+  .shake-strong {
+    animation: shake-strong 0.4s;
+  }
 
-    @keyframes shake-strong {
-      0% { transform: translate(0, 0); }
-      20% { transform: translate(-50px, -12px); }
-      40% { transform: translate(12px, 12px); }
-      60% { transform: translate(-12px, 12px); }
-      80% { transform: translate(12px, -12px); }
-      100% { transform: translate(0, 0); }
-    }
+  @keyframes shake-strong {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-50px, -12px); }
+    40% { transform: translate(12px, 12px); }
+    60% { transform: translate(-12px, 12px); }
+    80% { transform: translate(12px, -12px); }
+    100% { transform: translate(0, 0); }
+  }
 
   .custom-line {
     width: 100%;
@@ -252,30 +294,10 @@ html, body {
     display: none;
   }
 
-  /* Checkmark için stil */
-  /* .custom-checkbox .svg {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: url('Assets/checkboxUncheckedBlack.svg') no-repeat center center;
-    color: white ;
-    background-size: contain;
-    cursor: pointer;
-  } */
-
-  /* Checkbox işaretliyken görseli değiştir */
-  /* .custom-checkbox input[type="checkbox"]:checked + .checkmark {
-    background: url('Assets/checkboxCheckedBlack.svg') no-repeat center center;
-    background-size: contain;
-    background-color: white ;
-    color-scheme: dark;
-  } */
-
   .UserSettings .NotChecked {
     opacity: 1;
     background: url('Assets/checkboxUncheckedWhite.svg') no-repeat center;
   }
-  
   
   .UserSettings .Checked {
     opacity: 0;
@@ -298,6 +320,52 @@ html, body {
   body.dark select {
     background-color: var(--color-dark-select-bg);
     color: var(--color-dark-select-text);
+  }
+
+  /* Footer Alert */
+  #footerAlert {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-dark-footer-bg);
+    color: var(--color-dark-footer-text);
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    z-index: 1000;
+    transition: background 0.2s, color 0.2s;
+  }
+  body.light #footerAlert {
+    background-color: var(--color-light-footer-bg);
+    color: var(--color-light-footer-text);
+  }
+  body.dark #footerAlert {
+    background-color: var(--color-dark-footer-bg);
+    color: var(--color-dark-footer-text);
+  }
+
+  /* Bildirim kutusu (notificationBox) */
+  #notificationBox {
+    background-color: var(--color-dark-notification-bg);
+    color: var(--color-dark-notification-text);
+    transition: background 0.2s, color 0.2s;
+  }
+  body.light #notificationBox {
+    background-color: var(--color-light-notification-bg);
+    color: var(--color-light-notification-text);
+    box-shadow: 0 2px 16px #0002;
+  }
+  body.dark #notificationBox {
+    background-color: var(--color-dark-notification-bg);
+    color: var(--color-dark-notification-text);
+    box-shadow: 0 2px 16px #0005;
+  }
+
+  /* newVersion bildirimi de notificationBox ile aynı kutuda gösteriliyor, ek bir stil gerekmez */
+
+  #notificationClose {
+    color: inherit !important;
   }
 
   /* Mobil cihazlar için düzenlemeler */
@@ -334,20 +402,6 @@ html, body {
       font-size: 16px;
     }
 
-    /* ayarlar paneli için iyileştirme */
-    /* .settings-panel {
-      width: 100%;
-      height: auto;
-      top: 0;
-      right: 0;
-      border-radius: 0;
-      box-shadow: none;
-    }
-  
-    .settings-panel h3 {
-      font-size: 18px;
-    } */
-    
     /* arama kutusu için iyileştirme */
     .search-box {
       flex-direction: column;
@@ -363,7 +417,7 @@ html, body {
       box-sizing: border-box;
     }
 
-     button[type="submit"] {
+    button[type="submit"] {
       border-radius: 30px;
     }
   }
