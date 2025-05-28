@@ -1,8 +1,4 @@
 {
-  "footerAlert": "selam",
-
-  "newVersion": "4.7.2 Güncellemesi Yayınlandı! <br> <a href='https://github.com/yusufardac/ClearPage/releases' class='github-link' >Yenilikler için tıklayın</a>",
-
-  "notification":""
-  
+  "footerAlert": "",
+  "notification":""  
 }

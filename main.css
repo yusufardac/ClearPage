@@ -130,7 +130,7 @@ html, body {
   }
 
   .github-link {
-    color: #888888; /* Gri ton */
+    color: #888888 ; /* Gri ton */
      /* text-decoration: none; // alt çizgiyi kaldırır */
   }
 
@@ -423,5 +423,15 @@ html, body {
 
     button[type="submit"] {
       border-radius: 30px;
+    }
+
+    body.dark button[type="submit"],
+    body.light button[type="submit"] {
+      border-radius: 30px;
+      font-size: 16px;
+      margin: 5px 0;
+      width: 100%;
+      box-sizing: border-box;
+      /* Gerekirse padding, background vs. de ekleyin */
     }
   }
