@@ -43,8 +43,8 @@ async function loadLanguage(lang) {
   }
 }
 
-// Sayfa açıldığında varsayılan dil Türkçe
-loadLanguage('tr');
+// // Sayfa açıldığında varsayılan dil Türkçe
+// loadLanguage('tr');
 
 // Ayar panelini aç/kapat
 settingsButton.addEventListener('click', () => {
@@ -402,7 +402,7 @@ async function populateLanguageOptions() {
 // Yeni sürüm bildirimi kutusu fonksiyonu
 async function showNewVersionNotification() {
   try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
+    const response = await fetch('information.json', {cache: 'no-store'});
     if (!response.ok) return;
     const data = await response.json();
     const newVersion = (data.newVersion || '').trim();
