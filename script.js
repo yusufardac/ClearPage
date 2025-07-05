@@ -414,7 +414,7 @@ async function showNewVersionNotification() {
       let lang = getCookie('language') || 'tr';
       const langRes = await fetch(`Localization/${lang}.json`);
       const langData = await langRes.json();
-      let text = langData.newVersionText || 'Yeni sürüm {{version}} yayınlandı!';
+      let text = langData.newVersionText;
       text = text.replace('{{version}}', versionNo).replace('{{link}}', "https://github.com/yusufardac/ClearPage/releases");
       showNotificationLikeBox(text, 'newVersionClosed', versionNo);
     }
