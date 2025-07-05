@@ -9,6 +9,7 @@
   "themeLight": "Hell",
   "themeDark": "Dunkel",
   "languageLabel": "Sprache",
+  "offlineMessage": "You are offline",
 
   "experimentalFutures": "Experimentelle Funktionen",
   "webLinkPasteLabel": "Weblink einfügen",
@@ -43,6 +44,7 @@
   "searchButton": "Suche",
   "developer": "Erstellt von: ",
   "newVersionNotifyLabel": "Neue Version anzeigen",
+  "newVersionText": "Neue Version {{version}} veröffentlicht! <a href='{{link}}' class='github-link'>Klicken Sie hier für Details</a>",
 
   "version": "Version: "
 }

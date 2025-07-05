@@ -10,6 +10,7 @@
     "themeLight": "Aydınlık",
     "themeDark": "Karanlık",
     "languageLabel":"Dil",
+    "offlineMessage": "Çevrimdışısın",
 
     "experimentalFutures":"Deneysel Özellikler",
     "webLinkPasteLabel": "Web bağlantısı yapıştır",
@@ -44,6 +45,7 @@
     "searchButton": "Ara",
     "developer": "Oluşturan: ",
     "newVersionNotifyLabel": "Yeni Sürüm Bildirimlerini Göster",
+    "newVersionText": "Yeni sürüm {{version}} yayınlandı! <a href='{{link}}' class='github-link'>Yenilikler için tıklayın</a>",
 
     "version": "Sürüm: "
 

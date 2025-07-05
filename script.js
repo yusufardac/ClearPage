@@ -399,27 +399,30 @@ async function populateLanguageOptions() {
   }
 }
 
-// Yeni sürüm bildirimi kutusu fonksiyonu
+// Yeni sürüm bildirimi kutusu fonksiyonu (dil dosyasından metin alır)
 async function showNewVersionNotification() {
   try {
     const response = await fetch('information.json', {cache: 'no-store'});
     if (!response.ok) return;
     const data = await response.json();
-    const newVersion = (data.newVersion || '').trim();
-    if (!newVersion) return;
-    // Çerezden son kapatılan veya devre dışı bırakılan bildirimi al
-    const notifyAllowed = getCookie('newVersionNotify');
-    if (notifyAllowed !== 'true') return;
+    const versionNo = (data.versionNo || '').trim();
+    if (!versionNo) return;
+    // Çerezden son kapatılan bildirimi al
     const lastClosed = getCookie('newVersionClosed') || '';
-    if (newVersion !== lastClosed) {
-      // Bildirim kutusunu göster
-      showNotificationLikeBox(newVersion, 'newVersionClosed');
+    if (versionNo !== lastClosed) {
+      // Aktif dili al
+      let lang = getCookie('language') || 'tr';
+      const langRes = await fetch(`Localization/${lang}.json`);
+      const langData = await langRes.json();
+      let text = langData.newVersionText || 'Yeni sürüm {{version}} yayınlandı!';
+      text = text.replace('{{version}}', versionNo).replace('{{link}}', "https://github.com/yusufardac/ClearPage/releases");
+      showNotificationLikeBox(text, 'newVersionClosed', versionNo);
     }
   } catch (e) {}
 }
 
 // Bildirim kutusu gibi yeni sürüm kutusu göster
-function showNotificationLikeBox(html, closeCookieName) {
+function showNotificationLikeBox(html, closeCookieName, closeValue) {
   const notificationBox = document.getElementById('notificationBox');
   const notificationText = document.getElementById('notificationText');
   const notificationClose = document.getElementById('notificationClose');
@@ -427,6 +430,12 @@ function showNotificationLikeBox(html, closeCookieName) {
   notificationBox.style.display = 'block';
   notificationClose.onclick = function() {
     notificationBox.style.display = 'none';
-    setCookie(closeCookieName, html, 365);
+    setCookie(closeCookieName, closeValue, 365);
   };
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('service-worker.js');
+  });
 }

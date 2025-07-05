@@ -11,6 +11,7 @@
     "themeLight": "Bright",
     "themeDark": "Dark",
     "languageLabel":"Language", 
+    "offlineMessage": "You are offline",
 
     "experimentalFutures":"Experimental Features",
     "webLinkPasteLabel": "Paste url",
@@ -46,5 +47,6 @@
     "developer": "Developer : ",
 
     "version": "Version : ",
-    "newVersionNotifyLabel": "Show New Version Notification"
+    "newVersionNotifyLabel": "Show New Version Notification",
+    "newVersionText": "New version {{version}} released! <a href='{{link}}' class='github-link'>Click for details</a>"
 }
