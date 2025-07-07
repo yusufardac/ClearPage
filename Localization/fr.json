@@ -10,7 +10,6 @@
     "themeLight": "Brillant",
     "themeDark": "Obscure",
     "languageLabel":"Langue",
-    "offlineMessage": "You are offline",
 
     "experimentalFutures":"Fonctionnalités expérimentales",
     "webLinkPasteLabel": "Coller le lien Web",
@@ -46,7 +45,6 @@
     "developer": "Créé par: ",
 
     "version": "Version: ",
-    "newVersionNotifyLabel": "Alerte mise à jour",
-    "newVersionText": "Nouvelle version {{version}} publiée ! <a href='{{link}}' class='github-link'>Voir les nouveautés</a>"
+    "newVersionNotifyLabel": "Alerte mise à jour"
 
   }
