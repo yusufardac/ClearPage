@@ -414,6 +414,7 @@ async function showNewVersionNotification() {
     if (newVersion !== lastClosed) {
       // Bildirim kutusunu göster
       showNotificationLikeBox(newVersion, 'newVersionClosed');
+
     }
   } catch (e) {}
 }
