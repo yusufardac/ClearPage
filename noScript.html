@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewTab - noScript </title>
+  
+  <!-- Sayfa simgesi görseli -->
+  <link rel="icon" type="image/svg+xml" href="/Assets/tabIcon.svg?v=2" />
+  <!-- logo güncellendiğinde sürüm numarası değiştirikcek (v=2) -->
+
+  <link rel='stylesheet' type='text/css' href=main.css>
+  <!-- css dosyasını çağırma -->
+  </head>
+
+  <body class="dark">
+    
+    <!-- Sayfa logosu -->
+    <div style="
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0 10px;
+    color: var(--color-dark-logo);">
+      What Should We Search Today?
+    </div>
+
+    <!-- Arama formu -->
+    <form action="https://www.google.com/search" method="get" class="search-box">
+      <input placeholder="I'm Searching For..." type="search" name="q" autocomplete="off" inputmode="search" placeholder="">
+      <button type="submit">Go</button>
+    </form>
+  </body>
+  <footer>
+    <div style="
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-dark-footer-bg);
+    color: var(--color-dark-footer-text);
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    z-index: 1000;
+    transition: background 0.2s, color 0.2s;">
+    No Script Mode
+  </div>
+  </footer>
+</html>
