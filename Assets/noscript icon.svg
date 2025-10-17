@@ -1,0 +1,14 @@
+<svg width="23.999999999999996" height="23.999999999999996" xmlns="http://www.w3.org/2000/svg" fill="white">
+ <g>
+  <title>Layer 1</title>
+  <rect stroke-width="4" stroke="#333232" id="svg_14" fill="#3b3b3b" ry="2.5" height="16" width="18" y="4" x="3"/>
+  <rect stroke-width="4" id="svg_6" fill="#3b3b3b" ry="2.5" rx="2.5" height="17" width="19" y="3.5" x="2.5"/>
+  <rect id="svg_1" stroke-width="2" fill="none" stroke="white" ry="2.5" rx="2.5" height="16" width="18" y="4" x="2.95105"/>
+  <rect stroke="null" id="svg_2" rx="1" fill="white" height="4.30075" width="12.18306" y="4.10025" x="9.08762"/>
+  <circle id="svg_3" fill="white" r="1.2" cy="14" cx="9"/>
+  <circle id="svg_4" fill="white" r="1.2" cy="14" cx="12"/>
+  <circle id="svg_5" fill="white" r="1.2" cy="14" cx="15"/>
+  <rect id="svg_10" height="0" width="0.09789" y="-0.55641" x="-11.15149" stroke-width="2" stroke="white" fill="none"/>
+ </g>
+
+</svg>
