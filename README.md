@@ -4,12 +4,13 @@ Asla kullanılmayan gereksiz özellikler, göz yoran tasarım ve reklam saçan a
 Sade ve minimalist yeni sekme sayfası.<br>
 
 Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan sayfası yapmanız yeterlidir<br>
+Chrome tabanlı tarayıcıda New Tab Redirect eklentisi ile başlangıç sayfasını değiştirebilirsiniz
 İlerleyen zamanda link değişebilir<br><br>
 
 Normal versiyon: 
 https://yusufardac.github.io/ClearPage/index
 <br>
-Script'siz versiyon: 
+Scriptsiz daha hafif versiyon: 
 https://yusufardac.github.io/ClearPage/noScript
 
 <br>
