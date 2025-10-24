@@ -214,11 +214,13 @@ html, body {
 
   body.light input[type="search"] {    
     color: #fff;
+    color: var(--color-light-settings-panel-text);
     /* background-color: #fff; */
   }
 
   body.dark input[type="search"] {
     color: #222;
+    color: var(--color-light-settings-panel-text);
     /* background-color: #222; */
   }
 
