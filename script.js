@@ -271,7 +271,7 @@ searchForm.addEventListener('submit', (e) => {
       return;
     }
 
-    if (messageIndex >= 20) {
+    if (messageIndex >= 16) {
       searchForm.classList.add('shake-strong');
       setTimeout(() => searchForm.classList.remove('shake-strong'), 400); // Daha uzun süreli titreşim
     } else {
