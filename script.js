@@ -142,6 +142,24 @@ window.addEventListener('DOMContentLoaded', () => {
   languageSelect.value = savedLang;
   loadLanguage(savedLang);
   loadMessages(savedLang);
+  
+  // Eğer kullanıcı ilk kez geliyorsa, bildirimleri kapalı tut ve
+  // en güncel sürüm notunu 'newVersionClosed' çerezine yaz
+  // böylece kullanıcı daha sonra bildirimleri açtığında eski notlar gösterilmez.
+  (async () => {
+    try {
+      const infoResp = await fetch('information.json', { cache: 'no-store' });
+      if (!infoResp.ok) return;
+      const infoData = await infoResp.json();
+      const latest = (infoData.newVersion || '').trim();
+      const currentClosed = getCookie('newVersionClosed');
+      // Eğer çerez yoksa veya boşsa, en son notu kaydet
+      if ((typeof currentClosed === 'undefined' || currentClosed === '') && latest) {
+        setCookie('newVersionClosed', latest);
+      }
+    } catch (e) {
+    }
+  })();
 
   searchInput.focus();
   loadMessages();
@@ -271,7 +289,7 @@ searchForm.addEventListener('submit', (e) => {
       return;
     }
 
-    if (messageIndex >= 20) {
+    if (messageIndex >= 16) {
       searchForm.classList.add('shake-strong');
       setTimeout(() => searchForm.classList.remove('shake-strong'), 400); // Daha uzun süreli titreşim
     } else {
