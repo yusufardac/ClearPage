@@ -151,7 +151,8 @@ window.addEventListener('DOMContentLoaded', () => {
       const infoResp = await fetch('information.json', { cache: 'no-store' });
       if (!infoResp.ok) return;
       const infoData = await infoResp.json();
-      const latest = (infoData.newVersion || '').trim();
+      //güncel dilin metini ve sürüm numarasını alır
+      const latest = (infoData.newVersionId || infoData.newVersion || '').trim();
       const currentClosed = getCookie('newVersionClosed');
       // Eğer çerez yoksa veya boşsa, en son notu kaydet
       if ((typeof currentClosed === 'undefined' || currentClosed === '') && latest) {
@@ -423,22 +424,42 @@ async function showNewVersionNotification() {
     const response = await fetch('information.json', {cache: 'no-store'});
     if (!response.ok) return;
     const data = await response.json();
-    const newVersion = (data.newVersion || '').trim();
-    if (!newVersion) return;
+    // Bilgileri oku
+    const newVersionId = (data.newVersionId || data.newVersion || '').trim();
+    const newVersionUrl = data.newVersionUrl || '';
+    if (!newVersionId) return;
+
     // Çerezden son kapatılan veya devre dışı bırakılan bildirimi al
     const notifyAllowed = getCookie('newVersionNotify');
     if (notifyAllowed !== 'true') return;
     const lastClosed = getCookie('newVersionClosed') || '';
-    if (newVersion !== lastClosed) {
-      // Bildirim kutusunu göster
-      showNotificationLikeBox(newVersion, 'newVersionClosed');
+    if (newVersionId === lastClosed) return;
 
+    // Lokalize edilmiş bildirim metnini al
+    const lang = getCookie('language') || (navigator.language || '').slice(0,2) || 'tr';
+    let template = '';
+    try {
+      const locResp = await fetch(`Localization/${lang}.json`);
+      if (locResp.ok) {
+        const loc = await locResp.json();
+        template = loc.newVersionNotification || '';
+      }
+    } catch (e) {
+      template = '';
     }
+
+    if (!template) {
+      template = "<strong>{version} update released!</strong> <a href='{link}'>Details</a>";
+    }
+
+    const message = template.replace(/{version}/g, newVersionId).replace(/{link}/g, newVersionUrl);
+    // Bildirim kutusunu göster (kapatıldığında newVersionId kaydedilecek)
+    showNotificationLikeBox(message, 'newVersionClosed', newVersionId);
   } catch (e) {}
 }
 
 // Bildirim kutusu gibi yeni sürüm kutusu göster
-function showNotificationLikeBox(html, closeCookieName) {
+function showNotificationLikeBox(html, closeCookieName, closeCookieValue) {
   const notificationBox = document.getElementById('notificationBox');
   const notificationText = document.getElementById('notificationText');
   const notificationClose = document.getElementById('notificationClose');
@@ -446,6 +467,7 @@ function showNotificationLikeBox(html, closeCookieName) {
   notificationBox.style.display = 'block';
   notificationClose.onclick = function() {
     notificationBox.style.display = 'none';
-    setCookie(closeCookieName, html, 365);
+    // Eğer closeCookieValue verilmişse onu kaydet, yoksa html'i kaydet (geriye dönük uyumluluk)
+    setCookie(closeCookieName, closeCookieValue || html, 365);
   };
 }

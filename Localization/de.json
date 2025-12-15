@@ -45,4 +45,5 @@
   "newVersionNotifyLabel": "Neue Version anzeigen",
 
   "version": "Version: "
+    ,"newVersionNotification": "<strong>Update {version} veröffentlicht!</strong> <a href='{link}' class='github-link'>Details ansehen</a>"
 }

@@ -46,5 +46,6 @@
     "developer": "Developer : ",
 
     "version": "Version : ",
-    "newVersionNotifyLabel": "Show New Version Notification"
+    "newVersionNotifyLabel": "Show New Version Notification",
+    "newVersionNotification": "<strong>{version} update released!</strong> <a href='{link}' class='github-link'>Click for details</a>"
 }
