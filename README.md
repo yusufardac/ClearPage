@@ -3,10 +3,19 @@
 Asla kullanılmayan gereksiz özellikler, göz yoran tasarım ve reklam saçan arayüz yok.
 Sade ve minimalist yeni sekme sayfası.<br>
 
-Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın varsayılan sayfası yapmanız yeterlidir<br>
-İlerleyen zamanda link değişebilir<br><br>
+Kullanmaya başlamak için aşağıdaki linki web tarayıcınızın başlangıç sayfası yapmanız yeterlidir<br>
+Chrome tabanlı tarayıcıda New Tab Redirect eklentisi ile başlangıç sayfasını değiştirebilirsiniz<br>
+<br>
 
+İlerleyen zamanda link değişebilir<br>
+Normal versiyon: 
 https://yusufardac.github.io/ClearPage/index
+<br>
+Scriptsiz daha hafif versiyon: 
+https://yusufardac.github.io/ClearPage/noScript
+
+
+
 <br>
 <p align="center">
     <img src="https://visitor-badge.laobi.icu/badge?page_id=yusufardac.ClearPage" alt="repo views"/>
