@@ -47,5 +47,7 @@
 
     "version": "Sürüm: "
 
+    ,"newVersionNotification": "<strong>{version} Güncellemesi Yayınlandı!</strong> <a href='{link}' class='github-link'>Yenilikler için tıklayın</a>"
+
     
   }
