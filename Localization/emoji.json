@@ -1,0 +1,49 @@
+{
+  "lagName": "Emoji",
+  "lagCode": "emoji",
+
+  "newTab": "🆕📑",
+  "pageSettings": "⚙️",
+  "themeSelectLabel": "🎨",
+  "themeAuto": "📱➡️🖥️",
+  "themeLight": "☀️",
+  "themeDark": "🌙",
+  "languageLabel": "🌐",
+
+  "experimentalFutures": "🧪⚠️",
+  "webLinkPasteLabel": "🔗📋",
+
+  "searchEngine": "🔍⚙️",
+  "title": "🤔🔍❓",
+
+  "title1": "✍️🔍",
+  "title2": "✍️🔍",
+  "title3": "✍️🔍",
+
+  "title4": "🤨➡️🕳️🔍❓",
+  "title5": "🤷‍♂️🧠❌✍️",
+  "title6": "😐❌🔍❓",
+  "title7": "📦🔍⏳",
+
+  "title8": "⌛😤",
+  "title9": "😑⚔️",
+  "title10": "😠🧪",
+  "title11": "🕳️🔍➡️🎮",
+  "title12": "🧭❌🕳️",
+  "title13": "😮‍💨🔢❓",
+
+  "title14": "😡🔥",
+  "title15": "🚪➡️👋",
+  "title16": "🙄✍️❌",
+  "title17": "❌🧍‍♂️💥",
+
+  "finalMessage": "💥",
+
+  "searchInput": "🔍",
+  "searchButton": "🔎",
+  "developer": "👨‍💻:",
+  "newVersionNotifyLabel": "🆕🔔",
+
+  "version": "🏷️",
+  "newVersionNotification": "🆕🎉 {version} 👉  <a href='{link}' class='github-link'>🔗</a>"
+}

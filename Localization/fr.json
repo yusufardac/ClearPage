@@ -48,4 +48,6 @@
     "newVersionNotifyLabel": "Alerte mise à jour",
     "newVersionNotification": "<strong>Mise à jour {version} publiée !</strong> <a href='{link}' class='github-link'>Voir les nouveautés</a>"
 
+    ,"notification": "Nouvelle notification : consultez les messages localisés dans vos paramètres."
+
   }

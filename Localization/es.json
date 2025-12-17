@@ -1,0 +1,50 @@
+{
+  "lagName": "Español",
+  "lagCode": "es",
+
+  "newTab": "Nueva pestaña",
+  "pageSettings": "Configuración de la página",
+  "themeSelectLabel": "Tema",
+  "themeAuto": "Seguir el dispositivo",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "languageLabel": "Idioma",
+
+  "experimentalFutures": "Funciones experimentales",
+  "webLinkPasteLabel": "Pegar enlace web",
+
+  "searchEngine": "Motor de búsqueda",
+  "title": "¿Qué buscamos hoy?",
+
+  "title1": "Escribe algo para buscar",
+  "title2": "Escribe algo para buscar",
+  "title3": "Escribe algo para buscar",
+  "title4": "¿Por qué insistes en buscar en blanco?",
+  "title5": "Ni yo sé qué buscas, escribe algo ya",
+  "title6": "¿De verdad no estás buscando nada?",
+  "title7": "La barra de búsqueda también está esperando algo...",
+
+  "title8": "Poco a poco se me acaba la paciencia...",
+  "title9": "Esto ya se está volviendo personal.",
+  "title10": "Me estás poniendo a prueba, ¿lo sabes?",
+  "title11": "Buscar en blanco: parece tu nuevo hobby.",
+  "title12": "Con tanto vacío, hasta yo me perdí.",
+  "title13": "Vamos, ¿cuántas veces van ya?",
+
+  "title14": "¡Ya me estoy enfadando de verdad!",
+  "title15": "Si sigues así, me voy",
+  "title16": "No, no va a escribir...",
+  "title17": "¡YA ESTÁ! ¡ME VOY!",
+
+  "finalMessage": "...",
+
+  "searchInput": "Buscar...",
+
+  "searchButton": "Buscar",
+  "developer": "Desarrollador: ",
+  "newVersionNotifyLabel": "Mostrar notificaciones de nuevas versiones",
+
+  "version": "Versión: ",
+
+  "newVersionNotification": "<strong>¡Actualización {version} publicada!</strong> <a href='{link}' class='github-link'>Haz clic para ver las novedades</a>"
+}
