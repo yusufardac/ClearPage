@@ -4,7 +4,7 @@
    "lagCode": "tr",
 
     "newTab": "Yeni Sekme",
-    "pageSettings": "Sayfa Ayarları",
+    "pageSettings": "Ayarlar",
     "themeSelectLabel":"Tema",
     "themeAuto": "Cihazı Takip Et",
     "themeLight": "Aydınlık",
@@ -45,9 +45,8 @@
     "developer": "Oluşturan: ",
     "newVersionNotifyLabel": "Yeni Sürüm Bildirimlerini Göster",
 
-    "version": "Sürüm: "
-
-    ,"newVersionNotification": "<strong>{version} Güncellemesi Yayınlandı!</strong> <a href='{link}' class='github-link'>Yenilikler için tıklayın</a>"
-
+    "version": "Sürüm: ",
+    
+    "newVersionNotification": "<strong>{version} Güncellemesi Yayınlandı!</strong> <a href='{link}' class='github-link'>Yenilikler için tıklayın</a>"
     
   }
