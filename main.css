@@ -57,6 +57,7 @@ html, body {
     overflow: hidden;
     margin: 0;
     font-family: Arial, sans-serif;
+    transition: background 0.2s, color 0.2s;
   }
 
   .checkbox{
@@ -336,7 +337,6 @@ html, body {
     padding: 10px;
     font-size: 14px;
     z-index: 1000;
-    transition: background 0.2s, color 0.2s;
   }
   body.light #footerAlert {
     background-color: var(--color-light-footer-bg);
@@ -351,7 +351,6 @@ html, body {
   #notificationBox {
     background-color: var(--color-dark-notification-bg);
     color: var(--color-dark-notification-text);
-    transition: background 0.2s, color 0.2s;
   }
   body.light #notificationBox {
     background-color: var(--color-light-notification-bg);
