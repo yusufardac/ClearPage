@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NewTab - noScript </title>
+
+    <link rel='stylesheet' type='text/css' href=main.css>
+    <!-- css dosyasını çağırma -->
   
   <!-- Sayfa simgesi görseli -->
   <link 
@@ -66,20 +69,12 @@
     </g>
   </svg>"
 >
-
-  <link rel='stylesheet' type='text/css' href=main.css>
-  <!-- css dosyasını çağırma -->
   </head>
 
   <body class="dark">
     
     <!-- Sayfa logosu -->
-    <div style="
-    font-size: 36px;
-    margin-bottom: 30px;
-    text-align: center;
-    padding: 0 10px;
-    color: var(--color-dark-logo);">
+    <div class="logo">
       What Should We Search Today?
     </div>
 
@@ -90,18 +85,7 @@
     </form>
   </body>
   <footer>
-    <div style="
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--color-dark-footer-bg);
-    color: var(--color-dark-footer-text);
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    z-index: 1000;
-    transition: background 0.2s, color 0.2s;">
+    <div id="footerAlert">
     No Script Mode
   </div>
   </footer>

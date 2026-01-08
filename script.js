@@ -81,14 +81,17 @@ webLinkPaste.addEventListener('change', (e) => {
 newVersionNotify.addEventListener('change', (e) => {
   setCookie('newVersionNotify', e.target.checked);
 });
-
+  
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
+
   // JavaScript uyarı mesajını kaldır (mobil/masaüstü farketmez)
-  const jsWarning = document.getElementById('js-warning');
-  if (jsWarning) jsWarning.style.display = 'none';
-  const mainContent = document.getElementById('main-content');
-  if (mainContent) mainContent.style.display = '';
+  const jsWarning = document.getElementById('jsWarning');
+  const preLoadBackground = document.getElementById('preLoadBackground');
+  if (jsWarning) {
+    jsWarning.style.display = 'none';
+    preLoadBackground.style.display = 'none';
+  }
 
   let savedTheme = getCookie('theme');
 
