@@ -58,10 +58,18 @@ html, body {
     margin: 0;
     font-family: Arial, sans-serif;
     transition: background 0.2s, color 0.2s;
+    background-color: var(--color-dark-bg);
   }
 
-  .checkbox{
-    visibility: hidden;
+    /* Tema renkleri */
+  body.light {
+    background-color: var(--color-light-bg);
+    --color-submit-btn-bg: var(--color-light-submit-btn-bg);
+  }
+
+  body.dark {
+    background-color: var(--color-dark-bg);
+    --color-submit-btn-bg: var(--color-dark-submit-btn-bg);
   }
 
   body {
@@ -73,15 +81,25 @@ html, body {
     padding: 20px;
   }
 
-  /* Tema renkleri */
-  body.light {
-    background-color: var(--color-light-bg);
-    --color-submit-btn-bg: var(--color-light-submit-btn-bg);
+  .checkbox {
+    visibility: hidden;
   }
 
-  body.dark {
-    background-color: var(--color-dark-bg);
-    --color-submit-btn-bg: var(--color-dark-submit-btn-bg);
+  .jsWarning {
+    z-index: 1001;
+    position: relative;
+    background: #ffdddd;
+    color: #a00; 
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .preLoadBackground {
+    position: fixed;
+    inset: 0;    
+    background: #242424;
+    z-index: 1000;
   }
 
   /* Logo */
@@ -102,6 +120,7 @@ html, body {
 
   /* Ayarlar düğmesi */
   .settings-button {
+    z-index: 999;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -115,7 +134,7 @@ html, body {
     align-items: center;
     justify-content: center;
   }
-
+  
   .settings-button * {
     pointer-events: none;
   }
@@ -388,6 +407,7 @@ html, body {
 
     /* ayarlar butonu */
     .settings-button {
+      z-index: 999;
       width: 40px;
       height: 40px;
       top: 10px;

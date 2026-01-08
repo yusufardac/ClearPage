@@ -77,14 +77,6 @@ webLinkPaste.addEventListener('change', (e) => {
   setCookie('webLinkPaste', e.target.checked);
 });
 
-
-// JavaScript uyarı mesajını kaldır (mobil/masaüstü farketmez)
-const jsWarning = document.getElementById('js-warning');
-if (jsWarning) {
-  jsWarning.style.display = 'none';
-  preLoad.style.display = 'none';
-}
-
 // Yeni sürüm bildirimi checkbox'ı çerezlere yaz
 newVersionNotify.addEventListener('change', (e) => {
   setCookie('newVersionNotify', e.target.checked);
@@ -92,14 +84,16 @@ newVersionNotify.addEventListener('change', (e) => {
   
 // Sayfa yüklendiğinde ayarları uygula
 window.addEventListener('DOMContentLoaded', () => {
+
+  // JavaScript uyarı mesajını kaldır (mobil/masaüstü farketmez)
+  const jsWarning = document.getElementById('jsWarning');
+  const preLoadBackground = document.getElementById('preLoadBackground');
+  if (jsWarning) {
+    jsWarning.style.display = 'none';
+    preLoadBackground.style.display = 'none';
+  }
+
   let savedTheme = getCookie('theme');
-
-
-  //burada bişeyler o flashbang ekranına sebep oluyor
-  //sanırım temayı uygularken bişeyler oluyor daha çözemedim
-  //gece kullanırken kör oluyodum sırf bu yüzden
-  //(div dikkat çeksin diye)
-  <div>/div>
 
   // İlk kez geliyorsa ya da 'auto' seçilmişse cihaz temasını kullan
   if (!savedTheme || savedTheme === 'auto') {
@@ -114,8 +108,6 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.className = savedTheme;
     themeSelect.value = savedTheme;
   }
-
-
 
   // Arama motoru çerezden çek ve uygula
   const savedEngine = getCookie('selectSearchEngine') || 'https://www.google.com/search?q=';

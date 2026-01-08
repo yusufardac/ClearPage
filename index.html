@@ -17,21 +17,9 @@
 
   <body>
 
-    <!-- pek iyi gitmedi -->
-    <div id="preLoad" aria-hidden="true" style=" 
-                                                      position: fixed;
-                                                      inset: 0;    
-                                                      background: #242424;
-                                                      z-index: 1000;"></div>
-    <div id="js-warning" style="
-                                z-index: 1001;
-                                position: relative;
-                                background: #ffdddd;
-                                color: #a00; 
-                                text-align: center;
-                                padding: 10px;
-                                font-size: 16px;">
-      Enable JavaScript to use this site <br> or use noScript mode <br> ClearPage/noScript
+    <div id="preLoadBackground" class="preLoadBackground" aria-hidden="true"></div>
+    <div id="jsWarning" class="jsWarning">
+      Enable JavaScript to use this site <br> or use noScript mode <br> https://yusufardac.github.io/ClearPage/noScript
     </div>
     
     
@@ -39,7 +27,7 @@
     <!-- <div id="settingsAlert" style="display:none; position: absolute; top: 24px; right: 24px; min-width: 180px; max-width: 260px; background-color: #333; color: #fff; text-align: left; padding: 12px 18px; font-size: 15px; border-radius: 10px; box-shadow: 0 2px 16px #0005; z-index: 900;"></div> -->
 
     <!-- Ayarlar düğmesi -->
-    <button type="button" class="settings-button" id="settingsToggle" style="z-index: 1001; position: absolute; top: 20px; right: 20px;">
+    <button type="button" class="settings-button" id="settingsToggle">
         <!-- ayarların görseli -->
       <object type="image/svg+xml" data="Assets/settings.svg">
       </object>
