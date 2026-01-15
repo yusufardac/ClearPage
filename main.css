@@ -133,6 +133,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--color-dark-settings-btn-bg);
   }
   
   .settings-button * {

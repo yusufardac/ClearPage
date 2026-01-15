@@ -43,10 +43,16 @@
 
     "searchButton": "Ara",
     "developer": "Oluşturan: ",
-    "newVersionNotifyLabel": "Yeni Sürüm Bildirimlerini Göster",
 
+    "newVersionNotifyLabel": "Yeni Sürüm Bildirimlerini Göster",
     "version": "Sürüm: ",
+    "ExtensionVersion": "Eklenti Sürümü: ",
+
+    "notification":"",
+    "notificationAlert": "",
+    "footerAlert": "",
     
     "newVersionNotification": "<strong>{version} Güncellemesi Yayınlandı!</strong> <a href='{link}' class='github-link'>Yenilikler için tıklayın</a>"
+    
     
   }

@@ -178,7 +178,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // Uyarı mesajını footer'da göster
 async function showAlertFooter() {
   try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
+    const response = await fetch(`Localization/${getCookie('language')}.json`);
     if (!response.ok) return;
     const data = await response.json();
     const alertDiv = document.getElementById('footerAlert');
@@ -196,7 +196,7 @@ async function showAlertFooter() {
 }
 
 async function showInformation() {
-  const response = await fetch('information.json', {cache: 'no-store'});
+    const response = await fetch(`Localization/${getCookie('language')}.json`);
   if (!response.ok) return;
   const data = await response.json();
   // Her bir anahtar için, eğer id ile eşleşen bir element varsa içeriğini güncelle
@@ -216,12 +216,13 @@ async function showInformation() {
 // Ayarlar paneli için önemli uyarı göster fonksiyonu güncel
 async function showSettingsAlert() {
   try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
+    const response = await fetch(`Localization/${getCookie('language')}.json`);
     if (!response.ok) return;
     const data = await response.json();
     const alertDiv = document.getElementById('settingsAlert');
-    if (data.notification && data.notification.trim() !== "") {
-      alertDiv.innerHTML = data.notification; // HTML olarak ekle
+    const settingsNotification = data.notificationAlert.trim();
+    if (settingsNotification !== "") {
+      alertDiv.innerHTML = settingsNotification; // HTML olarak ekle
       alertDiv.style.display = 'block';
     } else {
       alertDiv.style.display = 'none';
@@ -229,6 +230,38 @@ async function showSettingsAlert() {
   } catch (e) {
     const alertDiv = document.getElementById('settingsAlert');
     if (alertDiv) alertDiv.style.display = 'none';
+  }
+}
+
+// Bildirim kutusunu göster ve çerez kontrolü
+async function showNotificationBox() {
+  try {
+    const response = await fetch(`Localization/${getCookie('language')}.json`);
+    if (!response.ok) return;
+    const data = await response.json();
+    const notification = data.notification.trim();
+    const notificationBox = document.getElementById('notificationBox');
+    const notificationText = document.getElementById('notificationText');
+    const notificationClose = document.getElementById('notificationClose');
+    if (!notification) {
+      notificationBox.style.display = 'none';
+      return;
+    }
+    // Çerezden son kapatılan bildirimi al
+    const lastClosed = getCookie('notificationClosed') || '';
+    if (notification !== lastClosed) {
+      notificationText.innerHTML = notification;
+      notificationBox.style.display = 'block';
+      notificationClose.onclick = function() {
+        notificationBox.style.display = 'none';
+        setCookie('notificationClosed', notification, 365);
+      };
+    } else {
+      notificationBox.style.display = 'none';
+    }
+  } catch (e) {
+    const notificationBox = document.getElementById('notificationBox');
+    if (notificationBox) notificationBox.style.display = 'none';
   }
 }
 
@@ -345,37 +378,6 @@ languageSelect.addEventListener('change', async (e) => {
   loadMessages(lang);
 });
 
-// Bildirim kutusunu göster ve çerez kontrolü
-async function showNotificationBox() {
-  try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
-    if (!response.ok) return;
-    const data = await response.json();
-    const notification = (data.notification || '').trim();
-    const notificationBox = document.getElementById('notificationBox');
-    const notificationText = document.getElementById('notificationText');
-    const notificationClose = document.getElementById('notificationClose');
-    if (!notification) {
-      notificationBox.style.display = 'none';
-      return;
-    }
-    // Çerezden son kapatılan bildirimi al
-    const lastClosed = getCookie('notificationClosed') || '';
-    if (notification !== lastClosed) {
-      notificationText.innerHTML = notification;
-      notificationBox.style.display = 'block';
-      notificationClose.onclick = function() {
-        notificationBox.style.display = 'none';
-        setCookie('notificationClosed', notification, 365);
-      };
-    } else {
-      notificationBox.style.display = 'none';
-    }
-  } catch (e) {
-    const notificationBox = document.getElementById('notificationBox');
-    if (notificationBox) notificationBox.style.display = 'none';
-  }
-}
 
 // Sayfa yüklendiğinde dil seçeneklerini otomatik olarak doldur
 async function populateLanguageOptions() {

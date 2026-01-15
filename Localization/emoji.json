@@ -42,8 +42,14 @@
   "searchInput": "🔍",
   "searchButton": "🔎",
   "developer": "👨‍💻:",
-  "newVersionNotifyLabel": "🆕🔔",
 
+  "newVersionNotifyLabel": "🆕🔔",
   "version": "🏷️",
+  "ExtensionVersion": "🧩🏷️",
+
+  "notification":"",
+  "notificationAlert": "",
+  "footerAlert": "",
+
   "newVersionNotification": "🆕🎉 {version} 👉  <a href='{link}' class='github-link'>🔗</a>"
 }

@@ -42,9 +42,14 @@
 
   "searchButton": "Найти",
   "developer": "Разработчик: ",
+  
   "newVersionNotifyLabel": "Показывать уведомления о новой версии",
-
   "version": "Версия: ",
+  "ExtensionVersion": "Extension Version : ",
+
+  "notification":"",
+  "notificationAlert": "",
+  "footerAlert": "",
 
   "newVersionNotification": "<strong>Вышло обновление {version}!</strong> <a href='{link}' class='github-link'>Нажмите, чтобы узнать, что нового</a>"
 }

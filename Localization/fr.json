@@ -44,10 +44,14 @@
     "searchButton": "Recherche",
     "developer": "Créé par: ",
 
+    "newVersionNotifyLabel": "Afficher les notifications de nouvelle version",
     "version": "Version: ",
-    "newVersionNotifyLabel": "Alerte mise à jour",
-    "newVersionNotification": "<strong>Mise à jour {version} publiée !</strong> <a href='{link}' class='github-link'>Voir les nouveautés</a>"
+    "ExtensionVersion": "Version de l'extension: ",
 
-    ,"notification": "Nouvelle notification : consultez les messages localisés dans vos paramètres."
+    "notification":"",
+    "notificationAlert": "",
+    "footerAlert": "",
+
+    "newVersionNotification": "<strong>Mise à jour {version} publiée !</strong> <a href='{link}' class='github-link'>Voir les nouveautés</a>"
 
   }
