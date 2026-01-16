@@ -195,8 +195,9 @@ async function showAlertFooter() {
   }
 }
 
+//güncel versiyon numaralarını çek
 async function showInformation() {
-    const response = await fetch(`Localization/${getCookie('language')}.json`);
+ const response = await fetch('information.json', {cache: 'no-store'});
   if (!response.ok) return;
   const data = await response.json();
   // Her bir anahtar için, eğer id ile eşleşen bir element varsa içeriğini güncelle
