@@ -49,8 +49,8 @@
     "ExtensionVersion": "Eklenti Sürümü: ",
 
     "notification":"",
-    "notificationAlert": "",
-    "footerAlert": "",
+    "notificationAlert": "hor hor hor",
+    "footerAlert": "deneme",
     
     "newVersionNotification": "<strong>{version} Güncellemesi Yayınlandı!</strong> <a href='{link}' class='github-link'>Yenilikler için tıklayın</a>"
     

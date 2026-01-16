@@ -40,7 +40,7 @@
   --color-input-border: #ccc;
 
   /* Footer (alt bilgi) renkleri */
-  --color-light-footer-bg: #d9d9d9; /* Aydınlık tema footer arka plan */
+  --color-light-footer-bg: #e9e9e9; /* Aydınlık tema footer arka plan */
   --color-light-footer-text: #222;   /* Aydınlık tema footer yazı */
   --color-dark-footer-bg: #333333;   /* Karanlık tema footer arka plan */
   --color-dark-footer-text: #fff;    /* Karanlık tema footer yazı */
@@ -388,10 +388,36 @@ html, body {
     color: inherit !important;
   }
 
-  /* newVersion bildirimi de notificationBox ile aynı kutuda gösteriliyor, ek bir stil gerekmez */
-
+  /* newVersion bildirimi de notificationBox ile aynı kutuda gösteriliyor, ek bir stil gerekmiyor */
   #notificationClose {
     color: inherit !important;
+  }
+
+
+  #settingsAlert {
+  display:none;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  min-width: 180px;
+  max-width: 260px;
+  text-align: left;
+  padding: 12px 18px;
+  font-size: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #0005;
+  z-index: 900;
+  }
+
+    body.light #settingsAlert {
+    background-color: var(--color-light-notification-bg);
+    color: var(--color-light-notification-text);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.471);
+  }
+  body.dark #settingsAlert {
+    background-color: var(--color-dark-notification-bg);
+    color: var(--color-dark-notification-text);
+    box-shadow: 0 2px 16px #0005;
   }
 
   /* Mobil cihazlar için düzenlemeler */

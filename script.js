@@ -441,7 +441,7 @@ async function showNewVersionNotification() {
     if (newVersionId === lastClosed) return;
 
     // Lokalize edilmiş bildirim metnini al
-    const lang = getCookie('language') || (navigator.language || '').slice(0,2) || 'tr';
+    const lang = getCookie('language');
     let template = '';
     try {
       const locResp = await fetch(`Localization/${lang}.json`);
