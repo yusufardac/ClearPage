@@ -50,6 +50,14 @@
   --color-light-notification-text: #222;  /* Aydınlık tema bildirim kutusu yazı */
   --color-dark-notification-bg: #333333;  /* Karanlık tema bildirim kutusu arka plan */
   --color-dark-notification-text: #fff;   /* Karanlık tema bildirim kutusu yazı */
+
+  /* Bağış butonu */
+  --color-dark-donete-text:white;
+  --color-dark-donete-bg: #817f4b;
+
+  --color-light-donete-text: #222;
+  --color-light-donete-bg: #e7cb14;
+
 }
 
 html, body {
@@ -305,6 +313,10 @@ html, body {
     text-align: center; /* Ortalamak için */
   }
 
+  .devPart{
+    width: 100%;
+  }
+
   @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-6px); }
@@ -409,15 +421,38 @@ html, body {
   z-index: 900;
   }
 
-    body.light #settingsAlert {
-    background-color: var(--color-light-notification-bg);
-    color: var(--color-light-notification-text);
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.471);
+  body.light #settingsAlert {
+  background-color: var(--color-light-notification-bg);
+  color: var(--color-light-notification-text);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.471);
   }
   body.dark #settingsAlert {
     background-color: var(--color-dark-notification-bg);
     color: var(--color-dark-notification-text);
     box-shadow: 0 2px 16px #0005;
+  }
+
+  #donateButton {
+    background-color:yellow;
+    /* position: fixed;
+    bottom: 20px;
+    right: 20px; */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1002;
+    font: Arial;
+  }
+
+  body.light #donateButton {
+    background-color:var(--color-light-donete-bg);
+    color: var(--color-light-settings-btn-text);
+  }
+
+  body.dark #donateButton {
+    background-color:var(--color-dark-donete-bg);
+    color: var(--color-dark-settings-btn-text);
   }
 
   /* Mobil cihazlar için düzenlemeler */

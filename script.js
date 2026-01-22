@@ -8,6 +8,10 @@ const searchInput = document.getElementById('searchInput');
 const webLinkPaste = document.getElementById('webLinkPaste');
 const languageSelect = document.getElementById('languageSelect');
 const newVersionNotify = document.getElementById('newVersionNotify');
+const notificationBox = document.getElementById('notificationBox');
+const notificationText = document.getElementById('notificationText');
+const notificationClose = document.getElementById('notificationClose');
+const donateButton = document.getElementById('donateButton');
 
 // Çerez işlemleri
 const setCookie = (name, value, days = 365) => {
@@ -466,9 +470,6 @@ async function showNewVersionNotification() {
 
 // Bildirim kutusu gibi yeni sürüm kutusu göster
 function showNotificationLikeBox(html, closeCookieName, closeCookieValue) {
-  const notificationBox = document.getElementById('notificationBox');
-  const notificationText = document.getElementById('notificationText');
-  const notificationClose = document.getElementById('notificationClose');
   notificationText.innerHTML = html;
   notificationBox.style.display = 'block';
   notificationClose.onclick = function() {
@@ -477,3 +478,22 @@ function showNotificationLikeBox(html, closeCookieName, closeCookieValue) {
     setCookie(closeCookieName, closeCookieValue || html, 365);
   };
 }
+
+donateButton.addEventListener('click', async () => {
+  try{
+    const lang = getCookie('language') || 'tr';
+    let message = "Thanks for your interest in supporting the project! You will be redirected to the donation page";
+    const resp = await fetch(`Localization/${lang}.json`);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data.donateAlert && data.donateAlert.trim())  message = data.donateAlert;
+    }
+    alert(message);
+  } catch(e){
+    alert("Thanks for your interest in supporting the project! You will be redirected to the donation page h1");
+  }
+  finally{
+  action = "https://www.buymeacoffee.com/yusufarda7k";
+  window.open(action, '_blank');
+  }
+});

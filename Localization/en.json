@@ -44,6 +44,8 @@
 
     "searchButton": "Go",
     "developer": "Developer : ",
+    "donateButton": "☕ Buy me a coffee",
+    "donateAlert": "Thanks for your interest in supporting the project! You will be redirected to the donation page",
     
     "newVersionNotifyLabel": "Show New Version Notification",
     "version": "Version : ",

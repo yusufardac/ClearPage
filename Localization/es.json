@@ -42,6 +42,8 @@
 
   "searchButton": "Buscar",
   "developer": "Desarrollador: ",
+  "donateButton": "☕ Invítame a un café",
+  "donateAlert": "¡Gracias por tu interés en apoyar el proyecto! Serás redirigido a la página de donaciones.",
 
   "newVersionNotifyLabel": "Mostrar notificaciones de nuevas versiones",
   "version": "Versión: ",  

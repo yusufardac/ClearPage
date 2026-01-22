@@ -43,6 +43,8 @@
 
     "searchButton": "Recherche",
     "developer": "Créé par: ",
+    "donateButton": "☕ Offre-moi un café",
+    "donateAlert": "Merci de votre intérêt pour le soutien du projet ! Vous serez redirigé vers la page de don.",
 
     "newVersionNotifyLabel": "Afficher les notifications de nouvelle version",
     "version": "Version: ",
