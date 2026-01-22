@@ -54,9 +54,11 @@
   /* Bağış butonu */
   --color-dark-donete-text:white;
   --color-dark-donete-bg: #817f4b;
+  --color-dark-donete-bg-hover: #6e6d40;
 
   --color-light-donete-text: #222;
   --color-light-donete-bg: #e7cb14;
+  --color-light-donete-bg-hover: #d1b812;
 
 }
 
@@ -160,6 +162,10 @@ html, body {
 
   .github-link {
     color: #888888 ; /* Gri ton */
+     /* text-decoration: none; // alt çizgiyi kaldırır */
+  }
+    .github-link :hover {
+    color: #4242df ; /* Gri ton */
      /* text-decoration: none; // alt çizgiyi kaldırır */
   }
 
@@ -437,7 +443,7 @@ html, body {
     /* position: fixed;
     bottom: 20px;
     right: 20px; */
-    padding: 10px 15px;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -453,6 +459,14 @@ html, body {
   body.dark #donateButton {
     background-color:var(--color-dark-donete-bg);
     color: var(--color-dark-settings-btn-text);
+  }
+
+  body.light #donateButton:hover {
+    background-color:var(--color-light-donete-bg-hover);
+  }
+
+  body.dark #donateButton:hover {
+    background-color:var(--color-dark-donete-bg-hover);
   }
 
   /* Mobil cihazlar için düzenlemeler */
