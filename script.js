@@ -8,6 +8,10 @@ const searchInput = document.getElementById('searchInput');
 const webLinkPaste = document.getElementById('webLinkPaste');
 const languageSelect = document.getElementById('languageSelect');
 const newVersionNotify = document.getElementById('newVersionNotify');
+const notificationBox = document.getElementById('notificationBox');
+const notificationText = document.getElementById('notificationText');
+const notificationClose = document.getElementById('notificationClose');
+const donateButton = document.getElementById('donateButton');
 
 // Çerez işlemleri
 const setCookie = (name, value, days = 365) => {
@@ -178,7 +182,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // Uyarı mesajını footer'da göster
 async function showAlertFooter() {
   try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
+    const response = await fetch(`Localization/${getCookie('language')}.json`);
     if (!response.ok) return;
     const data = await response.json();
     const alertDiv = document.getElementById('footerAlert');
@@ -195,8 +199,9 @@ async function showAlertFooter() {
   }
 }
 
+//güncel versiyon numaralarını çek
 async function showInformation() {
-  const response = await fetch('information.json', {cache: 'no-store'});
+ const response = await fetch('information.json', {cache: 'no-store'});
   if (!response.ok) return;
   const data = await response.json();
   // Her bir anahtar için, eğer id ile eşleşen bir element varsa içeriğini güncelle
@@ -216,12 +221,13 @@ async function showInformation() {
 // Ayarlar paneli için önemli uyarı göster fonksiyonu güncel
 async function showSettingsAlert() {
   try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
+    const response = await fetch(`Localization/${getCookie('language')}.json`);
     if (!response.ok) return;
     const data = await response.json();
     const alertDiv = document.getElementById('settingsAlert');
-    if (data.notification && data.notification.trim() !== "") {
-      alertDiv.innerHTML = data.notification; // HTML olarak ekle
+    const settingsNotification = data.notificationAlert.trim();
+    if (settingsNotification !== "") {
+      alertDiv.innerHTML = settingsNotification; // HTML olarak ekle
       alertDiv.style.display = 'block';
     } else {
       alertDiv.style.display = 'none';
@@ -229,6 +235,38 @@ async function showSettingsAlert() {
   } catch (e) {
     const alertDiv = document.getElementById('settingsAlert');
     if (alertDiv) alertDiv.style.display = 'none';
+  }
+}
+
+// Bildirim kutusunu göster ve çerez kontrolü
+async function showNotificationBox() {
+  try {
+    const response = await fetch(`Localization/${getCookie('language')}.json`);
+    if (!response.ok) return;
+    const data = await response.json();
+    const notification = data.notification.trim();
+    const notificationBox = document.getElementById('notificationBox');
+    const notificationText = document.getElementById('notificationText');
+    const notificationClose = document.getElementById('notificationClose');
+    if (!notification) {
+      notificationBox.style.display = 'none';
+      return;
+    }
+    // Çerezden son kapatılan bildirimi al
+    const lastClosed = getCookie('notificationClosed') || '';
+    if (notification !== lastClosed) {
+      notificationText.innerHTML = notification;
+      notificationBox.style.display = 'block';
+      notificationClose.onclick = function() {
+        notificationBox.style.display = 'none';
+        setCookie('notificationClosed', notification, 365);
+      };
+    } else {
+      notificationBox.style.display = 'none';
+    }
+  } catch (e) {
+    const notificationBox = document.getElementById('notificationBox');
+    if (notificationBox) notificationBox.style.display = 'none';
   }
 }
 
@@ -345,37 +383,6 @@ languageSelect.addEventListener('change', async (e) => {
   loadMessages(lang);
 });
 
-// Bildirim kutusunu göster ve çerez kontrolü
-async function showNotificationBox() {
-  try {
-    const response = await fetch('alerts.json', {cache: 'no-store'});
-    if (!response.ok) return;
-    const data = await response.json();
-    const notification = (data.notification || '').trim();
-    const notificationBox = document.getElementById('notificationBox');
-    const notificationText = document.getElementById('notificationText');
-    const notificationClose = document.getElementById('notificationClose');
-    if (!notification) {
-      notificationBox.style.display = 'none';
-      return;
-    }
-    // Çerezden son kapatılan bildirimi al
-    const lastClosed = getCookie('notificationClosed') || '';
-    if (notification !== lastClosed) {
-      notificationText.innerHTML = notification;
-      notificationBox.style.display = 'block';
-      notificationClose.onclick = function() {
-        notificationBox.style.display = 'none';
-        setCookie('notificationClosed', notification, 365);
-      };
-    } else {
-      notificationBox.style.display = 'none';
-    }
-  } catch (e) {
-    const notificationBox = document.getElementById('notificationBox');
-    if (notificationBox) notificationBox.style.display = 'none';
-  }
-}
 
 // Sayfa yüklendiğinde dil seçeneklerini otomatik olarak doldur
 async function populateLanguageOptions() {
@@ -439,7 +446,7 @@ async function showNewVersionNotification() {
     if (newVersionId === lastClosed) return;
 
     // Lokalize edilmiş bildirim metnini al
-    const lang = getCookie('language') || (navigator.language || '').slice(0,2) || 'tr';
+    const lang = getCookie('language');
     let template = '';
     try {
       const locResp = await fetch(`Localization/${lang}.json`);
@@ -463,9 +470,6 @@ async function showNewVersionNotification() {
 
 // Bildirim kutusu gibi yeni sürüm kutusu göster
 function showNotificationLikeBox(html, closeCookieName, closeCookieValue) {
-  const notificationBox = document.getElementById('notificationBox');
-  const notificationText = document.getElementById('notificationText');
-  const notificationClose = document.getElementById('notificationClose');
   notificationText.innerHTML = html;
   notificationBox.style.display = 'block';
   notificationClose.onclick = function() {
@@ -474,3 +478,22 @@ function showNotificationLikeBox(html, closeCookieName, closeCookieValue) {
     setCookie(closeCookieName, closeCookieValue || html, 365);
   };
 }
+
+donateButton.addEventListener('click', async () => {
+  try{
+    const lang = getCookie('language') || 'tr';
+    let message = "Thanks for your interest in supporting the project! You will be redirected to the donation page";
+    const resp = await fetch(`Localization/${lang}.json`);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data.donateAlert && data.donateAlert.trim())  message = data.donateAlert;
+    }
+    alert(message);
+  } catch(e){
+    alert("Thanks for your interest in supporting the project! You will be redirected to the donation page h1");
+  }
+  finally{
+  action = "https://www.buymeacoffee.com/yusufarda7k";
+  window.open(action, '_blank');
+  }
+});

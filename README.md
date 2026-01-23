@@ -14,16 +14,14 @@ https://yusufardac.github.io/ClearPage/index
 Scriptsiz daha hafif versiyon: 
 https://yusufardac.github.io/ClearPage/noScript
 
-
+[☕ Buy me a coffee](https://www.buymeacoffee.com/yusufarda7k)
 
 <br>
 <p align="center">
     <img src="https://visitor-badge.laobi.icu/badge?page_id=yusufardac.ClearPage" alt="repo views"/>
 </p>
 
-
 ![screenshot](https://github.com/user-attachments/assets/43f9ddf7-3421-4c34-b920-f13e2f01c991)
-
 
 
 

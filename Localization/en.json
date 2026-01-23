@@ -44,8 +44,16 @@
 
     "searchButton": "Go",
     "developer": "Developer : ",
-
-    "version": "Version : ",
+    "donateButton": "☕ Buy me a coffee",
+    "donateAlert": "Thanks for your interest in supporting the project! You will be redirected to the donation page",
+    
     "newVersionNotifyLabel": "Show New Version Notification",
+    "version": "Version : ",
+    "ExtensionVersion": "Extension Version : ",
+
+    "notification":"",
+    "notificationAlert": "",
+    "footerAlert": "",
+
     "newVersionNotification": "<strong>{version} update released!</strong> <a href='{link}' class='github-link'>Click for details</a>"
 }

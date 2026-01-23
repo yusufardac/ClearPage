@@ -42,9 +42,16 @@
 
   "searchButton": "Buscar",
   "developer": "Desarrollador: ",
-  "newVersionNotifyLabel": "Mostrar notificaciones de nuevas versiones",
+  "donateButton": "☕ Invítame a un café",
+  "donateAlert": "¡Gracias por tu interés en apoyar el proyecto! Serás redirigido a la página de donaciones.",
 
-  "version": "Versión: ",
+  "newVersionNotifyLabel": "Mostrar notificaciones de nuevas versiones",
+  "version": "Versión: ",  
+  "ExtensionVersion": "Versión de la extensión: ",
+
+  "notification":"",
+  "notificationAlert": "",
+  "footerAlert": "",
 
   "newVersionNotification": "<strong>¡Actualización {version} publicada!</strong> <a href='{link}' class='github-link'>Haz clic para ver las novedades</a>"
 }
