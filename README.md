@@ -21,6 +21,8 @@ https://yusufardac.github.io/ClearPage/noScript
     <img src="https://visitor-badge.laobi.icu/badge?page_id=yusufardac.ClearPage" alt="repo views"/>
 </p>
 
+[![Video: ClearPage tanıtım](https://img.youtube.com/vi/WAlE3rzyNGk/hqdefault.jpg)](https://www.youtube.com/watch?v=WAlE3rzyNGk)
+
 ![screenshot](https://github.com/user-attachments/assets/43f9ddf7-3421-4c34-b920-f13e2f01c991)
 
 
