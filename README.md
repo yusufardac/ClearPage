@@ -5,7 +5,6 @@ Sade ve minimalist yeni sekme sayfası.<br>
 
 Kullanmaya başlamak için aşağıdaki linki web tarayıcınıtarayıcınız destekliyorsa başlangıç sayfası yapmanız yeterlidir<br>
 Desteklemiyorsada Chrome tabanlı tarayıcılarda New Tab Redirect eklentisi ile başlangıç sayfasını değiştirebilirsiniz<br>
-"Spolier: Chrome eklentim çok yakında çıkıyor!"<br>
 Firefox tabanlı tarayıcılar hakkında bir bilgim yok<br>
 <br>
 
