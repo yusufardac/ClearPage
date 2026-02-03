@@ -5,8 +5,9 @@ Sade ve minimalist yeni sekme sayfası.<br>
 
 Kullanmaya başlamak için aşağıdaki linki web tarayıcınıtarayıcınız destekliyorsa başlangıç sayfası yapmanız yeterlidir<br>
 Desteklemiyorsada Chrome tabanlı tarayıcılarda New Tab Redirect eklentisi ile başlangıç sayfasını değiştirebilirsiniz<br>
-Firefox tabanlı tarayıcılar hakkında bir bilgim yok<br>
-<br>
+
+Chrome Eklentim Çıktı!<br>
+[Buradan ekleyebilirsiniz](https://chromewebstore.google.com/detail/iopegmihaebddndkpolnpdcjphpfdlop?utm_source=item-share-cb)
 
 İlerleyen zamanda link değişebilir değişirse bildiririm<br>
 Normal versiyon: <br>
