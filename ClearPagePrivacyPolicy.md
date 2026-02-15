@@ -25,4 +25,4 @@ Since no data is collected or stored on our servers, your information remains en
 We may update our Privacy Policy from time to time. Any changes will be posted on this page and will take effect immediately.
 
 6. Contact me
-If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at: yusufarda7813@gmail.com
+If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at: tmceadr@gmail.com
