@@ -9,7 +9,6 @@ Desteklemiyorsada Chrome tabanlı tarayıcılarda New Tab Redirect eklentisi ile
 Chrome Eklentim Çıktı!<br>
 [Buradan ekleyebilirsiniz](https://chromewebstore.google.com/detail/iopegmihaebddndkpolnpdcjphpfdlop?utm_source=item-share-cb)
 
-İlerleyen zamanda link değişebilir değişirse bildiririm<br>
 Normal versiyon: <br>
 https://yusufardac.github.io/ClearPage/index
 <br>
