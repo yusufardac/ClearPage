@@ -4,7 +4,6 @@ Asla kullanılmayan gereksiz özellikler, göz yoran tasarım ve reklam saçan a
 Sade ve minimalist yeni sekme sayfası.<br>
 
 Kullanmaya başlamak için aşağıdaki linki web tarayıcınıtarayıcınız destekliyorsa başlangıç sayfası yapmanız yeterlidir<br>
-Desteklemiyorsada Chrome tabanlı tarayıcılarda New Tab Redirect eklentisi ile başlangıç sayfasını değiştirebilirsiniz<br>
 
 Chrome Eklentim Çıktı!<br>
 [Buradan ekleyebilirsiniz](https://chromewebstore.google.com/detail/iopegmihaebddndkpolnpdcjphpfdlop?utm_source=item-share-cb)
@@ -26,9 +25,10 @@ https://yusufardac.github.io/ClearPage/noScript
 ![screenshot](https://github.com/user-attachments/assets/43f9ddf7-3421-4c34-b920-f13e2f01c991)
 
 ### Kullanıma engel olmayan bilinen sorunlar ve ufak bug'lar<br>
+**Not, büyük bir kısmı eklenti versiyonumda çözüldü.**
 
 * Site açılırken siyah temada açılıyor. bu kasıtlı yapılmış bir şey. Normalde beyaz temada açılıyordu siyah tema kullanıcıları gece vakti kullanırken flashbang yediğinden artık siyah temada açılıyor. beyaz tema kullanıcılarının siyah tema kullanıcıları kadar problem yaşayacağını sanmıyorum bir anlık bir olay olduğu için kullanıma engel değil.<br>
-Eğer mümkün ise düzelteceğim şeyler arasındayer alıyor <br>
+Eğer mümkün ise düzelteceğim şeyler arasında yer alıyor <br>
 
 * Farklı ekran boyutlarında site kararsız davranabiliyor çoğu telefonlarda düzgün ancak 1080p den yüksek çözünürlülüklerde problem var. Nedeni henüz yeteri kadar responsive değil. mümkün olan en kısa sürede çözmeyi hedefliyorum css bilgimi aştığı için biraz sürebilir<br>
 
