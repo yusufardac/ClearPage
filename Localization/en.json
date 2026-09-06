@@ -51,7 +51,7 @@
     "version": "Version : ",
     "ExtensionVersion": "Extension Version : ",
 
-    "notification":"",
+    "notification":"This site uses cookies to remember your settings",
     "notificationAlert": "",
     "footerAlert": "",
 

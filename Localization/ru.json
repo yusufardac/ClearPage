@@ -49,7 +49,7 @@
   "version": "Версия: ",
   "ExtensionVersion": "Extension Version : ",
 
-  "notification":"",
+  "notification":"Этот сайт использует файлы cookie для запоминания ваших настроек",
   "notificationAlert": "",
   "footerAlert": "",
 
